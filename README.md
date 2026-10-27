@@ -2,7 +2,7 @@
 
 Fast local network device discovery for Node.js, built on [Effect](https://effect.website) v4.
 
-lanscout queries five sources at the same time and merges what they report into one record per physical device:
+lanscout queries six sources at the same time and merges what they report into one record per physical device:
 
 | Source | What it finds |
 | --- | --- |
@@ -11,6 +11,7 @@ lanscout queries five sources at the same time and merges what they report into 
 | `arp` | MAC addresses of every host the kernel has resolved, including hosts that answer nothing |
 | `tcp` | Open ports from a concurrent connect sweep of each attached subnet |
 | `tailscale` | Tailnet peers from `tailscale status`, with online state, OS, and subnet routes |
+| `printer` | Bambu Lab printers from their MQTT certificate on port 8883, and Klipper printers from Moonraker on port 7125 |
 
 A default scan has a 2 second budget, and the process exits when the scan finishes.
 
@@ -91,6 +92,33 @@ interface Device {
   lastSeenMs: number
 }
 ```
+
+## Find the 3D printers on a network
+
+`examples/find-printers.ts` lists every Bambu Lab and Klipper printer that lanscout finds:
+
+```sh
+node examples/find-printers.ts            # table
+node examples/find-printers.ts --json
+node examples/find-printers.ts --subnet 10.0.20.0/24   # printers on another VLAN
+```
+
+```
+IP             PRINTER              NAME     SERIAL           FIRMWARE     STATUS
+192.168.0.104  Snapmaker U1         Juniper  SN-TEST-0001     1.4.1        klippy ready, klipper 1.4.1.6
+192.168.0.106  Bambu Lab A1         Bramble  03900A000000002  01.05.00.00  lan mode, unbound, -53 dBm
+192.168.0.112  Bambu Lab X1 Carbon  Thistle  00M00A000000003  01.09.00.01  lan mode, unbound, -65 dBm
+```
+
+lanscout identifies a printer in three ways:
+
+- Bambu Lab printers send an SSDP `NOTIFY` on UDP port 1990 or 2021. In testing, each A1 and P1S sent one about every 10 seconds, and an X1 Carbon and an H2D also answered a broadcast `M-SEARCH` within 210 ms. The message has the model, name, serial, firmware, LAN or cloud mode, and Wi-Fi signal.
+- Every Bambu Lab printer runs an MQTT broker on port 8883 with a certificate issued by `BBL CA`. The subject is the printer serial, and the first three characters of the serial give the model. This finds printers that have not announced yet.
+- Klipper printers answer Moonraker's `/printer/info` on port 7125. lanscout also reads `/machine/system_info`, which some vendors fill with the manufacturer, model, serial, and name.
+
+The SSDP and certificate reports for one printer merge into one device by serial. A printer that has not sent a `NOTIFY` before the deadline still appears, but without its name. The example uses a 4 second budget so that more announcements arrive.
+
+Bambu Studio binds UDP port 2021. If Bambu Studio is running, lanscout listens on port 1990 only.
 
 ## Mesh, multi-band, and Tailscale networks
 
