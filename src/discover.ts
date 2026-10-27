@@ -10,20 +10,34 @@ import { localNetworks } from "./network.ts"
 import { Registry } from "./registry.ts"
 import { arp } from "./sources/arp.ts"
 import { mdns } from "./sources/mdns.ts"
+import { printer } from "./sources/printer.ts"
 import { ssdp } from "./sources/ssdp.ts"
 import { tailscaleStatus } from "./sources/tailscale.ts"
 import { routedTargets, tcp } from "./sources/tcp.ts"
 
-const sources: { readonly [S in Exclude<Source, "tcp">]: (cfg: Config, tailnet: TailnetPeers) => Stream.Stream<Observation, SourceFailed> } = {
+type TailnetPeers = Effect.Effect<ReadonlyArray<Observation>, SourceFailed>
+
+type Prober = "tcp" | "printer"
+
+/** Sources that find hosts on their own. */
+const discoverers: {
+  readonly [S in Exclude<Source, Prober>]: (cfg: Config, tailnet: TailnetPeers) => Stream.Stream<Observation, SourceFailed>
+} = {
   mdns: (cfg) => mdns(cfg),
   ssdp: (cfg) => ssdp(cfg),
   arp: (cfg) => arp(cfg),
   tailscale: (_cfg, tailnet) => Stream.fromIterableEffect(tailnet)
 }
 
-type TailnetPeers = Effect.Effect<ReadonlyArray<Observation>, SourceFailed>
+/** Sources that examine each live host the discoverers report, plus routed targets. */
+const probers: { readonly [S in Prober]: (cfg: Config, targets: Stream.Stream<Ipv4>) => Stream.Stream<Observation> } = {
+  tcp,
+  printer
+}
 
-/** Addresses an observation proves are reachable now, which the TCP sweep then probes. */
+const isProber = (s: Source): s is Prober => s in probers
+
+/** Addresses an observation proves are reachable now. */
 const liveIps = (o: Observation): ReadonlyArray<Ipv4> =>
   o._tag === "Tailscale" ? (o.online ? o.tailnetIps : []) : o._tag === "Tcp" ? [] : [o.ip]
 
@@ -47,35 +61,32 @@ const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed> =>
   Stream.unwrap(
     Effect.gen(function*() {
       const tailnet = yield* Effect.cached(tailscaleStatus(cfg))
-      const targets = yield* Queue.unbounded<Ipv4>()
+      const active = [...cfg.sources].filter(isProber)
+      const queues = yield* Effect.forEach(active, () => Queue.unbounded<Ipv4>())
       const queued = new Set<Ipv4>(cfg.networks.map((n) => n.address))
       const enqueue = (ips: Iterable<Ipv4>) => {
         for (const ip of ips) {
           if (queued.has(ip)) continue
           queued.add(ip)
-          Queue.offerUnsafe(targets, ip)
+          for (const q of queues) Queue.offerUnsafe(q, ip)
         }
       }
-      const sweep = cfg.sources.has("tcp")
-      const discovered = [...cfg.sources].flatMap((s) => (s === "tcp" ? [] : [s])).map((s) =>
-        sources[s](cfg, tailnet).pipe(
-          Stream.tap((o) => Effect.sync(() => sweep && enqueue(liveIps(o)))),
-          Stream.catch((failure) => Stream.succeed(failure))
-        )
+      const feed = <E>(stream: Stream.Stream<Observation, E>) =>
+        stream.pipe(Stream.tap((o) => Effect.sync(() => enqueue(liveIps(o)))))
+      const discovered = [...cfg.sources].flatMap((s) => (isProber(s) ? [] : [s])).map((s) =>
+        feed(discoverers[s](cfg, tailnet)).pipe(Stream.catch((failure) => Stream.succeed(failure)))
       )
-      const feeder = sweep && !cfg.sources.has("arp")
-        ? [arp(cfg).pipe(Stream.tap((o) => Effect.sync(() => enqueue(liveIps(o)))), Stream.drain, Stream.ignore)]
-        : []
+      const feeder = active.length > 0 && !cfg.sources.has("arp") ? [feed(arp(cfg)).pipe(Stream.drain, Stream.ignore)] : []
       const routed = Stream.fromEffect(
         Effect.map(
           cfg.sweepTailscaleRoutes ? Effect.orElseSucceed(tailnet, () => []) : Effect.succeed([]),
           (peers) => enqueue(routedTargets(cfg, peers))
         )
       ).pipe(Stream.drain)
-      const swept = sweep ? [Stream.merge(routed, tcp(cfg, Stream.fromQueue(targets)))] : []
-      return Stream.mergeAll([...discovered, ...feeder, ...swept], { concurrency: "unbounded" }).pipe(
-        Stream.interruptWhen(Effect.sleep(`${cfg.timeoutMs} millis`))
-      )
+      const probing = active.map((s, i) => probers[s](cfg, Stream.fromQueue(queues[i]!)))
+      return Stream.mergeAll([...discovered, ...feeder, ...(active.length > 0 ? [routed] : []), ...probing], {
+        concurrency: "unbounded"
+      }).pipe(Stream.interruptWhen(Effect.sleep(`${cfg.timeoutMs} millis`)))
     })
   )
 

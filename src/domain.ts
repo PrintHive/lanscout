@@ -25,8 +25,8 @@ export const parseMac = (raw: string): Mac | undefined => {
   return mac as Mac
 }
 
-export type Source = "mdns" | "ssdp" | "arp" | "tcp" | "tailscale"
-export const allSources: ReadonlyArray<Source> = ["mdns", "ssdp", "arp", "tcp", "tailscale"]
+export type Source = "mdns" | "ssdp" | "arp" | "tcp" | "tailscale" | "printer"
+export const allSources: ReadonlyArray<Source> = ["mdns", "ssdp", "arp", "tcp", "tailscale", "printer"]
 
 export type NetworkKind = "lan" | "tailnet"
 
@@ -38,11 +38,41 @@ export interface Network {
   readonly prefix: number
 }
 
+export type Printer =
+  | {
+    readonly kind: "bambu"
+    /** Marketing name such as `P1S`, when the model code or serial prefix is known. */
+    readonly model?: string
+    /** Raw `DevModel.bambu.com` code such as `C12`. */
+    readonly modelCode?: string
+    readonly serial?: string
+    readonly name?: string
+    readonly firmware?: string
+    /** `lan` when LAN-only mode is on; `cloud` when the printer talks to Bambu Cloud. */
+    readonly mode?: "lan" | "cloud"
+    /** Whether the printer is bound to a Bambu account. */
+    readonly bound?: boolean
+    readonly signalDbm?: number
+  }
+  | {
+    readonly kind: "klipper"
+    readonly manufacturer?: string
+    readonly model?: string
+    readonly serial?: string
+    readonly name?: string
+    readonly firmware?: string
+    readonly hostname?: string
+    /** Klippy state from Moonraker: `ready`, `startup`, `shutdown`, or `error`. */
+    readonly state?: string
+    readonly klipperVersion?: string
+  }
+
 export type Observation =
   | { readonly _tag: "Mdns"; readonly ip: Ipv4; readonly hostname?: string; readonly services: ReadonlyArray<string> }
   | { readonly _tag: "Ssdp"; readonly ip: Ipv4; readonly usn?: string; readonly server?: string; readonly location?: string }
   | { readonly _tag: "Arp"; readonly ip: Ipv4; readonly mac: Mac; readonly iface?: string }
   | { readonly _tag: "Tcp"; readonly ip: Ipv4; readonly port: number }
+  | { readonly _tag: "Printer"; readonly ip: Ipv4; readonly via: "ssdp" | "printer"; readonly printer: Printer }
   | {
     readonly _tag: "Tailscale"
     readonly nodeId: string
@@ -72,7 +102,7 @@ export interface TailscalePeer {
 }
 
 export interface Device {
-  /** Strongest identifier seen so far (`ts:`, `mac:`, `usn:`, `host:`, then `ip:`). Can upgrade as later observations merge in. */
+  /** Strongest identifier seen so far (`ts:`, `sn:`, `mac:`, `usn:`, `host:`, then `ip:`). Can upgrade as later observations merge in. */
   readonly id: string
   readonly ips: ReadonlyArray<Ipv4>
   readonly macs: ReadonlyArray<Mac>
@@ -84,6 +114,7 @@ export interface Device {
   readonly server?: string
   readonly location?: string
   readonly tailscale?: TailscalePeer
+  readonly printer?: Printer
   readonly firstSeenMs: number
   readonly lastSeenMs: number
 }

@@ -17,15 +17,18 @@ const bind = (source: string, port: number) =>
     })
   })
 
+const release = (socket: dgram.Socket) => Effect.sync(() => socket.close())
+
+/** Binds `port` for the life of the scope. */
+export const bindUdp = (source: string, port: number): Effect.Effect<dgram.Socket, SourceFailed, Scope.Scope> =>
+  Effect.acquireRelease(bind(source, port), release)
+
 /** Binds `preferredPort`, falling back to an ephemeral port when another responder owns it. */
 export const openUdp = (
   source: string,
   preferredPort: number
 ): Effect.Effect<dgram.Socket, SourceFailed, Scope.Scope> =>
-  Effect.acquireRelease(
-    bind(source, preferredPort).pipe(Effect.catch(() => bind(source, 0))),
-    (socket) => Effect.sync(() => socket.close())
-  )
+  Effect.acquireRelease(bind(source, preferredPort).pipe(Effect.catch(() => bind(source, 0))), release)
 
 /** Sends via one interface at a time; the multicast interface is socket state, so sends must not overlap. */
 export const sendVia = (socket: dgram.Socket, payload: Buffer, port: number, address: string, iface?: string) =>

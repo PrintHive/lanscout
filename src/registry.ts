@@ -1,10 +1,10 @@
-import type { Device, Ipv4, Mac, Network, Observation, Source, TailscalePeer } from "./domain.ts"
+import type { Device, Ipv4, Mac, Network, Observation, Printer, Source, TailscalePeer } from "./domain.ts"
 import { ipv4ToInt } from "./domain.ts"
 import { networkOf } from "./network.ts"
 
-type Key = `${"ts" | "mac" | "usn" | "host" | "ip"}:${string}`
+type Key = `${"ts" | "sn" | "mac" | "usn" | "host" | "ip"}:${string}`
 
-const keyRank: Record<string, number> = { ts: 0, mac: 1, usn: 2, host: 3, ip: 4 }
+const keyRank: Record<string, number> = { ts: 0, sn: 1, mac: 2, usn: 3, host: 4, ip: 5 }
 
 interface Draft {
   readonly keys: Set<Key>
@@ -18,6 +18,7 @@ interface Draft {
   server?: string | undefined
   location?: string | undefined
   tailscale?: TailscalePeer | undefined
+  printer?: Printer | undefined
   firstSeenMs: number
   lastSeenMs: number
 }
@@ -37,7 +38,7 @@ const hostKey = (name: string): ReadonlyArray<Key> => {
 const usnUuid = (usn: string): string | undefined => /uuid:([0-9a-f-]+)/i.exec(usn)?.[1]?.toLowerCase()
 
 interface Handler<T extends Observation["_tag"]> {
-  readonly source: Source
+  readonly source: Source | ((o: Extract<Observation, { _tag: T }>) => Source)
   readonly keys: (o: Extract<Observation, { _tag: T }>) => ReadonlyArray<Key>
   readonly apply: (d: Draft, o: Extract<Observation, { _tag: T }>) => void
 }
@@ -80,6 +81,15 @@ const handlers: { readonly [T in Observation["_tag"]]: Handler<T> } = {
       d.openPorts.add(o.port)
     }
   },
+  Printer: {
+    source: (o) => o.via,
+    keys: (o) => [`ip:${o.ip}`, ...(o.printer.serial ? [`sn:${o.printer.serial.toUpperCase()}` as const] : [])],
+    apply: (d, o) => {
+      d.ips.add(o.ip)
+      d.printer = mergePrinter(d.printer, o.printer)
+      if (o.printer.name) d.hostnames.add(o.printer.name)
+    }
+  },
   Tailscale: {
     source: "tailscale",
     keys: (o) => [
@@ -96,6 +106,13 @@ const handlers: { readonly [T in Observation["_tag"]]: Handler<T> } = {
       d.tailscale = { nodeId: o.nodeId, dnsName: o.dnsName, os: o.os, online: o.online, routes: o.routes }
     }
   }
+}
+
+/** Later reports fill gaps; a field once known is overwritten only by a newer defined value. */
+const mergePrinter = (prev: Printer | undefined, next: Printer): Printer => {
+  if (!prev || prev.kind !== next.kind) return next
+  const defined = Object.fromEntries(Object.entries(next).filter(([, v]) => v !== undefined))
+  return { ...prev, ...defined } as Printer
 }
 
 const emptyDraft = (now: number): Draft => ({
@@ -118,6 +135,7 @@ const absorb = (into: Draft, from: Draft): void => {
   into.server ??= from.server
   into.location ??= from.location
   into.tailscale ??= from.tailscale
+  if (from.printer) into.printer = mergePrinter(into.printer, from.printer)
   into.firstSeenMs = Math.min(into.firstSeenMs, from.firstSeenMs)
   into.lastSeenMs = Math.max(into.lastSeenMs, from.lastSeenMs)
 }
@@ -138,6 +156,7 @@ const snapshot = (d: Draft): Device => {
     ...(d.server === undefined ? {} : { server: d.server }),
     ...(d.location === undefined ? {} : { location: d.location }),
     ...(d.tailscale === undefined ? {} : { tailscale: d.tailscale }),
+    ...(d.printer === undefined ? {} : { printer: d.printer }),
     firstSeenMs: d.firstSeenMs,
     lastSeenMs: d.lastSeenMs
   }
@@ -193,7 +212,7 @@ export class Registry {
       draft.keys.add(key)
     }
     handler.apply(draft, o as never)
-    draft.sources.add(handler.source)
+    draft.sources.add(typeof handler.source === "function" ? handler.source(o as never) : handler.source)
     for (const ip of draft.ips) {
       const net = networkOf(ip, this.#networks)
       if (net) draft.networks.add(net.kind === "tailnet" ? "tailnet" : net.iface)

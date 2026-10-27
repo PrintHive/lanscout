@@ -43,7 +43,7 @@ export interface Config {
 }
 
 /** Ordered by how often they answer on home and office LANs, so early probes find hosts first. */
-export const defaultPorts: ReadonlyArray<number> = [80, 443, 22, 62078, 445, 8080, 554, 631, 9100, 548, 8443, 5000, 8008, 1883]
+export const defaultPorts: ReadonlyArray<number> = [80, 443, 22, 62078, 445, 8080, 554, 631, 9100, 548, 8443, 5000, 8008, 1883, 8883, 7125]
 
 export class ConfigError extends Error {
   override readonly name = "ConfigError"

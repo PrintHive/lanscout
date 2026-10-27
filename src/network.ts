@@ -59,3 +59,5 @@ export const hostsOf = (base: Ipv4, prefix: number, cap: number, around: Ipv4 = 
   }
   return out
 }
+
+export const broadcastOf = (n: Network): Ipv4 => intToIpv4((ipv4ToInt(n.address) | ~mask(n.prefix)) >>> 0)
