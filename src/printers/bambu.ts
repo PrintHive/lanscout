@@ -1,35 +1,17 @@
 import type { Printer } from "../domain.ts"
+import { bambuModels } from "./bambu-models.ts"
 
 type Bambu = Extract<Printer, { kind: "bambu" }>
 
 export const BAMBU_NT = "urn:bambulab-com:device:3dprinter:1"
 
-/** `DevModel.bambu.com` codes. Unlisted codes still report through `modelCode`. */
-const modelByCode: Readonly<Record<string, string>> = {
-  "BL-P001": "X1 Carbon",
-  "BL-P002": "X1",
-  C11: "P1P",
-  C12: "P1S",
-  C13: "X1E",
-  N1: "A1 mini",
-  N2S: "A1",
-  O1D: "H2D"
-}
+const modelBySerialPrefix: ReadonlyMap<string, string> = new Map(
+  Object.values(bambuModels).flatMap((m) => (m.snPrefix ? [[m.snPrefix, m.name] as const] : []))
+)
 
-/** The first three characters of a serial identify the model. */
-const modelBySerialPrefix: Readonly<Record<string, string>> = {
-  "00M": "X1 Carbon",
-  "00W": "X1",
-  "03W": "X1E",
-  "01S": "P1P",
-  "01P": "P1S",
-  "030": "A1 mini",
-  "039": "A1",
-  "094": "H2D"
-}
-
+/** The model code wins; the first three characters of the serial are the fallback. */
 const modelOf = (code: string | undefined, serial: string | undefined): string | undefined =>
-  (code && modelByCode[code]) || (serial && modelBySerialPrefix[serial.slice(0, 3).toUpperCase()]) || undefined
+  (code && bambuModels[code]?.name) || (serial && modelBySerialPrefix.get(serial.slice(0, 3).toUpperCase())) || undefined
 
 /**
  * Bambu printers announce with SSDP-style NOTIFYs on UDP 1990 and 2021 and answer an

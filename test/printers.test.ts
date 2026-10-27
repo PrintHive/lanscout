@@ -126,3 +126,15 @@ describe("printer identity", () => {
     })
   })
 })
+
+describe("Bambu model table", () => {
+  it("names a P2S from its model code", () => {
+    const o = parseSsdp(notify({ ...p1s, USN: "22E00A000000004", "DevModel.bambu.com": "N7" }), ip("192.168.0.30"))
+    expect(o?._tag === "Printer" && o.printer).toMatchObject({ model: "P2S", modelCode: "N7" })
+  })
+
+  it("names an H2C from its serial prefix when only the certificate has been seen", () => {
+    expect(printerFromCertificate({ subject: { CN: "31B00A000000005" }, issuer: { CN: "BBL CA" } }))
+      .toEqual({ kind: "bambu", serial: "31B00A000000005", model: "H2C" })
+  })
+})
