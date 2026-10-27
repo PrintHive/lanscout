@@ -1,24 +1,69 @@
 {
-  "name": "netscout",
+  "name": "lanscout",
   "version": "0.1.0",
+  "description": "Fast LAN device discovery over mDNS, SSDP, ARP, TCP and Tailscale, built on Effect",
+  "keywords": [
+    "discovery",
+    "mdns",
+    "ssdp",
+    "arp",
+    "tailscale",
+    "network",
+    "scanner",
+    "effect",
+    "lan",
+    "mesh",
+    "thread",
+    "matter"
+  ],
+  "license": "MIT",
+  "author": "PrintHive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrintHive/lanscout.git"
+  },
+  "homepage": "https://github.com/PrintHive/lanscout#readme",
+  "bugs": {
+    "url": "https://github.com/PrintHive/lanscout/issues"
+  },
   "type": "module",
-  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
-    "netscout": "./src/main.ts"
+    "lanscout": "./dist/cli.js"
   },
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "start": "node src/main.ts",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && chmod +x dist/cli.js",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "start": "node src/cli.ts",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build"
   },
-  "dependencies": {
-    "@effect/platform-node": "4.0.6",
-    "effect": "4.0.6"
+  "peerDependencies": {
+    "effect": "^4.0.6"
   },
   "devDependencies": {
     "@effect/vitest": "4.0.6",
     "@types/node": "^26.6.5",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "effect": "4.0.6"
   }
 }
