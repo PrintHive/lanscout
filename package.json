@@ -1,7 +1,7 @@
 {
   "name": "lanscout",
   "version": "0.1.0",
-  "description": "Fast LAN device discovery over mDNS, SSDP, ARP, TCP and Tailscale, built on Effect",
+  "description": "Find the devices on a local network in about 2 seconds over mDNS, SSDP, ARP, TCP, and Tailscale, including Bambu Lab and Klipper printers",
   "keywords": [
     "discovery",
     "mdns",
@@ -14,7 +14,11 @@
     "lan",
     "mesh",
     "thread",
-    "matter"
+    "matter",
+    "3d-printer",
+    "bambu-lab",
+    "klipper",
+    "moonraker"
   ],
   "license": "MIT",
   "author": "PrintHive",
