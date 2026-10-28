@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest"
 import type { Device, Ipv4, Mac, Network, Observation } from "../src/domain.ts"
+import { record } from "../src/discover.ts"
 import { Registry } from "../src/registry.ts"
+import type { DeviceEvent } from "../src/registry.ts"
 
 const ip = (s: string) => s as Ipv4
 const mac = (s: string) => s as Mac
@@ -306,5 +308,28 @@ describe("Registry address moves", () => {
     expect(solo.takeReclaimed().map((e) => [e._tag, e.device.id])).toEqual([["DeviceGone", "sn:01S00A000000001"]])
     expect(solo.devices().map((d) => d.id)).toEqual(["sn:01S00A000000002"])
     expect(solo.takeReclaimed()).toEqual([])
+  })
+})
+
+describe("record", () => {
+  it("reports a device that loses its address before the device that takes it", () => {
+    const sighting = (serial: string, address: string): Observation => ({
+      _tag: "Printer",
+      ip: ip(address),
+      via: "ssdp",
+      printer: { kind: "bambu", serial, modelCode: "C11" }
+    })
+    const registry = new Registry(networks)
+    const events: Array<[string, string, ReadonlyArray<string>]> = []
+    const onEvent = (e: DeviceEvent) => void events.push([e._tag, e.device.id, e.device.ips])
+
+    record(registry, sighting("01S00A000000001", "192.0.2.41"), 0, onEvent)
+    record(registry, sighting("01S00A000000001", "192.0.2.46"), 100, onEvent)
+    events.length = 0
+    record(registry, sighting("01S00A000000002", "192.0.2.41"), 200, onEvent)
+    expect(events).toEqual([
+      ["DeviceUpdated", "sn:01S00A000000001", ["192.0.2.46"]],
+      ["DeviceAdded", "sn:01S00A000000002", ["192.0.2.41"]]
+    ])
   })
 })
