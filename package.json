@@ -1,5 +1,5 @@
 {
-  "name": "lanscout",
+  "name": "@printhive/lanscout",
   "version": "0.1.0",
   "description": "Find the devices on a local network in about 2 seconds over mDNS, SSDP, ARP, TCP, and Tailscale, including Bambu Lab and Klipper printers",
   "keywords": [
@@ -53,6 +53,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json && chmod +x dist/cli.js",
     "typecheck": "tsc --noEmit",
