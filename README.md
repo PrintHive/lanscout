@@ -24,7 +24,7 @@ npm install @printhive/lanscout effect
 Or run the CLI without installing it:
 
 ```sh
-npx lanscout
+npx @printhive/lanscout
 ```
 
 `effect` is a peer dependency, so an application that already uses Effect shares one copy. Node.js 20 or later is required.
