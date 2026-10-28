@@ -287,6 +287,8 @@ export class Registry {
       }
     }
     if (root === undefined) {
+      // A device needs an address. A Tailscale peer with none yet only enriches a device already found elsewhere.
+      if (handler.ips(o as never).length === 0) return undefined
       root = keys[0]!
       this.#drafts.set(root, emptyDraft(now))
     }
