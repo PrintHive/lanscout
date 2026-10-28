@@ -5,3 +5,4 @@ graphify-out/cache/
 graphify-out/cost.json
 graphify-out/.pending_changes
 graphify-out/.rebuild.lock
+graphify-out/20*/
