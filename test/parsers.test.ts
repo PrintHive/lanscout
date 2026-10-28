@@ -120,7 +120,7 @@ describe("arp", () => {
     expect(parseProcNetArp(text)).toEqual([{ _tag: "Arp", ip: "10.0.0.1", mac: "aa:bb:cc:dd:ee:01", iface: "eth0" }])
   })
 
-  it("parses Windows arp -a per interface and drops broadcast and multicast entries", () => {
+  it("parses Windows arp -a per interface, names each interface, and drops broadcast and multicast entries", () => {
     const text = [
       "",
       "Interface: 192.0.2.10 --- 0x5",
@@ -133,9 +133,16 @@ describe("arp", () => {
       "  Internet Address      Physical Address      Type",
       "  198.51.100.7          02-00-00-00-00-02     dynamic"
     ].join("\r\n")
-    expect(parseWindowsArp(text)).toEqual([
-      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "192.0.2.10" },
+    expect(parseWindowsArp(text, new Map([["192.0.2.10", "Ethernet"]]))).toEqual([
+      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "Ethernet" },
       { _tag: "Arp", ip: "198.51.100.7", mac: "02:00:00:00:00:02", iface: "198.51.100.4" }
+    ])
+  })
+
+  it("parses localized Windows arp -a headers", () => {
+    const text = ["Schnittstelle: 192.0.2.10 --- 0x5", "  Internetadresse       Physische Adresse     Typ", "  192.0.2.1             02-00-00-00-00-01     dynamisch"].join("\r\n")
+    expect(parseWindowsArp(text, new Map([["192.0.2.10", "Ethernet"]]))).toEqual([
+      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "Ethernet" }
     ])
   })
 

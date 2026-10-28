@@ -31,15 +31,16 @@ export const parseProcNetArp = (text: string): ReadonlyArray<Observation> =>
   })
 
 /**
- * Parses Windows `arp -a`, which groups entries under an `Interface: <address> --- 0x5` line and writes MACs with
- * dashes. The interface's address stands in for its name.
+ * Parses Windows `arp -a`, which groups entries under one header per interface, `Interface: <address> --- 0x5`, and
+ * writes MACs with dashes. The header's label is localized (German Windows prints `Schnittstelle:`), so it is matched
+ * by shape. `names` maps each local interface address to the interface's name, as `os.networkInterfaces()` reports it.
  */
-export const parseWindowsArp = (text: string): ReadonlyArray<Observation> => {
+export const parseWindowsArp = (text: string, names: ReadonlyMap<string, string>): ReadonlyArray<Observation> => {
   let iface: string | undefined
   return text.split(/\r?\n/).flatMap((line) => {
-    const header = /^Interface:\s+(\d+\.\d+\.\d+\.\d+)/.exec(line)
+    const header = /^\S[^:]*:\s+(\d+\.\d+\.\d+\.\d+)\s+---/.exec(line)
     if (header) {
-      iface = header[1]
+      iface = names.get(header[1]!) ?? header[1]
       return []
     }
     const [rawIp, rawMac] = line.trim().split(/\s+/)
@@ -49,9 +50,9 @@ export const parseWindowsArp = (text: string): ReadonlyArray<Observation> => {
   })
 }
 
-const readTable: Effect.Effect<ReadonlyArray<Observation>, SourceFailed> =
+const readTable = (cfg: Config): Effect.Effect<ReadonlyArray<Observation>, SourceFailed> =>
   process.platform === "win32"
-    ? exec("arp", "arp", ["-a"]).pipe(Effect.map(parseWindowsArp))
+    ? exec("arp", "arp", ["-a"]).pipe(Effect.map((text) => parseWindowsArp(text, new Map(cfg.networks.map((n) => [n.address, n.iface])))))
     : Effect.tryPromise(() => readFile("/proc/net/arp", "utf8")).pipe(
       Effect.map(parseProcNetArp),
       Effect.catch(() => exec("arp", "arp", ["-an"]).pipe(Effect.map(parseArpTable)))
@@ -90,7 +91,7 @@ const nudge = (hosts: ReadonlyArray<Ipv4>) =>
 export const arp = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
   Stream.callback<Observation, SourceFailed>((queue) =>
     Effect.gen(function*() {
-      const read = Effect.map(readTable, (entries) => {
+      const read = Effect.map(readTable(cfg), (entries) => {
         for (const o of entries) Queue.offerUnsafe(queue, o)
       })
       const round = Effect.gen(function*() {

@@ -78,4 +78,4 @@ jobs:
         shell: bash
         run: |
           node src/cli.ts --timeout 3000 --json > scan.json
-          node -e "const d = require('./scan.json'); const arp = d.filter((x) => x.sources.includes('arp')); console.log(d.length + ' devices, ' + arp.length + ' from arp'); if (arp.length === 0) process.exit(1)"
+          node -e "const d = require('./scan.json'); const arp = d.filter((x) => x.sources.includes('arp')); const named = d.every((x) => x.networks.every((n) => !/^\\d+\\.\\d+\\.\\d+\\.\\d+$/.test(n))); console.log(d.length + ' devices, ' + arp.length + ' from arp, networks named: ' + named); if (arp.length === 0 || !named) process.exit(1)"
