@@ -81,7 +81,8 @@ A source that cannot run, such as `tailscale` when it is not installed, appears 
 ```ts
 interface Device {
   id: string               // strongest identifier so far, in this order: ts:, sn:, mac:, usn:, host:, ip:
-  ips: Ipv4[]
+  ip: Ipv4                 // the address it is at now; see "Watch the network"
+  ips: Ipv4[]              // every address it is at
   macs: Mac[]
   hostnames: string[]
   services: string[]       // DNS-SD types such as "_ipp._tcp"
@@ -109,6 +110,8 @@ interface Device {
 | `SourceFailed` | A source cannot run. The other sources keep running |
 
 `watchForMs` ends the watch after that many milliseconds. Without it, the watch runs until you interrupt it. A watch with `watchForMs: 30000` finds all it can in 30 seconds.
+
+A device can be at several addresses, and `ips` lists them all. `ip` is the one it is at now: of the addresses the device itself was heard at, by any source but ARP, the one first heard most recently. A device seen only through ARP falls back to the address first seen most recently. A LAN address always wins over a tailnet one. When a printer moves to a new DHCP lease, `ip` becomes the new address in the same `DeviceUpdated`, even while the operating system's ARP cache still lists the old one. The old address leaves `ips` once it has gone `staleAfterMs` without a sighting, as long as the device is still sighted at another address, and that address can then belong to another device. A device whose every address goes stale is reported gone instead and keeps its addresses, so it rejoins as the same device if it comes back at one of them. A printer that shows up at a gone printer's address with a different serial takes the address over, so the two never merge. For a device with an open port, only a non-ARP sighting counts, so the ARP cache cannot keep its old address alive. For other devices, any sighting counts. Liveness checks always go to `ip`.
 
 A device's `id` can change during a watch. The id upgrades as stronger identifiers arrive, for example from `ip:` to `mac:`. Two records also merge when an identifier links them. Each `DeviceUpdated` lists in `formerIds` every id that now refers to its device. To track the devices that are present, delete the former ids before you store the device:
 
