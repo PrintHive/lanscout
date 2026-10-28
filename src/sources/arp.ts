@@ -3,7 +3,7 @@ import * as Effect from "effect/Effect"
 import * as Queue from "effect/Queue"
 import * as Stream from "effect/Stream"
 import type { Config } from "../config.ts"
-import type { Ipv4, Observation, SourceFailed } from "../domain.ts"
+import type { Ipv4, Network, Observation, SourceFailed } from "../domain.ts"
 import { parseIpv4, parseMac } from "../domain.ts"
 import { hostsOf } from "../network.ts"
 import { exec } from "./exec.ts"
@@ -33,14 +33,15 @@ export const parseProcNetArp = (text: string): ReadonlyArray<Observation> =>
 /**
  * Parses Windows `arp -a`, which groups entries under one header per interface, `Interface: <address> --- 0x5`, and
  * writes MACs with dashes. The header's label is localized (German Windows prints `Schnittstelle:`), so it is matched
- * by shape. `names` maps each local interface address to the interface's name, as `os.networkInterfaces()` reports it.
+ * by shape. `names` maps each selected interface's address to its name, as `os.networkInterfaces()` reports it. A
+ * section for any other address is skipped: it belongs to an excluded interface, or one whose address changed.
  */
 export const parseWindowsArp = (text: string, names: ReadonlyMap<string, string>): ReadonlyArray<Observation> => {
   let iface: string | undefined
   return text.split(/\r?\n/).flatMap((line) => {
     const header = /^\S[^:]*:\s+(\d+\.\d+\.\d+\.\d+)\s+---/.exec(line)
     if (header) {
-      iface = names.get(header[1]!) ?? header[1]
+      iface = names.get(header[1]!)
       return []
     }
     const [rawIp, rawMac] = line.trim().split(/\s+/)
@@ -57,6 +58,12 @@ const readTable = (cfg: Config): Effect.Effect<ReadonlyArray<Observation>, Sourc
       Effect.map(parseProcNetArp),
       Effect.catch(() => exec("arp", "arp", ["-an"]).pipe(Effect.map(parseArpTable)))
     )
+
+/** Keeps ARP entries learned on a selected interface. The table lists every interface, `--interface` or not. */
+export const onSelectedInterfaces = (entries: ReadonlyArray<Observation>, networks: ReadonlyArray<Network>): ReadonlyArray<Observation> => {
+  const selected = new Set(networks.map((n) => n.iface))
+  return entries.filter((o) => o._tag === "Arp" && o.iface !== undefined && selected.has(o.iface))
+}
 
 /** Every address on each attached LAN, the hosts whose MACs the kernel can resolve. */
 export const lanHosts = (cfg: Config): ReadonlyArray<Ipv4> => {
@@ -92,7 +99,7 @@ export const arp = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
   Stream.callback<Observation, SourceFailed>((queue) =>
     Effect.gen(function*() {
       const read = Effect.map(readTable(cfg), (entries) => {
-        for (const o of entries) Queue.offerUnsafe(queue, o)
+        for (const o of onSelectedInterfaces(entries, cfg.networks)) Queue.offerUnsafe(queue, o)
       })
       const round = Effect.gen(function*() {
         yield* Effect.forkScoped(nudge(lanHosts(cfg)))
