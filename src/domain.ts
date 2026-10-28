@@ -72,6 +72,8 @@ export type Observation =
   | { readonly _tag: "Ssdp"; readonly ip: Ipv4; readonly usn?: string; readonly server?: string; readonly location?: string }
   | { readonly _tag: "Arp"; readonly ip: Ipv4; readonly mac: Mac; readonly iface?: string }
   | { readonly _tag: "Tcp"; readonly ip: Ipv4; readonly port: number }
+  /** A liveness check to a known open port got an answer: a connection or a refusal. */
+  | { readonly _tag: "Alive"; readonly ip: Ipv4 }
   | { readonly _tag: "Printer"; readonly ip: Ipv4; readonly via: "ssdp" | "printer"; readonly printer: Printer }
   | {
     readonly _tag: "Tailscale"

@@ -1,16 +1,13 @@
 {
-  "0": "domain.ts",
+  "0": "registry.ts",
   "1": "package.json",
-  "2": "network.ts",
+  "2": "lanscout",
   "3": "printer.ts",
-  "4": "parsers.test.ts",
+  "4": "ssdp.ts",
   "5": "discover.ts",
-  "6": "ssdp.ts",
   "7": "compilerOptions",
-  "8": "arp.ts",
-  "9": "cli.ts",
+  "8": "network.ts",
+  "9": "domain.ts",
   "10": "compilerOptions",
-  "11": "sync-bambu-models.mjs",
-  "12": "find-printers.ts",
-  "13": "Registry"
+  "11": "sync-bambu-models.mjs"
 }

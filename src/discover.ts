@@ -7,13 +7,14 @@ import { ConfigError, resolveConfig, scanWindow } from "./config.ts"
 import type { Device, Ipv4, Observation, ScanEvent, Source } from "./domain.ts"
 import { SourceFailed } from "./domain.ts"
 import { localNetworks } from "./network.ts"
+import type { Check } from "./registry.ts"
 import { Registry } from "./registry.ts"
 import { arp } from "./sources/arp.ts"
 import { mdns } from "./sources/mdns.ts"
 import { printer } from "./sources/printer.ts"
 import { ssdp } from "./sources/ssdp.ts"
 import { tailscale, tailscaleStatus } from "./sources/tailscale.ts"
-import { routedTargets, tcp } from "./sources/tcp.ts"
+import { liveness, routedTargets, tcp } from "./sources/tcp.ts"
 
 type TailnetPeers = Effect.Effect<ReadonlyArray<Observation>, SourceFailed>
 
@@ -56,7 +57,7 @@ const config = (options: () => WatchOptions): Effect.Effect<Config, ConfigError>
 /** Asks the fold to expire devices that have gone quiet. */
 const tick = { _tag: "Tick" } as const
 
-const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed | typeof tick> =>
+const observe = (cfg: Config, checks: Queue.Queue<Check>): Stream.Stream<Observation | SourceFailed | typeof tick> =>
   Stream.unwrap(
     Effect.gen(function*() {
       const tailnet = yield* Effect.cached(tailscaleStatus(cfg))
@@ -84,7 +85,7 @@ const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed | typeof
       ).pipe(Stream.drain)
       const probing = active.map((s, i) => probers[s](cfg, Stream.fromQueue(queues[i]!)))
       const ticks: Stream.Stream<Observation | SourceFailed | typeof tick> = Stream.map(Stream.tick("1 second"), () => tick)
-      const merged = Stream.mergeAll([...discovered, ...feeder, ...(active.length > 0 ? [routed] : []), ...probing, ticks], {
+      const merged = Stream.mergeAll([...discovered, ...feeder, ...(active.length > 0 ? [routed] : []), ...probing, liveness(Stream.fromQueue(checks)), ticks], {
         concurrency: "unbounded"
       })
       return cfg.watchForMs === undefined ? merged : merged.pipe(Stream.interruptWhen(Effect.sleep(`${cfg.watchForMs} millis`)))
@@ -95,14 +96,17 @@ const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
   Effect.gen(function*() {
     const start = Date.now()
     const registry = new Registry(cfg.networks)
+    const checks = yield* Queue.unbounded<Check>()
     const failures: Array<SourceFailed> = []
-    yield* Stream.runForEach(observe(cfg), (item) =>
+    yield* Stream.runForEach(observe(cfg, checks), (item) =>
       Effect.sync(() => {
         if (item instanceof SourceFailed) {
           failures.push(item)
           onEvent(item)
         } else if (item._tag === "Tick") {
-          for (const event of registry.expire(Date.now(), cfg.staleAfterMs)) onEvent(event)
+          const now = Date.now()
+          for (const event of registry.expire(now, cfg.staleAfterMs)) onEvent(event)
+          for (const check of registry.due(now, cfg.roundMaxMs)) Queue.offerUnsafe(checks, check)
         } else {
           const event = registry.add(item, Date.now())
           if (event) onEvent(event)

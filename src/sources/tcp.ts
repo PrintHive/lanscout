@@ -4,18 +4,21 @@ import * as Stream from "effect/Stream"
 import type { Config } from "../config.ts"
 import type { Ipv4, Observation } from "../domain.ts"
 import { hostsOf, parseCidr } from "../network.ts"
+import type { Check } from "../registry.ts"
 
-const probe = (ip: Ipv4, port: number, timeoutMs: number) =>
-  Effect.callback<Observation | undefined>((resume, signal) => {
+type Answer = "open" | "refused" | "silent"
+
+const connect = (ip: Ipv4, port: number, timeoutMs: number) =>
+  Effect.callback<Answer>((resume, signal) => {
     const socket = net.connect({ host: ip, port })
-    const done = (open: boolean) => {
+    const done = (answer: Answer) => {
       clearTimeout(timer)
       socket.destroy()
-      resume(Effect.succeed(open ? { _tag: "Tcp", ip, port } : undefined))
+      resume(Effect.succeed(answer))
     }
-    const timer = setTimeout(() => done(false), timeoutMs)
-    socket.once("connect", () => done(true))
-    socket.once("error", () => done(false))
+    const timer = setTimeout(() => done("silent"), timeoutMs)
+    socket.once("connect", () => done("open"))
+    socket.once("error", (e: NodeJS.ErrnoException) => done(e.code === "ECONNREFUSED" ? "refused" : "silent"))
     signal.addEventListener("abort", () => {
       clearTimeout(timer)
       socket.destroy()
@@ -45,9 +48,22 @@ export const routedTargets = (cfg: Config, tailnet: ReadonlyArray<Observation>):
 export const tcp = (cfg: Config, targets: Stream.Stream<Ipv4>): Stream.Stream<Observation> =>
   targets.pipe(
     Stream.flatMap((ip) => Stream.fromIterable(cfg.ports.map((port) => [ip, port] as const))),
-    Stream.mapEffect(([ip, port]) => probe(ip, port, cfg.connectTimeoutMs), {
-      concurrency: cfg.concurrency,
-      unordered: true
-    }),
+    Stream.mapEffect(
+      ([ip, port]) => Effect.map(connect(ip, port, cfg.connectTimeoutMs), (a): Observation | undefined => (a === "open" ? { _tag: "Tcp", ip, port } : undefined)),
+      { concurrency: cfg.concurrency, unordered: true }
+    ),
+    Stream.filter((o): o is Observation => o !== undefined)
+  )
+
+/** Outlasts one lost-SYN retransmit, which the kernel sends after 1 s. */
+const CHECK_TIMEOUT_MS = 2500
+
+/** Answers liveness checks. A refusal proves the host is up as well as a connection does. */
+export const liveness = (checks: Stream.Stream<Check>): Stream.Stream<Observation> =>
+  checks.pipe(
+    Stream.mapEffect(
+      ({ ip, port }) => Effect.map(connect(ip, port, CHECK_TIMEOUT_MS), (a): Observation | undefined => (a === "silent" ? undefined : { _tag: "Alive", ip })),
+      { concurrency: 32, unordered: true }
+    ),
     Stream.filter((o): o is Observation => o !== undefined)
   )

@@ -3,12 +3,14 @@
   "1": "package.json",
   "2": "network.ts",
   "3": "printer.ts",
-  "4": "ssdp.ts",
+  "4": "parsers.test.ts",
   "5": "discover.ts",
+  "6": "ssdp.ts",
   "7": "compilerOptions",
-  "8": "tailscale.ts",
-  "9": "lanscout",
+  "8": "arp.ts",
+  "9": "cli.ts",
   "10": "compilerOptions",
   "11": "sync-bambu-models.mjs",
-  "12": "find-printers.ts"
+  "12": "find-printers.ts",
+  "13": "Registry"
 }

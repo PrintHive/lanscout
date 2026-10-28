@@ -160,3 +160,42 @@ describe("Registry events", () => {
     expect(present.size).toBe(2)
   })
 })
+
+describe("Registry liveness", () => {
+  const arp: Observation = { _tag: "Arp", ip: ip("192.168.0.30"), mac: mac("02:00:00:00:00:30"), iface: "en0" }
+  const port: Observation = { _tag: "Tcp", ip: ip("192.168.0.30"), port: 62078 }
+
+  it("lets a stale ARP entry keep a device with no open port present", () => {
+    const registry = new Registry(networks)
+    registry.add(arp, 0)
+    registry.add(arp, 9000)
+    expect(registry.expire(10_000, 5000)).toEqual([])
+  })
+
+  it("reports a device with an open port gone when only ARP still lists it", () => {
+    const registry = new Registry(networks)
+    registry.add(arp, 0)
+    registry.add(port, 0)
+    registry.add(arp, 9000)
+    expect(registry.expire(10_000, 5000).map((e) => e._tag)).toEqual(["DeviceGone"])
+  })
+
+  it("keeps a device present, without an event, when it answers a liveness check", () => {
+    const registry = new Registry(networks)
+    registry.add(port, 0)
+    expect(registry.add({ _tag: "Alive", ip: ip("192.168.0.30") }, 9000)).toBeUndefined()
+    expect(registry.expire(10_000, 5000)).toEqual([])
+  })
+
+  it("asks for one check per quiet interval to a known open port", () => {
+    const registry = new Registry(networks)
+    registry.add(arp, 0)
+    registry.add(port, 0)
+    expect(registry.due(1000, 2000)).toEqual([])
+    expect(registry.due(2000, 2000)).toEqual([{ ip: "192.168.0.30", port: 62078 }])
+    expect(registry.due(3000, 2000)).toEqual([])
+    expect(registry.due(4000, 2000)).toHaveLength(1)
+    registry.add({ _tag: "Alive", ip: ip("192.168.0.30") }, 4500)
+    expect(registry.due(6000, 2000)).toEqual([])
+  })
+})

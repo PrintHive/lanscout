@@ -142,7 +142,9 @@ A watch repeats its queries in rounds. The first repeat comes 2 seconds after th
 
 The ARP, SSDP, and Tailscale intervals stop growing at a third of `staleAfterMs`, and at 60 seconds at most. A device that stays is therefore re-sighted at least twice before it can go stale. The TCP and printer probes run once for each new address, so a watch never repeats the full TCP sweep.
 
-An mDNS goodbye (TTL 0) and an SSDP `ssdp:byebye` do not count as sightings. A device that leaves without one is still listed by the kernel's ARP table until the entry expires. On macOS that takes up to 20 minutes (`net.link.ether.inet.max_age` is 1200 seconds). `DeviceGone` for such a device comes `staleAfterMs` after the entry expires. A Tailscale peer that goes offline does not become gone. Its `tailscale.online` changes to `false`, and you get a `DeviceUpdated`.
+A device that leaves usually sends no goodbye, and the kernel's ARP table keeps listing it until the entry expires. On macOS that takes up to 20 minutes (`net.link.ether.inet.max_age` is 1200 seconds). So for a device with a known open port, lanscout does not count ARP as a sighting. When such a device has been quiet for the round interval, lanscout opens a TCP connection to that port. A connection or a refusal proves that the device is still there. A device that stops answering is reported gone `staleAfterMs` after its last answer. With `staleAfterMs: 30000`, that is about 30 seconds.
+
+A device with no open port can only be re-sighted through ARP, mDNS, or SSDP. For such a device, `DeviceGone` can come up to 20 minutes late. An mDNS goodbye (TTL 0) and an SSDP `ssdp:byebye` do not count as sightings. A Tailscale peer that goes offline does not become gone. Its `tailscale.online` changes to `false`, and you get a `DeviceUpdated`.
 
 `discover()` runs the same rounds, so a scan with a long `timeoutMs` also gets repeat queries.
 

@@ -21,6 +21,9 @@ interface Draft {
   printer?: Printer | undefined
   firstSeenMs: number
   lastSeenMs: number
+  /** Last answer from the device itself. ARP doesn't count: a cache entry outlives the device by minutes. */
+  lastHeardMs: number
+  lastCheckMs: number
   /** The id last reported in an event; undefined until the first event. */
   reportedId?: string | undefined
   /** Fields last reported, minus timestamps, so a re-sighting that changes nothing stays quiet. */
@@ -29,6 +32,12 @@ interface Draft {
 }
 
 export type DeviceEvent = Exclude<ScanEvent, SourceFailed>
+
+/** A TCP liveness check to send: one known open port of a device that has gone quiet. */
+export interface Check {
+  readonly ip: Ipv4
+  readonly port: number
+}
 
 /** `foo.local.`, `Foo`, and `foo.tail1234.ts.net` all name the same machine `foo`. */
 export const normalizeHost = (name: string): string =>
@@ -88,6 +97,13 @@ const handlers: { readonly [T in Observation["_tag"]]: Handler<T> } = {
       d.openPorts.add(o.port)
     }
   },
+  Alive: {
+    source: "tcp",
+    keys: (o) => [`ip:${o.ip}`],
+    apply: (d, o) => {
+      d.ips.add(o.ip)
+    }
+  },
   Printer: {
     source: (o) => o.via,
     keys: (o) => [`ip:${o.ip}`, ...(o.printer.serial ? [`sn:${o.printer.serial.toUpperCase()}` as const] : [])],
@@ -133,6 +149,8 @@ const emptyDraft = (now: number): Draft => ({
   sources: new Set(),
   firstSeenMs: now,
   lastSeenMs: now,
+  lastHeardMs: now,
+  lastCheckMs: now,
   gone: false
 })
 
@@ -146,6 +164,7 @@ const absorb = (into: Draft, from: Draft): void => {
   if (from.printer) into.printer = mergePrinter(into.printer, from.printer)
   into.firstSeenMs = Math.min(into.firstSeenMs, from.firstSeenMs)
   into.lastSeenMs = Math.max(into.lastSeenMs, from.lastSeenMs)
+  into.lastHeardMs = Math.max(into.lastHeardMs, from.lastHeardMs)
 }
 
 const fieldsOf = ({ firstSeenMs: _, lastSeenMs: __, ...fields }: Device): string => JSON.stringify(fields)
@@ -237,6 +256,7 @@ export class Registry {
     }
     if (o._tag === "Arp" && o.iface) draft.networks.add(o.iface)
     draft.lastSeenMs = now
+    if (o._tag !== "Arp") draft.lastHeardMs = now
     const device = snapshot(draft)
     const fields = fieldsOf(device)
     const wasLive = (draft.reportedId !== undefined && !draft.gone) || absorbedLive
@@ -249,15 +269,33 @@ export class Registry {
     return changed ? { _tag: "DeviceUpdated", device, formerIds } : undefined
   }
 
-  /** Marks every live device unseen since `now - staleAfterMs` as gone. */
+  /**
+   * Marks as gone every live device quiet since `now - staleAfterMs`. A device with a known
+   * open port can answer a liveness check, so only its own answers count, not ARP.
+   */
   expire(now: number, staleAfterMs: number): ReadonlyArray<DeviceEvent> {
     const gone: Array<DeviceEvent> = []
     for (const draft of this.#drafts.values()) {
-      if (draft.gone || draft.lastSeenMs > now - staleAfterMs) continue
+      const last = draft.openPorts.size > 0 ? draft.lastHeardMs : draft.lastSeenMs
+      if (draft.gone || last > now - staleAfterMs) continue
       draft.gone = true
       gone.push({ _tag: "DeviceGone", device: snapshot(draft) })
     }
     return gone
+  }
+
+  /** Liveness checks for live devices with an open port, unheard and unchecked for `afterMs`. */
+  due(now: number, afterMs: number): ReadonlyArray<Check> {
+    const checks: Array<Check> = []
+    for (const draft of this.#drafts.values()) {
+      const [ip] = draft.ips
+      const [port] = draft.openPorts
+      if (draft.gone || !ip || port === undefined) continue
+      if (now - draft.lastHeardMs < afterMs || now - draft.lastCheckMs < afterMs) continue
+      draft.lastCheckMs = now
+      checks.push({ ip, port })
+    }
+    return checks
   }
 
   /** Devices present now, in address order. */

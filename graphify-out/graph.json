@@ -7,69 +7,17 @@
   },
   "nodes": [
     {
-      "id": "src_cli_parsed",
-      "label": "Parsed",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "parsed",
-      "source_file": "src/cli.ts",
-      "source_location": "L81"
-    },
-    {
-      "id": "src_cli_view",
-      "label": "View",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "view",
-      "source_file": "src/cli.ts",
-      "source_location": "L35"
-    },
-    {
       "id": "src_config_config",
       "label": "Config",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "config",
       "source_file": "src/config.ts",
       "source_location": "L43"
-    },
-    {
-      "id": "src_config_discoveryoptions",
-      "label": "DiscoveryOptions",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "discoveryoptions",
-      "source_file": "src/config.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "src_config_sourceoptions",
-      "label": "SourceOptions",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "sourceoptions",
-      "source_file": "src/config.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_config_subnet",
@@ -78,76 +26,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "subnet",
       "source_file": "src/config.ts",
       "source_location": "L38"
-    },
-    {
-      "id": "src_config_watchoptions",
-      "label": "WatchOptions",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "watchoptions",
-      "source_file": "src/config.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_discover_scanresult",
-      "label": "ScanResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "scanresult",
-      "source_file": "src/discover.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "src_domain_device",
-      "label": "Device",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "device",
-      "source_file": "src/domain.ts",
-      "source_location": "L102"
-    },
-    {
-      "id": "src_domain_ipv4",
-      "label": "Ipv4",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "ipv4",
-      "source_file": "src/domain.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_domain_mac",
-      "label": "Mac",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "mac",
-      "source_file": "src/domain.ts",
-      "source_location": "L4"
     },
     {
       "id": "src_domain_network",
@@ -156,24 +39,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "network",
       "source_file": "src/domain.ts",
       "source_location": "L34"
-    },
-    {
-      "id": "src_domain_networkkind",
-      "label": "NetworkKind",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "networkkind",
-      "source_file": "src/domain.ts",
-      "source_location": "L31"
     },
     {
       "id": "src_domain_observation",
@@ -182,63 +52,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "observation",
       "source_file": "src/domain.ts",
       "source_location": "L70"
-    },
-    {
-      "id": "src_domain_printer",
-      "label": "Printer",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "printer",
-      "source_file": "src/domain.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "src_domain_scanevent",
-      "label": "ScanEvent",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "scanevent",
-      "source_file": "src/domain.ts",
-      "source_location": "L125"
-    },
-    {
-      "id": "src_domain_source",
-      "label": "Source",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "source",
-      "source_file": "src/domain.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "src_domain_tailscalepeer",
-      "label": "TailscalePeer",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "tailscalepeer",
-      "source_file": "src/domain.ts",
-      "source_location": "L94"
     },
     {
       "id": "src_registry_deviceevent",
@@ -247,24 +65,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "deviceevent",
       "source_file": "src/registry.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_registry_draft",
-      "label": "Draft",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "draft",
-      "source_file": "src/registry.ts",
-      "source_location": "L9"
+      "source_location": "L34"
     },
     {
       "id": "src_registry_handler",
@@ -273,11 +78,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "handler",
       "source_file": "src/registry.ts",
-      "source_location": "L47"
+      "source_location": "L56"
     },
     {
       "id": "src_registry_key",
@@ -286,7 +91,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "key",
       "source_file": "src/registry.ts",
@@ -298,12 +103,25 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
+      "community": 0,
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "registry",
       "source_file": "src/registry.ts",
-      "source_location": "L182"
+      "source_location": "L201"
+    },
+    {
+      "id": "src_printers_bambu_bambu",
+      "label": "Bambu",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "bambu",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L4"
     },
     {
       "id": "src_printers_bambu_certificatenames",
@@ -319,6 +137,19 @@
       "source_location": "L43"
     },
     {
+      "id": "src_printers_bambu_models_bambumodel",
+      "label": "BambuModel",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "bambumodel",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "src_printers_klipper_klipper",
       "label": "Klipper",
       "_callable": true,
@@ -332,13 +163,26 @@
       "source_location": "L5"
     },
     {
+      "id": "src_domain_sourcefailed",
+      "label": "SourceFailed",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "sourcefailed",
+      "source_file": "src/domain.ts",
+      "source_location": "L91"
+    },
+    {
       "id": "src_sources_dns_dnsmessage",
       "label": "DnsMessage",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "dnsmessage",
       "source_file": "src/sources/dns.ts",
@@ -351,7 +195,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "dnsquestion",
       "source_file": "src/sources/dns.ts",
@@ -364,24 +208,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "dnsrecord",
       "source_file": "src/sources/dns.ts",
       "source_location": "L4"
     },
     {
-      "id": "src_config_configerror",
-      "label": "ConfigError",
+      "id": "src_sources_ssdp_ssdpobservation",
+      "label": "SsdpObservation",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
+      "community": 4,
+      "community_name": "ssdp.ts",
       "file_type": "code",
-      "norm_label": "configerror",
-      "source_file": "src/config.ts",
-      "source_location": "L66"
+      "norm_label": "ssdpobservation",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L20"
     },
     {
       "id": "src_discover_prober",
@@ -394,7 +238,7 @@
       "file_type": "code",
       "norm_label": "prober",
       "source_file": "src/discover.ts",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "src_discover_tailnetpeers",
@@ -407,59 +251,33 @@
       "file_type": "code",
       "norm_label": "tailnetpeers",
       "source_file": "src/discover.ts",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
-      "id": "src_printers_bambu_bambu",
-      "label": "Bambu",
+      "id": "src_registry_check",
+      "label": "Check",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
+      "community": 5,
+      "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "bambu",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L4"
+      "norm_label": "check",
+      "source_file": "src/registry.ts",
+      "source_location": "L37"
     },
     {
-      "id": "src_printers_bambu_models_bambumodel",
-      "label": "BambuModel",
+      "id": "src_sources_tcp_answer",
+      "label": "Answer",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
+      "community": 5,
+      "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "bambumodel",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_sources_ssdp_ssdpobservation",
-      "label": "SsdpObservation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "ssdpobservation",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_domain_sourcefailed",
-      "label": "SourceFailed",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "sourcefailed",
-      "source_file": "src/domain.ts",
-      "source_location": "L89"
+      "norm_label": "answer",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_cli_column",
@@ -468,7 +286,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "column",
       "source_file": "src/cli.ts",
@@ -481,11 +299,231 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "format",
       "source_file": "src/cli.ts",
       "source_location": "L31"
+    },
+    {
+      "id": "src_cli_parsed",
+      "label": "Parsed",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "parsed",
+      "source_file": "src/cli.ts",
+      "source_location": "L81"
+    },
+    {
+      "id": "src_cli_view",
+      "label": "View",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "view",
+      "source_file": "src/cli.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "src_config_configerror",
+      "label": "ConfigError",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "configerror",
+      "source_file": "src/config.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "src_config_discoveryoptions",
+      "label": "DiscoveryOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "discoveryoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_config_sourceoptions",
+      "label": "SourceOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "sourceoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_config_watchoptions",
+      "label": "WatchOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "watchoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "src_discover_scanresult",
+      "label": "ScanResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "scanresult",
+      "source_file": "src/discover.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_domain_device",
+      "label": "Device",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "device",
+      "source_file": "src/domain.ts",
+      "source_location": "L104"
+    },
+    {
+      "id": "src_domain_ipv4",
+      "label": "Ipv4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "ipv4",
+      "source_file": "src/domain.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_domain_mac",
+      "label": "Mac",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "mac",
+      "source_file": "src/domain.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_domain_networkkind",
+      "label": "NetworkKind",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "networkkind",
+      "source_file": "src/domain.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "src_domain_printer",
+      "label": "Printer",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "printer",
+      "source_file": "src/domain.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "src_domain_scanevent",
+      "label": "ScanEvent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "scanevent",
+      "source_file": "src/domain.ts",
+      "source_location": "L127"
+    },
+    {
+      "id": "src_domain_source",
+      "label": "Source",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "source",
+      "source_file": "src/domain.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "src_domain_tailscalepeer",
+      "label": "TailscalePeer",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "tailscalepeer",
+      "source_file": "src/domain.ts",
+      "source_location": "L96"
+    },
+    {
+      "id": "src_registry_draft",
+      "label": "Draft",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "draft",
+      "source_file": "src/registry.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_discover_fold",
+      "label": "fold()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "fold()",
+      "source_file": "src/discover.ts",
+      "source_location": "L95"
     },
     {
       "id": "src_registry_absorb",
@@ -493,11 +531,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "absorb()",
       "source_file": "src/registry.ts",
-      "source_location": "L139"
+      "source_location": "L157"
+    },
+    {
+      "id": "src_registry_byip",
+      "label": "byIp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "byip()",
+      "source_file": "src/registry.ts",
+      "source_location": "L172"
+    },
+    {
+      "id": "src_registry_emptydraft",
+      "label": "emptyDraft()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "emptydraft()",
+      "source_file": "src/registry.ts",
+      "source_location": "L141"
+    },
+    {
+      "id": "src_registry_fieldsof",
+      "label": "fieldsOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "fieldsof()",
+      "source_file": "src/registry.ts",
+      "source_location": "L170"
     },
     {
       "id": "src_registry_hostkey",
@@ -505,11 +579,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "hostkey()",
       "source_file": "src/registry.ts",
-      "source_location": "L40"
+      "source_location": "L49"
     },
     {
       "id": "src_registry_mergeprinter",
@@ -517,11 +591,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "mergeprinter()",
       "source_file": "src/registry.ts",
-      "source_location": "L119"
+      "source_location": "L135"
     },
     {
       "id": "src_registry_normalizehost",
@@ -529,11 +603,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "normalizehost()",
       "source_file": "src/registry.ts",
-      "source_location": "L34"
+      "source_location": "L43"
+    },
+    {
+      "id": "src_registry_registry_add",
+      "label": ".add()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": ".add()",
+      "source_file": "src/registry.ts",
+      "source_location": "L223"
     },
     {
       "id": "src_registry_registry_constructor",
@@ -541,11 +627,71 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "src/registry.ts",
-      "source_location": "L187"
+      "source_location": "L206"
+    },
+    {
+      "id": "src_registry_registry_devices",
+      "label": ".devices()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": ".devices()",
+      "source_file": "src/registry.ts",
+      "source_location": "L302"
+    },
+    {
+      "id": "src_registry_registry_due",
+      "label": ".due()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": ".due()",
+      "source_file": "src/registry.ts",
+      "source_location": "L288"
+    },
+    {
+      "id": "src_registry_registry_expire",
+      "label": ".expire()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": ".expire()",
+      "source_file": "src/registry.ts",
+      "source_location": "L276"
+    },
+    {
+      "id": "src_registry_registry_find",
+      "label": ".#find()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": ".#find()",
+      "source_file": "src/registry.ts",
+      "source_location": "L210"
+    },
+    {
+      "id": "src_registry_snapshot",
+      "label": "snapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "snapshot()",
+      "source_file": "src/registry.ts",
+      "source_location": "L174"
     },
     {
       "id": "src_registry_usnuuid",
@@ -553,11 +699,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "usnuuid()",
       "source_file": "src/registry.ts",
-      "source_location": "L45"
+      "source_location": "L54"
     },
     {
       "id": "test_registry_test_ip",
@@ -565,7 +711,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "ip()",
       "source_file": "test/registry.test.ts",
@@ -577,11 +723,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "mac()",
       "source_file": "test/registry.test.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "test_registry_test_run",
+      "label": "run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "run()",
+      "source_file": "test/registry.test.ts",
+      "source_location": "L14"
     },
     {
       "id": "scripts_sync_bambu_models_api",
@@ -608,268 +766,52 @@
       "source_location": "L17"
     },
     {
-      "id": "examples_find_printers_describe",
-      "label": "describe()",
+      "id": "src_printers_bambu_bambufromssdpheaders",
+      "label": "bambuFromSsdpHeaders()",
       "_callable": true,
       "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
+      "community": 3,
+      "community_name": "printer.ts",
       "file_type": "code",
-      "norm_label": "describe()",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L25"
+      "norm_label": "bambufromssdpheaders()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L20"
     },
     {
-      "id": "examples_find_printers_flag",
-      "label": "flag()",
+      "id": "src_printers_bambu_field",
+      "label": "field()",
       "_callable": true,
       "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
+      "community": 3,
+      "community_name": "printer.ts",
       "file_type": "code",
-      "norm_label": "flag()",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "examples_find_printers_row",
-      "label": "row()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "row()",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_discover_fold",
-      "label": "fold()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "fold()",
-      "source_file": "src/discover.ts",
-      "source_location": "L94"
-    },
-    {
-      "id": "src_registry_byip",
-      "label": "byIp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "byip()",
-      "source_file": "src/registry.ts",
-      "source_location": "L153"
-    },
-    {
-      "id": "src_registry_emptydraft",
-      "label": "emptyDraft()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "emptydraft()",
-      "source_file": "src/registry.ts",
-      "source_location": "L125"
-    },
-    {
-      "id": "src_registry_fieldsof",
-      "label": "fieldsOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "fieldsof()",
-      "source_file": "src/registry.ts",
-      "source_location": "L151"
-    },
-    {
-      "id": "src_registry_registry_add",
-      "label": ".add()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": ".add()",
-      "source_file": "src/registry.ts",
-      "source_location": "L204"
-    },
-    {
-      "id": "src_registry_registry_devices",
-      "label": ".devices()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": ".devices()",
-      "source_file": "src/registry.ts",
-      "source_location": "L264"
-    },
-    {
-      "id": "src_registry_registry_expire",
-      "label": ".expire()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": ".expire()",
-      "source_file": "src/registry.ts",
-      "source_location": "L253"
-    },
-    {
-      "id": "src_registry_registry_find",
-      "label": ".#find()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": ".#find()",
-      "source_file": "src/registry.ts",
-      "source_location": "L191"
-    },
-    {
-      "id": "src_registry_snapshot",
-      "label": "snapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "snapshot()",
-      "source_file": "src/registry.ts",
-      "source_location": "L155"
-    },
-    {
-      "id": "test_registry_test_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Registry",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "test/registry.test.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_domain_inttoipv4",
-      "label": "intToIpv4()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "inttoipv4()",
-      "source_file": "src/domain.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_domain_ipv4toint",
-      "label": "ipv4ToInt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "ipv4toint()",
-      "source_file": "src/domain.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_network_broadcastof",
-      "label": "broadcastOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "broadcastof()",
-      "source_file": "src/network.ts",
-      "source_location": "L63"
-    },
-    {
-      "id": "src_network_hostsof",
-      "label": "hostsOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "hostsof()",
-      "source_file": "src/network.ts",
+      "norm_label": "field()",
+      "source_file": "src/printers/bambu.ts",
       "source_location": "L48"
     },
     {
-      "id": "src_network_incidr",
-      "label": "inCidr()",
+      "id": "src_printers_bambu_modelof",
+      "label": "modelOf()",
       "_callable": true,
       "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
+      "community": 3,
+      "community_name": "printer.ts",
       "file_type": "code",
-      "norm_label": "incidr()",
-      "source_file": "src/network.ts",
-      "source_location": "L12"
+      "norm_label": "modelof()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L13"
     },
     {
-      "id": "src_network_istailnetip",
-      "label": "isTailnetIp()",
+      "id": "src_printers_bambu_printerfromcertificate",
+      "label": "printerFromCertificate()",
       "_callable": true,
       "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
+      "community": 3,
+      "community_name": "printer.ts",
       "file_type": "code",
-      "norm_label": "istailnetip()",
-      "source_file": "src/network.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_network_mask",
-      "label": "mask()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "mask()",
-      "source_file": "src/network.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_network_networkof",
-      "label": "networkOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "networkof()",
-      "source_file": "src/network.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_sources_arp_lanhosts",
-      "label": "lanHosts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "lanhosts()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L41"
+      "norm_label": "printerfromcertificate()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L57"
     },
     {
       "id": "src_printers_klipper_klipperfrommoonraker",
@@ -956,12 +898,108 @@
       "source_location": "L72"
     },
     {
+      "id": "test_printers_test_ip",
+      "label": "ip()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "ip()",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "test_printers_test_notify",
+      "label": "notify()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "notify()",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_domain_parsemac",
+      "label": "parseMac()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "parsemac()",
+      "source_file": "src/domain.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_sources_arp_arp",
+      "label": "arp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "arp()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L70"
+    },
+    {
+      "id": "src_sources_arp_lanhosts",
+      "label": "lanHosts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "lanhosts()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "src_sources_arp_nudge",
+      "label": "nudge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "nudge()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "src_sources_arp_parsearptable",
+      "label": "parseArpTable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "parsearptable()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_sources_arp_parseprocnetarp",
+      "label": "parseProcNetArp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "parseprocnetarp()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L25"
+    },
+    {
       "id": "src_sources_dns_decodemessage",
       "label": "decodeMessage()",
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "decodemessage()",
       "source_file": "src/sources/dns.ts",
@@ -973,7 +1011,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "encodename()",
       "source_file": "src/sources/dns.ts",
@@ -985,7 +1023,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "encodequery()",
       "source_file": "src/sources/dns.ts",
@@ -997,11 +1035,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "readname()",
       "source_file": "src/sources/dns.ts",
       "source_location": "L33"
+    },
+    {
+      "id": "src_sources_exec_exec",
+      "label": "exec()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "exec()",
+      "source_file": "src/sources/exec.ts",
+      "source_location": "L6"
     },
     {
       "id": "src_sources_mdns_advertisedservicetypes",
@@ -1009,7 +1059,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "advertisedservicetypes()",
       "source_file": "src/sources/mdns.ts",
@@ -1021,7 +1071,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "mdns()",
       "source_file": "src/sources/mdns.ts",
@@ -1033,7 +1083,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "observationsfrommessage()",
       "source_file": "src/sources/mdns.ts",
@@ -1045,7 +1095,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "query()",
       "source_file": "src/sources/mdns.ts",
@@ -1057,330 +1107,30 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "servicetypeof()",
       "source_file": "src/sources/mdns.ts",
       "source_location": "L27"
     },
     {
-      "id": "test_parsers_test_ip",
-      "label": "ip()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "parsers.test.ts",
-      "file_type": "code",
-      "norm_label": "ip()",
-      "source_file": "test/parsers.test.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "test_parsers_test_name",
-      "label": "name()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "parsers.test.ts",
-      "file_type": "code",
-      "norm_label": "name()",
-      "source_file": "test/parsers.test.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "test_parsers_test_printerresponse",
-      "label": "printerResponse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "parsers.test.ts",
-      "file_type": "code",
-      "norm_label": "printerresponse()",
-      "source_file": "test/parsers.test.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "test_parsers_test_rr",
-      "label": "rr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "parsers.test.ts",
-      "file_type": "code",
-      "norm_label": "rr()",
-      "source_file": "test/parsers.test.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "test_parsers_test_u16",
-      "label": "u16()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "parsers.test.ts",
-      "file_type": "code",
-      "norm_label": "u16()",
-      "source_file": "test/parsers.test.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_config_positiveint",
-      "label": "positiveInt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "positiveint()",
-      "source_file": "src/config.ts",
-      "source_location": "L70"
-    },
-    {
-      "id": "src_config_resolveconfig",
-      "label": "resolveConfig()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "resolveconfig()",
-      "source_file": "src/config.ts",
-      "source_location": "L82"
-    },
-    {
-      "id": "src_config_scanwindow",
-      "label": "scanWindow()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "scanwindow()",
-      "source_file": "src/config.ts",
-      "source_location": "L77"
-    },
-    {
-      "id": "src_discover_config",
-      "label": "config()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "config()",
-      "source_file": "src/discover.ts",
-      "source_location": "L50"
-    },
-    {
-      "id": "src_discover_discover",
-      "label": "discover()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "discover()",
-      "source_file": "src/discover.ts",
-      "source_location": "L130"
-    },
-    {
-      "id": "src_discover_discoverdevices",
-      "label": "discoverDevices()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "discoverdevices()",
-      "source_file": "src/discover.ts",
-      "source_location": "L136"
-    },
-    {
-      "id": "src_discover_isprober",
-      "label": "isProber()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "isprober()",
-      "source_file": "src/discover.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "src_discover_liveips",
-      "label": "liveIps()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "liveips()",
-      "source_file": "src/discover.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "src_discover_observe",
-      "label": "observe()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "observe()",
-      "source_file": "src/discover.ts",
-      "source_location": "L59"
-    },
-    {
-      "id": "src_sources_arp_arp",
-      "label": "arp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "arp()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L70"
-    },
-    {
       "id": "src_sources_rounds_repeatrounds",
       "label": "repeatRounds()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
+      "community": 4,
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "repeatrounds()",
       "source_file": "src/sources/rounds.ts",
       "source_location": "L11"
     },
     {
-      "id": "src_sources_tailscale_tailscale",
-      "label": "tailscale()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "tailscale()",
-      "source_file": "src/sources/tailscale.ts",
-      "source_location": "L69"
-    },
-    {
-      "id": "src_sources_tailscale_tailscalestatus",
-      "label": "tailscaleStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "tailscalestatus()",
-      "source_file": "src/sources/tailscale.ts",
-      "source_location": "L65"
-    },
-    {
-      "id": "src_sources_tcp_probe",
-      "label": "probe()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "probe()",
-      "source_file": "src/sources/tcp.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_sources_tcp_routedtargets",
-      "label": "routedTargets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "routedtargets()",
-      "source_file": "src/sources/tcp.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_sources_tcp_tcp",
-      "label": "tcp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "tcp()",
-      "source_file": "src/sources/tcp.ts",
-      "source_location": "L45"
-    },
-    {
-      "id": "src_printers_bambu_bambufromssdpheaders",
-      "label": "bambuFromSsdpHeaders()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambufromssdpheaders()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_printers_bambu_field",
-      "label": "field()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "field()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "src_printers_bambu_modelof",
-      "label": "modelOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "modelof()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_printers_bambu_printerfromcertificate",
-      "label": "printerFromCertificate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "printerfromcertificate()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "src_sources_arp_nudge",
-      "label": "nudge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "nudge()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L55"
-    },
-    {
       "id": "src_sources_ssdp_parsessdp",
       "label": "parseSsdp()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "parsessdp()",
@@ -1392,7 +1142,7 @@
       "label": "search()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "search()",
@@ -1404,7 +1154,7 @@
       "label": "ssdp()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "ssdp()",
@@ -1416,7 +1166,7 @@
       "label": "bind()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "bind()",
@@ -1428,7 +1178,7 @@
       "label": "bindUdp()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "bindudp()",
@@ -1440,7 +1190,7 @@
       "label": "openUdp()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "openudp()",
@@ -1452,7 +1202,7 @@
       "label": "release()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "release()",
@@ -1464,7 +1214,7 @@
       "label": "sendVia()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "sendvia()",
@@ -1472,27 +1222,171 @@
       "source_location": "L34"
     },
     {
-      "id": "test_printers_test_ip",
+      "id": "test_parsers_test_ip",
       "label": "ip()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "ip()",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L8"
+      "source_file": "test/parsers.test.ts",
+      "source_location": "L13"
     },
     {
-      "id": "test_printers_test_notify",
-      "label": "notify()",
+      "id": "test_parsers_test_name",
+      "label": "name()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
+      "community": 4,
       "community_name": "ssdp.ts",
       "file_type": "code",
-      "norm_label": "notify()",
-      "source_file": "test/printers.test.ts",
+      "norm_label": "name()",
+      "source_file": "test/parsers.test.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "test_parsers_test_printerresponse",
+      "label": "printerResponse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "printerresponse()",
+      "source_file": "test/parsers.test.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "test_parsers_test_rr",
+      "label": "rr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "rr()",
+      "source_file": "test/parsers.test.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "test_parsers_test_u16",
+      "label": "u16()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "u16()",
+      "source_file": "test/parsers.test.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_discover_isprober",
+      "label": "isProber()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "isprober()",
+      "source_file": "src/discover.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "src_discover_liveips",
+      "label": "liveIps()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "liveips()",
+      "source_file": "src/discover.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "src_discover_observe",
+      "label": "observe()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "observe()",
+      "source_file": "src/discover.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "src_sources_tcp_connect",
+      "label": "connect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "connect()",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_sources_tcp_liveness",
+      "label": "liveness()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "liveness()",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L62"
+    },
+    {
+      "id": "src_sources_tcp_routedtargets",
+      "label": "routedTargets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "routedtargets()",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "src_sources_tcp_tcp",
+      "label": "tcp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "tcp()",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_domain_inttoipv4",
+      "label": "intToIpv4()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "inttoipv4()",
+      "source_file": "src/domain.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_domain_ipv4toint",
+      "label": "ipv4ToInt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "ipv4toint()",
+      "source_file": "src/domain.ts",
       "source_location": "L10"
     },
     {
@@ -1501,23 +1395,59 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "parseipv4()",
       "source_file": "src/domain.ts",
       "source_location": "L8"
     },
     {
-      "id": "src_domain_parsemac",
-      "label": "parseMac()",
+      "id": "src_network_broadcastof",
+      "label": "broadcastOf()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
-      "norm_label": "parsemac()",
-      "source_file": "src/domain.ts",
-      "source_location": "L19"
+      "norm_label": "broadcastof()",
+      "source_file": "src/network.ts",
+      "source_location": "L63"
+    },
+    {
+      "id": "src_network_hostsof",
+      "label": "hostsOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "hostsof()",
+      "source_file": "src/network.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_network_incidr",
+      "label": "inCidr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "incidr()",
+      "source_file": "src/network.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_network_istailnetip",
+      "label": "isTailnetIp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "istailnetip()",
+      "source_file": "src/network.ts",
+      "source_location": "L10"
     },
     {
       "id": "src_network_localnetworks",
@@ -1525,11 +1455,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "localnetworks()",
       "source_file": "src/network.ts",
       "source_location": "L22"
+    },
+    {
+      "id": "src_network_mask",
+      "label": "mask()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "mask()",
+      "source_file": "src/network.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_network_networkof",
+      "label": "networkOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "networkof()",
+      "source_file": "src/network.ts",
+      "source_location": "L34"
     },
     {
       "id": "src_network_parsecidr",
@@ -1537,47 +1491,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "parsecidr()",
       "source_file": "src/network.ts",
       "source_location": "L15"
-    },
-    {
-      "id": "src_sources_arp_parsearptable",
-      "label": "parseArpTable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "parsearptable()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_sources_arp_parseprocnetarp",
-      "label": "parseProcNetArp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "parseprocnetarp()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "src_sources_exec_exec",
-      "label": "exec()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "exec()",
-      "source_file": "src/sources/exec.ts",
-      "source_location": "L6"
     },
     {
       "id": "src_sources_exec_execfirst",
@@ -1585,7 +1503,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "execfirst()",
       "source_file": "src/sources/exec.ts",
@@ -1597,7 +1515,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "isprivate()",
       "source_file": "src/sources/tailscale.ts",
@@ -1609,7 +1527,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "lanendpoint()",
       "source_file": "src/sources/tailscale.ts",
@@ -1621,11 +1539,71 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "parsetailscalestatus()",
       "source_file": "src/sources/tailscale.ts",
       "source_location": "L40"
+    },
+    {
+      "id": "src_sources_tailscale_tailscale",
+      "label": "tailscale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "tailscale()",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L69"
+    },
+    {
+      "id": "src_sources_tailscale_tailscalestatus",
+      "label": "tailscaleStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "network.ts",
+      "file_type": "code",
+      "norm_label": "tailscalestatus()",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "examples_find_printers_describe",
+      "label": "describe()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "describe()",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "examples_find_printers_flag",
+      "label": "flag()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "flag()",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "examples_find_printers_row",
+      "label": "row()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "row()",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L31"
     },
     {
       "id": "src_cli_byip",
@@ -1633,7 +1611,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "byip()",
       "source_file": "src/cli.ts",
@@ -1645,7 +1623,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "src/cli.ts",
@@ -1657,7 +1635,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "parseargs()",
       "source_file": "src/cli.ts",
@@ -1669,7 +1647,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "printermodel()",
       "source_file": "src/cli.ts",
@@ -1681,7 +1659,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "printerstatus()",
       "source_file": "src/cli.ts",
@@ -1693,7 +1671,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "report()",
       "source_file": "src/cli.ts",
@@ -1705,7 +1683,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "runscan()",
       "source_file": "src/cli.ts",
@@ -1717,7 +1695,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "runwatch()",
       "source_file": "src/cli.ts",
@@ -1729,11 +1707,83 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "table()",
       "source_file": "src/cli.ts",
       "source_location": "L130"
+    },
+    {
+      "id": "src_config_positiveint",
+      "label": "positiveInt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "positiveint()",
+      "source_file": "src/config.ts",
+      "source_location": "L70"
+    },
+    {
+      "id": "src_config_resolveconfig",
+      "label": "resolveConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "resolveconfig()",
+      "source_file": "src/config.ts",
+      "source_location": "L82"
+    },
+    {
+      "id": "src_config_scanwindow",
+      "label": "scanWindow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "scanwindow()",
+      "source_file": "src/config.ts",
+      "source_location": "L77"
+    },
+    {
+      "id": "src_discover_config",
+      "label": "config()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "config()",
+      "source_file": "src/discover.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_discover_discover",
+      "label": "discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "discover()",
+      "source_file": "src/discover.ts",
+      "source_location": "L134"
+    },
+    {
+      "id": "src_discover_discoverdevices",
+      "label": "discoverDevices()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "discoverdevices()",
+      "source_file": "src/discover.ts",
+      "source_location": "L140"
     },
     {
       "id": "src_discover_watch",
@@ -1741,73 +1791,18 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "watch()",
       "source_file": "src/discover.ts",
-      "source_location": "L120"
-    },
-    {
-      "id": "src_config",
-      "label": "config.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "config.ts",
-      "source_file": "src/config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_config_defaultports",
-      "label": "defaultPorts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "defaultports",
-      "source_file": "src/config.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "src_domain",
-      "label": "domain.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "domain.ts",
-      "source_file": "src/domain.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_domain_allsources",
-      "label": "allSources",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "allsources",
-      "source_file": "src/domain.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_index",
-      "label": "index.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "index.ts",
-      "source_file": "src/index.ts",
-      "source_location": "L1"
+      "source_location": "L124"
     },
     {
       "id": "src_registry",
       "label": "registry.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "registry.ts",
       "source_file": "src/registry.ts",
@@ -1818,29 +1813,29 @@
       "label": "genericHosts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "generichosts",
       "source_file": "src/registry.ts",
-      "source_location": "L38"
+      "source_location": "L47"
     },
     {
       "id": "src_registry_handlers",
       "label": "handlers",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "handlers",
       "source_file": "src/registry.ts",
-      "source_location": "L53"
+      "source_location": "L62"
     },
     {
       "id": "src_registry_keyrank",
       "label": "keyRank",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "keyrank",
       "source_file": "src/registry.ts",
@@ -1851,7 +1846,7 @@
       "label": "registry.test.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "registry.test.ts",
       "source_file": "test/registry.test.ts",
@@ -1862,7 +1857,7 @@
       "label": "networks",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "code",
       "norm_label": "networks",
       "source_file": "test/registry.test.ts",
@@ -1873,23 +1868,11 @@
       "label": "vitest",
       "_origin": "ast",
       "community": 0,
-      "community_name": "domain.ts",
+      "community_name": "registry.ts",
       "file_type": "concept",
       "norm_label": "vitest",
       "source_file": "package.json",
       "source_location": "L70"
-    },
-    {
-      "id": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
-      "label": "One record per device, across bands, subnets, and the tailnet",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "one record per device, across bands, subnets, and the tailnet",
-      "source_file": "README.md",
-      "source_location": "L180"
     },
     {
       "id": "package",
@@ -2497,70 +2480,203 @@
       "source_location": "L27"
     },
     {
-      "id": "examples_find_printers",
-      "label": "find-printers.ts",
+      "id": "readme",
+      "label": "README.md",
       "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "find-printers.ts",
-      "source_file": "examples/find-printers.ts",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "readme.md",
+      "source_file": "README.md",
       "source_location": "L1"
     },
     {
-      "id": "examples_find_printers_args",
-      "label": "args",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "args",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "examples_find_printers_printers",
-      "label": "printers",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "printers",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "examples_find_printers_subnets",
-      "label": "subnets",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "subnets",
-      "source_file": "examples/find-printers.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_network",
-      "label": "network.ts",
+      "id": "readme_develop_lanscout",
+      "label": "Develop lanscout",
       "_origin": "ast",
       "community": 2,
-      "community_name": "network.ts",
-      "file_type": "code",
-      "norm_label": "network.ts",
-      "source_file": "src/network.ts",
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "develop lanscout",
+      "source_file": "README.md",
+      "source_location": "L200"
+    },
+    {
+      "id": "readme_find_the_3d_printers_on_your_network",
+      "label": "Find the 3D printers on your network",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "find the 3d printers on your network",
+      "source_file": "README.md",
+      "source_location": "L151"
+    },
+    {
+      "id": "readme_install",
+      "label": "Install",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "install",
+      "source_file": "README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "readme_lanscout",
+      "label": "lanscout",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "lanscout",
+      "source_file": "README.md",
       "source_location": "L1"
     },
     {
-      "id": "src_network_cgnat",
-      "label": "CGNAT",
+      "id": "readme_license",
+      "label": "License",
       "_origin": "ast",
       "community": 2,
-      "community_name": "network.ts",
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "license",
+      "source_file": "README.md",
+      "source_location": "L210"
+    },
+    {
+      "id": "readme_run_the_cli",
+      "label": "Run the CLI",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "run the cli",
+      "source_file": "README.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "readme_the_device_record",
+      "label": "The `Device` record",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the `device` record",
+      "source_file": "README.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "readme_use_the_library",
+      "label": "Use the library",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "use the library",
+      "source_file": "README.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "readme_where_the_scan_time_goes",
+      "label": "Where the scan time goes",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "where the scan time goes",
+      "source_file": "README.md",
+      "source_location": "L190"
+    },
+    {
+      "id": "readme_with_effect",
+      "label": "With Effect",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "with effect",
+      "source_file": "README.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "readme_with_promises",
+      "label": "With promises",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "lanscout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "with promises",
+      "source_file": "README.md",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_printers_bambu",
+      "label": "bambu.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
       "file_type": "code",
-      "norm_label": "cgnat",
-      "source_file": "src/network.ts",
-      "source_location": "L5"
+      "norm_label": "bambu.ts",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_printers_bambu_bambu_nt",
+      "label": "BAMBU_NT",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "bambu_nt",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_printers_bambu_modelbyserialprefix",
+      "label": "modelBySerialPrefix",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "modelbyserialprefix",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_printers_bambu_models",
+      "label": "bambu-models.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "bambu-models.ts",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_printers_bambu_models_bambumodels",
+      "label": "bambuModels",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "bambumodels",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_printers_klipper",
@@ -2640,6 +2756,28 @@
       "source_location": "L1"
     },
     {
+      "id": "test_printers_test",
+      "label": "printers.test.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "printers.test.ts",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_printers_test_p1s",
+      "label": "p1s",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "printer.ts",
+      "file_type": "code",
+      "norm_label": "p1s",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L13"
+    },
+    {
       "id": "docref_rfc_6298",
       "label": "RFC-6298",
       "_origin": "ast",
@@ -2651,11 +2789,33 @@
       "source_location": "L16"
     },
     {
+      "id": "src_sources_arp",
+      "label": "arp.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "arp.ts",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_arp_readtable",
+      "label": "readTable",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "readtable",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L33"
+    },
+    {
       "id": "src_sources_dns",
       "label": "dns.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "dns.ts",
       "source_file": "src/sources/dns.ts",
@@ -2666,10 +2826,21 @@
       "label": "RecordType",
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "recordtype",
       "source_file": "src/sources/dns.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_exec",
+      "label": "exec.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "exec.ts",
+      "source_file": "src/sources/exec.ts",
       "source_location": "L1"
     },
     {
@@ -2677,7 +2848,7 @@
       "label": "mdns.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "mdns.ts",
       "source_file": "src/sources/mdns.ts",
@@ -2688,22 +2859,121 @@
       "label": "seedServiceTypes",
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "seedservicetypes",
       "source_file": "src/sources/mdns.ts",
       "source_location": "L20"
     },
     {
+      "id": "src_sources_rounds",
+      "label": "rounds.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "rounds.ts",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_rounds_mdns_max_interval_ms",
+      "label": "MDNS_MAX_INTERVAL_MS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "mdns_max_interval_ms",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_sources_ssdp",
+      "label": "ssdp.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "ssdp.ts",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_ssdp_bambu_ports",
+      "label": "BAMBU_PORTS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambu_ports",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_sources_ssdp_notify_ports",
+      "label": "NOTIFY_PORTS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "notify_ports",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_sources_ssdp_search_all",
+      "label": "SEARCH_ALL",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "search_all",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "src_sources_udp",
+      "label": "udp.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "udp.ts",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "test_parsers_test",
       "label": "parsers.test.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "parsers.test.ts",
+      "community_name": "ssdp.ts",
       "file_type": "code",
       "norm_label": "parsers.test.ts",
       "source_file": "test/parsers.test.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "docref_rfc_6762",
+      "label": "RFC-6762",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "concept",
+      "norm_label": "rfc-6762",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_effect",
+      "label": "effect",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "file_type": "concept",
+      "norm_label": "effect",
+      "source_file": "package.json",
+      "source_location": "L64"
     },
     {
       "id": "src_discover",
@@ -2725,7 +2995,7 @@
       "file_type": "code",
       "norm_label": "discoverers",
       "source_file": "src/discover.ts",
-      "source_location": "L23"
+      "source_location": "L24"
     },
     {
       "id": "src_discover_probers",
@@ -2736,7 +3006,7 @@
       "file_type": "code",
       "norm_label": "probers",
       "source_file": "src/discover.ts",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "src_discover_tick",
@@ -2747,7 +3017,7 @@
       "file_type": "code",
       "norm_label": "tick",
       "source_file": "src/discover.ts",
-      "source_location": "L57"
+      "source_location": "L58"
     },
     {
       "id": "src_sources_tcp",
@@ -2759,282 +3029,6 @@
       "norm_label": "tcp.ts",
       "source_file": "src/sources/tcp.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "readme",
-      "label": "README.md",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "readme.md",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme_develop_lanscout",
-      "label": "Develop lanscout",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "develop lanscout",
-      "source_file": "README.md",
-      "source_location": "L198"
-    },
-    {
-      "id": "readme_find_the_3d_printers_on_your_network",
-      "label": "Find the 3D printers on your network",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "find the 3d printers on your network",
-      "source_file": "README.md",
-      "source_location": "L149"
-    },
-    {
-      "id": "readme_install",
-      "label": "Install",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "install",
-      "source_file": "README.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "readme_lanscout",
-      "label": "lanscout",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "lanscout",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme_license",
-      "label": "License",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "license",
-      "source_file": "README.md",
-      "source_location": "L208"
-    },
-    {
-      "id": "readme_run_the_cli",
-      "label": "Run the CLI",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "run the cli",
-      "source_file": "README.md",
-      "source_location": "L32"
-    },
-    {
-      "id": "readme_the_device_record",
-      "label": "The `Device` record",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "the `device` record",
-      "source_file": "README.md",
-      "source_location": "L79"
-    },
-    {
-      "id": "readme_use_the_library",
-      "label": "Use the library",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "use the library",
-      "source_file": "README.md",
-      "source_location": "L49"
-    },
-    {
-      "id": "readme_where_the_scan_time_goes",
-      "label": "Where the scan time goes",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "where the scan time goes",
-      "source_file": "README.md",
-      "source_location": "L188"
-    },
-    {
-      "id": "readme_with_effect",
-      "label": "With Effect",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "with effect",
-      "source_file": "README.md",
-      "source_location": "L60"
-    },
-    {
-      "id": "readme_with_promises",
-      "label": "With promises",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "with promises",
-      "source_file": "README.md",
-      "source_location": "L51"
-    },
-    {
-      "id": "src_printers_bambu",
-      "label": "bambu.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambu.ts",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_printers_bambu_bambu_nt",
-      "label": "BAMBU_NT",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambu_nt",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_printers_bambu_modelbyserialprefix",
-      "label": "modelBySerialPrefix",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "modelbyserialprefix",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_printers_bambu_models",
-      "label": "bambu-models.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambu-models.ts",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_printers_bambu_models_bambumodels",
-      "label": "bambuModels",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambumodels",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_sources_ssdp",
-      "label": "ssdp.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "ssdp.ts",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_sources_ssdp_bambu_ports",
-      "label": "BAMBU_PORTS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambu_ports",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_sources_ssdp_notify_ports",
-      "label": "NOTIFY_PORTS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "notify_ports",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_sources_ssdp_search_all",
-      "label": "SEARCH_ALL",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "search_all",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "src_sources_udp",
-      "label": "udp.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "udp.ts",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_printers_test",
-      "label": "printers.test.ts",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "printers.test.ts",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_printers_test_p1s",
-      "label": "p1s",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "p1s",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L13"
     },
     {
       "id": "tsconfig",
@@ -3235,66 +3229,33 @@
       "source_location": "L19"
     },
     {
-      "id": "src_sources_arp",
-      "label": "arp.ts",
+      "id": "src_network",
+      "label": "network.ts",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
-      "norm_label": "arp.ts",
-      "source_file": "src/sources/arp.ts",
+      "norm_label": "network.ts",
+      "source_file": "src/network.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_sources_arp_readtable",
-      "label": "readTable",
+      "id": "src_network_cgnat",
+      "label": "CGNAT",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
-      "norm_label": "readtable",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L33"
-    },
-    {
-      "id": "src_sources_exec",
-      "label": "exec.ts",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "exec.ts",
-      "source_file": "src/sources/exec.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_sources_rounds",
-      "label": "rounds.ts",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "rounds.ts",
-      "source_file": "src/sources/rounds.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_sources_rounds_mdns_max_interval_ms",
-      "label": "MDNS_MAX_INTERVAL_MS",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "code",
-      "norm_label": "mdns_max_interval_ms",
-      "source_file": "src/sources/rounds.ts",
-      "source_location": "L4"
+      "norm_label": "cgnat",
+      "source_file": "src/network.ts",
+      "source_location": "L5"
     },
     {
       "id": "src_sources_tailscale",
       "label": "tailscale.ts",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "tailscale.ts",
       "source_file": "src/sources/tailscale.ts",
@@ -3305,7 +3266,7 @@
       "label": "Peer",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "peer",
       "source_file": "src/sources/tailscale.ts",
@@ -3316,7 +3277,7 @@
       "label": "PRIVATE",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "private",
       "source_file": "src/sources/tailscale.ts",
@@ -3327,40 +3288,62 @@
       "label": "Status",
       "_origin": "ast",
       "community": 8,
-      "community_name": "arp.ts",
+      "community_name": "network.ts",
       "file_type": "code",
       "norm_label": "status",
       "source_file": "src/sources/tailscale.ts",
       "source_location": "L23"
     },
     {
-      "id": "docref_rfc_6762",
-      "label": "RFC-6762",
+      "id": "examples_find_printers",
+      "label": "find-printers.ts",
       "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "concept",
-      "norm_label": "rfc-6762",
-      "source_file": "src/sources/rounds.ts",
-      "source_location": "L3"
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "find-printers.ts",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L1"
     },
     {
-      "id": "ref_effect",
-      "label": "effect",
+      "id": "examples_find_printers_args",
+      "label": "args",
       "_origin": "ast",
-      "community": 8,
-      "community_name": "arp.ts",
-      "file_type": "concept",
-      "norm_label": "effect",
-      "source_file": "package.json",
-      "source_location": "L64"
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "args",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "examples_find_printers_printers",
+      "label": "printers",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "printers",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "examples_find_printers_subnets",
+      "label": "subnets",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "subnets",
+      "source_file": "examples/find-printers.ts",
+      "source_location": "L15"
     },
     {
       "id": "src_cli",
       "label": "cli.ts",
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "cli.ts",
       "source_file": "src/cli.ts",
@@ -3371,18 +3354,85 @@
       "label": "views",
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "code",
       "norm_label": "views",
       "source_file": "src/cli.ts",
       "source_location": "L51"
     },
     {
+      "id": "src_config",
+      "label": "config.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "config.ts",
+      "source_file": "src/config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_config_defaultports",
+      "label": "defaultPorts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "defaultports",
+      "source_file": "src/config.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "src_domain",
+      "label": "domain.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "domain.ts",
+      "source_file": "src/domain.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_domain_allsources",
+      "label": "allSources",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "allsources",
+      "source_file": "src/domain.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_index",
+      "label": "index.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "index.ts",
+      "source_file": "src/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
+      "label": "One record per device, across bands, subnets, and the tailnet",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "domain.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "one record per device, across bands, subnets, and the tailnet",
+      "source_file": "README.md",
+      "source_location": "L182"
+    },
+    {
       "id": "readme_watch_the_network",
       "label": "Watch the network",
       "_origin": "ast",
       "community": 9,
-      "community_name": "cli.ts",
+      "community_name": "domain.ts",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "watch the network",
@@ -3397,17 +3447,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_fs",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_os",
-      "label": "ref_node_os",
-      "community": 2,
-      "community_name": "network.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_os",
       "source_file": "",
       "type": "external"
     },
@@ -3434,6 +3473,28 @@
       "type": "external"
     },
     {
+      "id": "ref_node_child_process",
+      "label": "ref_node_child_process",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_child_process",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_dgram",
+      "label": "ref_node_dgram",
+      "community": 4,
+      "community_name": "ssdp.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_dgram",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "ref_node_net",
       "label": "ref_node_net",
       "community": 5,
@@ -3445,24 +3506,13 @@
       "type": "external"
     },
     {
-      "id": "ref_node_dgram",
-      "label": "ref_node_dgram",
-      "community": 6,
-      "community_name": "ssdp.ts",
+      "id": "ref_node_os",
+      "label": "ref_node_os",
+      "community": 5,
+      "community_name": "discover.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_node_dgram",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_node_child_process",
-      "label": "ref_node_child_process",
-      "community": 8,
-      "community_name": "arp.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_child_process",
+      "norm_label": "ref_node_os",
       "source_file": "",
       "type": "external"
     }
@@ -3669,7 +3719,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -3681,7 +3731,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -3693,7 +3743,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -3705,7 +3755,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L133",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -3717,7 +3767,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L133",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -3729,7 +3779,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L133",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -3741,19 +3791,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L137",
-      "weight": 1.0
-    },
-    {
-      "source": "src_discover_fold",
-      "target": "src_registry_registry",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/discover.ts",
-      "source_location": "L97",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -3765,7 +3803,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L99",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover_fold",
+      "target": "src_registry_registry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/discover.ts",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -3777,7 +3827,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -3789,7 +3839,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -3801,7 +3851,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L78",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -3813,7 +3863,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L82",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover_observe",
+      "target": "src_sources_tcp_liveness",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/discover.ts",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -3825,7 +3887,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L122",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -3837,7 +3899,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L124",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -4113,7 +4175,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L141",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -4125,7 +4187,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L146",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -4137,7 +4199,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L153",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -4149,7 +4211,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L41",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -4161,7 +4223,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L212",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -4173,7 +4235,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L225",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -4185,7 +4247,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L230",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -4197,7 +4259,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L235",
+      "source_location": "L254",
       "weight": 1.0
     },
     {
@@ -4209,7 +4271,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L240",
+      "source_location": "L260",
       "weight": 1.0
     },
     {
@@ -4221,7 +4283,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L241",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -4233,7 +4295,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L268",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -4245,7 +4307,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L258",
+      "source_location": "L282",
       "weight": 1.0
     },
     {
@@ -4849,6 +4911,30 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_tcp_connect",
+      "target": "src_sources_tcp_connect",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tcp_liveness",
+      "target": "src_sources_tcp_connect",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_tcp_routedtargets",
       "target": "src_network_hostsof",
       "relation": "calls",
@@ -4857,7 +4943,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L31",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -4869,19 +4955,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
       "source": "src_sources_tcp_tcp",
-      "target": "src_sources_tcp_probe",
+      "target": "src_sources_tcp_connect",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L48",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -5197,6 +5283,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_registry_check",
+      "target": "src_domain_ipv4",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "src/registry.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
       "source": "src_registry_draft",
       "target": "src_domain_tailscalepeer",
       "relation": "references",
@@ -5229,7 +5327,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/registry.ts",
-      "source_location": "L48",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -5289,7 +5387,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/discover.ts",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -5301,7 +5399,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/discover.ts",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -5349,7 +5447,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L48",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -5361,7 +5459,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L185",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -5373,7 +5471,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L187",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -5385,7 +5483,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L264",
+      "source_location": "L302",
       "weight": 1.0
     },
     {
@@ -5666,7 +5764,7 @@
     },
     {
       "source": "src_discover",
-      "target": "src_registry_registry",
+      "target": "src_registry_check",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5678,7 +5776,7 @@
     },
     {
       "source": "src_discover",
-      "target": "src_sources_arp_arp",
+      "target": "src_registry_registry",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5690,7 +5788,7 @@
     },
     {
       "source": "src_discover",
-      "target": "src_sources_mdns_mdns",
+      "target": "src_sources_arp_arp",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5702,19 +5800,19 @@
     },
     {
       "source": "src_discover",
-      "target": "src_sources_ssdp_ssdp",
+      "target": "src_sources_mdns_mdns",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
       "source": "src_discover",
-      "target": "src_sources_tailscale_tailscalestatus",
+      "target": "src_sources_ssdp_ssdp",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5726,7 +5824,7 @@
     },
     {
       "source": "src_discover",
-      "target": "src_sources_tcp_routedtargets",
+      "target": "src_sources_tailscale_tailscalestatus",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5734,6 +5832,30 @@
       "context": "import",
       "source_file": "src/discover.ts",
       "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_sources_tcp_liveness",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/discover.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_sources_tcp_routedtargets",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/discover.ts",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -6829,6 +6951,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_tcp",
+      "target": "src_registry_check",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_udp",
       "target": "src_domain_sourcefailed",
       "relation": "imports",
@@ -7281,7 +7415,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -7293,7 +7427,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -7305,7 +7439,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -7317,7 +7451,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -7329,7 +7463,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -7341,7 +7475,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -7353,7 +7487,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/discover.ts",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -8053,6 +8187,19 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_tcp",
+      "target": "src_registry",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L7",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_udp",
       "target": "ref_node_dgram",
       "relation": "imports_from",
@@ -8315,7 +8462,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/registry.ts",
-      "source_location": "L204",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -9134,7 +9281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L149",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -9156,7 +9303,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L180",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -9167,7 +9314,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L188",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -9178,7 +9325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L198",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -9189,7 +9336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L208",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -9563,7 +9710,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L120",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -9574,7 +9721,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -9585,7 +9732,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L136",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -9596,7 +9743,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -9607,7 +9754,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -9618,7 +9765,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -9629,7 +9776,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -9640,7 +9787,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -9651,7 +9798,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -9662,7 +9809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -9673,7 +9820,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -9684,7 +9831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -9695,7 +9842,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -9706,7 +9853,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -9728,7 +9875,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L102",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -9739,7 +9886,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L125",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -9871,7 +10018,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L89",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -9882,7 +10029,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L94",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -10190,7 +10337,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L119",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -10201,7 +10348,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L125",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -10212,7 +10359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L139",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -10223,7 +10370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L151",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -10234,7 +10381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L153",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -10245,7 +10392,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L155",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -10256,7 +10403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L182",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -10267,7 +10414,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L31",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_registry_check",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -10278,7 +10436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L34",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -10289,7 +10447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L38",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -10300,29 +10458,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L40",
-      "weight": 1.0
-    },
-    {
-      "source": "src_registry",
-      "target": "src_registry_usnuuid",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/registry.ts",
-      "source_location": "L45",
-      "weight": 1.0
-    },
-    {
-      "source": "src_registry",
-      "target": "src_registry_handler",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/registry.ts",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -10338,13 +10474,35 @@
     },
     {
       "source": "src_registry",
+      "target": "src_registry_usnuuid",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_registry_handler",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
       "target": "src_registry_handlers",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L53",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -10844,13 +11002,24 @@
     },
     {
       "source": "src_sources_tcp",
+      "target": "src_sources_tcp_connect",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tcp",
       "target": "src_sources_tcp_routedtargets",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -10861,18 +11030,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L45",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
       "source": "src_sources_tcp",
-      "target": "src_sources_tcp_probe",
+      "target": "src_sources_tcp_liveness",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tcp.ts",
-      "source_location": "L8",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tcp",
+      "target": "src_sources_tcp_answer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/tcp.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11257,7 +11437,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L187",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -11268,7 +11448,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L191",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -11279,7 +11459,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L204",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -11290,7 +11470,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L253",
+      "source_location": "L276",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry_registry",
+      "target": "src_registry_registry_due",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -11301,7 +11492,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L264",
+      "source_location": "L302",
       "weight": 1.0
     },
     {
@@ -11337,7 +11528,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/discover.ts",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -11349,7 +11540,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/registry.ts",
-      "source_location": "L267",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -11361,7 +11552,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/registry.ts",
-      "source_location": "L159",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -11437,6 +11628,18 @@
       "weight": 1.0
     },
     {
+      "source": "test_registry_test",
+      "target": "src_sources_arp_arp",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "test/registry.test.ts",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
       "source": "src_discover_fold",
       "target": "src_registry_registry_expire",
       "relation": "calls",
@@ -11445,7 +11648,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L105",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover_fold",
+      "target": "src_registry_registry_due",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "src/discover.ts",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -11457,7 +11672,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L107",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -11469,7 +11684,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L112",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -11505,7 +11720,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "src/discover.ts",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -11517,7 +11732,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "src/discover.ts",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -11529,7 +11744,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "src/discover.ts",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -11541,7 +11756,7 @@
       "confidence_score": 0.95,
       "context": "Device",
       "source_file": "README.md",
-      "source_location": "L182",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -11589,7 +11804,7 @@
       "confidence_score": 0.95,
       "context": "discover()",
       "source_file": "README.md",
-      "source_location": "L147",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -11678,5 +11893,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8d270457549e4fad378c1462c0c31c69dc60e3b2"
+  "built_at_commit": "10f6c3c688e030330e684b85db79ffd7d2f4fefb"
 }
