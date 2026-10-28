@@ -1,0 +1,20 @@
+language: en-US
+reviews:
+  profile: chill
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!graphify-out/**"
+    - "!pnpm-lock.yaml"
+    - "!src/printers/bambu-models.ts"
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        This repository is public. Flag any real MAC address, serial number, hostname, Tailscale name, or private IP scan output committed in code, tests, fixtures, or docs. Fixtures must use documentation values such as 192.0.2.0/24 or obviously fake MACs.
+    - path: "src/**/*.ts"
+      instructions: |
+        The code uses Effect 4 and imports modules by subpath (effect/Effect, effect/Stream), never the effect barrel, to keep load time low. Flag barrel imports. Network sources must never fail the whole scan; a source error becomes a SourceFailed event.
+    - path: "test/**"
+      instructions: |
+        Tests must not touch the real network.

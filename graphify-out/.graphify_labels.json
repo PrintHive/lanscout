@@ -3,11 +3,12 @@
   "1": "package.json",
   "2": "lanscout",
   "3": "printer.ts",
-  "4": "ssdp.ts",
+  "4": "parsers.test.ts",
   "5": "discover.ts",
+  "6": "ssdp.ts",
   "7": "compilerOptions",
-  "8": "network.ts",
+  "8": "arp.ts",
   "9": "domain.ts",
   "10": "compilerOptions",
-  "11": "sync-bambu-models.mjs"
+  "11": "network.ts"
 }

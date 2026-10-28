@@ -18,13 +18,13 @@ A default scan has a 2-second budget. The process exits when the scan finishes. 
 ## Install
 
 ```sh
-npm install lanscout effect
+npm install @printhive/lanscout effect
 ```
 
 Or run the CLI without installing it:
 
 ```sh
-npx lanscout
+npx @printhive/lanscout
 ```
 
 `effect` is a peer dependency, so an application that already uses Effect shares one copy. Node.js 20 or later is required.
@@ -51,7 +51,7 @@ Run `lanscout --help` for every option.
 ### With promises
 
 ```ts
-import { discoverDevices } from "lanscout"
+import { discoverDevices } from "@printhive/lanscout"
 
 const { devices, failures, elapsedMs } = await discoverDevices({ timeoutMs: 1500 })
 for (const d of devices) console.log(d.ips, d.macs, d.hostnames, d.services)
@@ -61,7 +61,7 @@ for (const d of devices) console.log(d.ips, d.macs, d.hostnames, d.services)
 
 ```ts
 import { Effect, Stream } from "effect"
-import { discover, watch } from "lanscout"
+import { discover, watch } from "@printhive/lanscout"
 
 // One result at the deadline
 const result = Effect.runPromise(discover({ sources: ["mdns", "arp"] }))
@@ -114,8 +114,8 @@ A device's `id` can change during a watch. The id upgrades as stronger identifie
 
 ```ts
 import { Effect, Stream } from "effect"
-import type { Device } from "lanscout"
-import { watch } from "lanscout"
+import type { Device } from "@printhive/lanscout"
+import { watch } from "@printhive/lanscout"
 
 const present = new Map<string, Device>()
 
@@ -205,6 +205,15 @@ pnpm test
 pnpm typecheck
 pnpm start -- --json    # runs src/cli.ts directly on Node 22.18+
 pnpm build
+```
+
+CI runs these checks on Node 22, 24, and 26 for every pull request, and runs the built package on Node 20.
+
+To release, set the new version and push its tag. The release workflow publishes to npm with provenance.
+
+```sh
+npm version patch      # or minor, major
+git push --follow-tags
 ```
 
 ## License
