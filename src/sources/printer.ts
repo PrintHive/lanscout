@@ -11,7 +11,12 @@ import { klipperFromMoonraker, MOONRAKER_PORT } from "../printers/klipper.ts"
 const MQTT_TLS_PORT = 8883
 /** Sleeping A1 and P1 printers took up to 1.6 s to finish a TLS handshake on a busy Wi-Fi network. */
 const TLS_TIMEOUT_MS = 2000
-const HTTP_TIMEOUT_MS = 1000
+/**
+ * During the TCP sweep's first burst, some SYNs to Moonraker are lost. macOS retransmits a SYN
+ * after 1 s (the RFC 6298 initial timeout; Linux uses it too), so a timeout must outlast
+ * that retransmit and the reply.
+ */
+const HTTP_TIMEOUT_MS = 2500
 
 /**
  * Reads the peer certificate and closes. Verification is off on purpose: printers use
