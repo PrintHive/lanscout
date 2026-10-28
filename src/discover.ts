@@ -7,7 +7,7 @@ import { ConfigError, resolveConfig, scanWindow } from "./config.ts"
 import type { Device, Ipv4, Observation, ScanEvent, Source } from "./domain.ts"
 import { SourceFailed } from "./domain.ts"
 import { localNetworks } from "./network.ts"
-import type { Check } from "./registry.ts"
+import type { Check, DeviceEvent } from "./registry.ts"
 import { Registry } from "./registry.ts"
 import { arp } from "./sources/arp.ts"
 import { mdns } from "./sources/mdns.ts"
@@ -55,6 +55,16 @@ const config = (options: () => WatchOptions): Effect.Effect<Config, ConfigError>
   })
 
 /** Asks the fold to expire devices that have gone quiet. */
+/**
+ * Records one observation and reports what it changed. A device that lost an address to this sighting is reported
+ * before the sighting's own device, so a consumer sees the address freed before it is taken.
+ */
+export const record = (registry: Registry, o: Observation, now: number, onEvent: (event: DeviceEvent) => void): void => {
+  const event = registry.add(o, now)
+  for (const reclaimed of registry.takeReclaimed()) onEvent(reclaimed)
+  if (event) onEvent(event)
+}
+
 const tick = { _tag: "Tick" } as const
 
 const observe = (cfg: Config, checks: Queue.Queue<Check>): Stream.Stream<Observation | SourceFailed | typeof tick> =>
@@ -108,9 +118,7 @@ const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
           for (const event of registry.expire(now, cfg.staleAfterMs)) onEvent(event)
           for (const check of registry.due(now, cfg.roundMaxMs)) Queue.offerUnsafe(checks, check)
         } else {
-          const event = registry.add(item, Date.now())
-          for (const reclaimed of registry.takeReclaimed()) onEvent(reclaimed)
-          if (event) onEvent(event)
+          record(registry, item, Date.now(), onEvent)
         }
       })
     )
