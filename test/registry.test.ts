@@ -280,4 +280,16 @@ describe("Registry address moves", () => {
     registry.add({ _tag: "Mdns", ip: ip("192.0.2.44"), hostname: "studio.local", services: [] }, 1000)
     expect(registry.add(peer, 2000)?.device.tailscale?.nodeId).toBe("n1")
   })
+
+  it("gives a gone printer's address to a printer with another serial, without merging them", () => {
+    const registry = new Registry(networks)
+    registry.add(printerAt("192.0.2.41"), 0)
+    registry.add(portAt("192.0.2.41"), 0)
+    expect(registry.expire(6000, 5000).map((e) => e._tag)).toEqual(["DeviceGone"])
+    const other: Observation = { _tag: "Printer", ip: ip("192.0.2.41"), via: "ssdp", printer: { kind: "bambu", serial: "01S00A000000002", modelCode: "C11" } }
+    const added = registry.add(other, 7000)
+    expect(added && [added._tag, added.device.id, added.device.ips]).toEqual(["DeviceAdded", "sn:01S00A000000002", ["192.0.2.41"]])
+    const back = registry.add(printerAt("192.0.2.45"), 8000)
+    expect(back && [back._tag, back.device.id, back.device.ips]).toEqual(["DeviceAdded", "sn:01S00A000000001", ["192.0.2.45"]])
+  })
 })

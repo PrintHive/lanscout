@@ -270,6 +270,7 @@ export class Registry {
   add(o: Observation, now: number): DeviceEvent | undefined {
     const handler = handlers[o._tag] as Handler<typeof o._tag>
     const keys = handler.keys(o as never)
+    this.#reclaimAddresses(keys)
     const formerIds: Array<string> = []
     let absorbedLive = false
     let root: Key | undefined
@@ -354,6 +355,26 @@ export class Registry {
       events.push({ _tag: "DeviceUpdated", device, formerIds: [] })
     }
     return events
+  }
+
+  /**
+   * A printer sighted at an address held by a record with a different serial has taken that address over, as when
+   * DHCP hands a departed printer's lease to another. The old record loses the address, so the two never merge.
+   */
+  #reclaimAddresses(keys: ReadonlyArray<Key>): void {
+    const serial = keys.find((k) => k.startsWith("sn:"))
+    if (serial === undefined) return
+    for (const key of keys) {
+      if (!key.startsWith("ip:") || !this.#parent.has(key)) continue
+      const holder = this.#drafts.get(this.#find(key))!
+      if (![...holder.keys].some((k) => k.startsWith("sn:") && k !== serial)) continue
+      // SAFETY: an `ip:` key's suffix is the address it was made from.
+      holder.addresses.delete(key.slice(3) as Ipv4)
+      this.#unlink(holder, key)
+      // Two live printers claiming one address is an address conflict; the newer claim wins, and the record
+      // left without an address waits, gone, for its next sighting elsewhere.
+      if (holder.addresses.size === 0) holder.gone = true
+    }
   }
 
   /**
