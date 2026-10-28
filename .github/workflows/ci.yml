@@ -28,6 +28,9 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # A peer-only dependency can get rewritten to an exact version, which locks out every other Effect release.
+      - name: Check the effect peer is a range
+        run: node -e "const v = require('./package.json').peerDependencies.effect; if (!v.startsWith('^')) { console.error('peerDependencies.effect must be a ^ range, got ' + v); process.exit(1) }"
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
@@ -57,3 +60,22 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: node dist/cli.js --help
       - run: node -e "import('./dist/index.js').then((m) => { if (typeof m.discover !== 'function') process.exit(1) })"
+
+  windows:
+    runs-on: blacksmith-2vcpu-windows-2025
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - name: Scan the runner's network and require an ARP result
+        shell: bash
+        run: |
+          node src/cli.ts --timeout 3000 --json > scan.json
+          node -e "const d = require('./scan.json'); const arp = d.filter((x) => x.sources.includes('arp')); const named = d.every((x) => x.networks.every((n) => !/^\\d+\\.\\d+\\.\\d+\\.\\d+$/.test(n))); console.log(d.length + ' devices, ' + arp.length + ' from arp, networks named: ' + named); if (arp.length === 0 || !named) process.exit(1)"

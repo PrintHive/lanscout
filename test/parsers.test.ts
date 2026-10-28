@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest"
 import * as Effect from "effect/Effect"
 import * as Exit from "effect/Exit"
 import type { Ipv4 } from "../src/domain.ts"
-import { parseMac } from "../src/domain.ts"
+import { parseIpv4, parseMac } from "../src/domain.ts"
 import { hostsOf, localNetworks, networkOf } from "../src/network.ts"
-import { parseArpTable, parseProcNetArp } from "../src/sources/arp.ts"
+import { onSelectedInterfaces, parseArpTable, parseProcNetArp, parseWindowsArp } from "../src/sources/arp.ts"
 import { decodeMessage, encodeQuery, RecordType } from "../src/sources/dns.ts"
 import { advertisedServiceTypes, observationsFromMessage } from "../src/sources/mdns.ts"
 import { parseSsdp } from "../src/sources/ssdp.ts"
@@ -118,6 +118,37 @@ describe("arp", () => {
       "10.0.0.2         0x1         0x0         00:00:00:00:00:00     *        eth0"
     ].join("\n")
     expect(parseProcNetArp(text)).toEqual([{ _tag: "Arp", ip: "10.0.0.1", mac: "aa:bb:cc:dd:ee:01", iface: "eth0" }])
+  })
+
+  it("parses Windows arp -a per selected interface, names it, and drops broadcast, multicast, and unknown interfaces", () => {
+    const text = [
+      "",
+      "Interface: 192.0.2.10 --- 0x5",
+      "  Internet Address      Physical Address      Type",
+      "  192.0.2.1             02-00-00-00-00-01     dynamic",
+      "  192.0.2.255           ff-ff-ff-ff-ff-ff     static",
+      "  224.0.0.22            01-00-5e-00-00-16     static",
+      "",
+      "Interface: 198.51.100.4 --- 0x9",
+      "  Internet Address      Physical Address      Type",
+      "  198.51.100.7          02-00-00-00-00-02     dynamic"
+    ].join("\r\n")
+    expect(parseWindowsArp(text, new Map([["192.0.2.10", "Ethernet"]]))).toEqual([
+      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "Ethernet" }
+    ])
+  })
+
+  it("keeps only ARP entries from the selected interfaces", () => {
+    const entries = parseArpTable("? (192.0.2.1) at 2:0:0:0:0:1 on en0 ifscope [ethernet]\n? (198.51.100.7) at 2:0:0:0:0:2 on en5 ifscope [ethernet]")
+    const en0 = { iface: "en0", address: parseIpv4("192.0.2.10")!, prefix: 24, kind: "lan" } as const
+    expect(onSelectedInterfaces(entries, [en0])).toEqual([{ _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "en0" }])
+  })
+
+  it("parses localized Windows arp -a headers", () => {
+    const text = ["Schnittstelle: 192.0.2.10 --- 0x5", "  Internetadresse       Physische Adresse     Typ", "  192.0.2.1             02-00-00-00-00-01     dynamisch"].join("\r\n")
+    expect(parseWindowsArp(text, new Map([["192.0.2.10", "Ethernet"]]))).toEqual([
+      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "Ethernet" }
+    ])
   })
 
   it("rejects malformed MACs", () => {
