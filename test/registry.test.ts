@@ -199,3 +199,76 @@ describe("Registry liveness", () => {
     expect(registry.due(6000, 2000)).toEqual([])
   })
 })
+
+describe("Registry address moves", () => {
+  const printerAt = (address: string): Observation => ({
+    _tag: "Printer",
+    ip: ip(address),
+    via: "ssdp",
+    printer: { kind: "bambu", serial: "01S00A000000001", modelCode: "C11" }
+  })
+  const arpAt = (address: string): Observation => ({ _tag: "Arp", ip: ip(address), mac: mac("02:00:00:00:00:41"), iface: "en0" })
+  const portAt = (address: string): Observation => ({ _tag: "Tcp", ip: ip(address), port: 8883 })
+
+  it("reports the new address as current as soon as a printer is heard there", () => {
+    const registry = new Registry(networks)
+    registry.add(printerAt("192.168.0.41"), 1000)
+    const update = registry.add(printerAt("192.168.0.42"), 2000)
+    expect(update?._tag === "DeviceUpdated" && update.device.ip).toBe("192.168.0.42")
+    expect(update?.device.ips).toEqual(["192.168.0.41", "192.168.0.42"])
+  })
+
+  it("keeps the new address current while the ARP cache still lists the old one", () => {
+    const registry = new Registry(networks)
+    registry.add(arpAt("192.168.0.41"), 1000)
+    registry.add(printerAt("192.168.0.41"), 1000)
+    registry.add(printerAt("192.168.0.42"), 2000)
+    registry.add(arpAt("192.168.0.41"), 3000)
+    expect(registry.devices().map((d) => d.ip)).toEqual(["192.168.0.42"])
+  })
+
+  it("drops the old address once it goes stale, with one DeviceUpdated, and keeps the device", () => {
+    const registry = new Registry(networks)
+    registry.add(portAt("192.168.0.41"), 0)
+    registry.add(printerAt("192.168.0.41"), 0)
+    registry.add(printerAt("192.168.0.42"), 4000)
+    registry.add(arpAt("192.168.0.41"), 5500)
+    const events = registry.expire(6000, 5000)
+    expect(events.map((e) => [e._tag, e.device.ip, e.device.ips])).toEqual([["DeviceUpdated", "192.168.0.42", ["192.168.0.42"]]])
+    expect(registry.expire(6500, 5000)).toEqual([])
+  })
+
+  it("sends liveness checks to the current address, not the first one seen", () => {
+    const registry = new Registry(networks)
+    registry.add(printerAt("192.168.0.41"), 0)
+    registry.add(portAt("192.168.0.41"), 0)
+    registry.add(printerAt("192.168.0.42"), 100)
+    expect(registry.due(5000, 2000)).toEqual([{ ip: "192.168.0.42", port: 8883 }])
+  })
+
+  it("treats the old address as new once it is dropped, so the next printer there is its own device", () => {
+    const registry = new Registry(networks)
+    registry.add(printerAt("192.168.0.41"), 0)
+    registry.add(portAt("192.168.0.41"), 0)
+    registry.add(printerAt("192.168.0.42"), 4000)
+    registry.expire(6000, 5000)
+    const other: Observation = { _tag: "Printer", ip: ip("192.168.0.41"), via: "ssdp", printer: { kind: "bambu", serial: "01S00A000000002", modelCode: "C11" } }
+    expect(registry.add(other, 6100)?._tag).toBe("DeviceAdded")
+    expect(registry.devices().map((d) => [d.ip, d.printer?.serial])).toEqual([
+      ["192.168.0.41", "01S00A000000002"],
+      ["192.168.0.42", "01S00A000000001"]
+    ])
+    expect(registry.add(printerAt("192.168.0.42"), 6200)).toBeUndefined()
+  })
+
+  it("keeps one current address for a device heard at two, and prefers the LAN address over the tailnet", () => {
+    const registry = new Registry(networks)
+    const lan: Observation = { _tag: "Mdns", ip: ip("192.168.0.43"), hostname: "studio.local", services: [] }
+    const tailnet: Observation = { _tag: "Mdns", ip: ip("100.64.0.43"), hostname: "studio.local", services: [] }
+    registry.add(lan, 0)
+    registry.add(tailnet, 1000)
+    expect(registry.add(lan, 2000)).toBeUndefined()
+    expect(registry.add(tailnet, 3000)).toBeUndefined()
+    expect(registry.devices().map((d) => d.ip)).toEqual(["192.168.0.43"])
+  })
+})

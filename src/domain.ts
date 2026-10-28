@@ -104,6 +104,13 @@ export interface TailscalePeer {
 export interface Device {
   /** Strongest identifier seen so far (`ts:`, `sn:`, `mac:`, `usn:`, `host:`, then `ip:`). Can upgrade as later observations merge in. */
   readonly id: string
+  /**
+   * The address the device is at now: of the addresses it was heard at by any source but ARP, the one first heard most
+   * recently. After a DHCP move this is the new address at once, while the ARP cache can keep re-sighting the old one
+   * for minutes. A device that stays at two addresses keeps the same one, and a LAN address always wins over a tailnet one.
+   */
+  readonly ip: Ipv4
+  /** Every address the device is at, in address order. An address unseen for `staleAfterMs` drops out in a watch. */
   readonly ips: ReadonlyArray<Ipv4>
   readonly macs: ReadonlyArray<Mac>
   readonly hostnames: ReadonlyArray<string>

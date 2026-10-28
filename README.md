@@ -110,6 +110,8 @@ interface Device {
 
 `watchForMs` ends the watch after that many milliseconds. Without it, the watch runs until you interrupt it. A watch with `watchForMs: 30000` finds all it can in 30 seconds.
 
+A device can be at several addresses, and `ips` lists them all. `ip` is the one it is at now: of the addresses the device itself was heard at, by any source but ARP, the one first heard most recently. A LAN address always wins over a tailnet one. When a printer moves to a new DHCP lease, `ip` becomes the new address in the same `DeviceUpdated`, even while the operating system's ARP cache still lists the old one. The old address leaves `ips` once it has gone `staleAfterMs` without a sighting, and that address can then belong to another device. Liveness checks always go to `ip`.
+
 A device's `id` can change during a watch. The id upgrades as stronger identifiers arrive, for example from `ip:` to `mac:`. Two records also merge when an identifier links them. Each `DeviceUpdated` lists in `formerIds` every id that now refers to its device. To track the devices that are present, delete the former ids before you store the device:
 
 ```ts
