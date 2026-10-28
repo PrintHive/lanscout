@@ -14,21 +14,21 @@ const ip = (s: string) => s as Ipv4
 
 const name = (n: string) => Buffer.concat([...n.split(".").map((l) => Buffer.from([l.length, ...Buffer.from(l)])), Buffer.from([0])])
 const u16 = (n: number) => Buffer.from([n >> 8, n & 255])
-const rr = (owner: Buffer, type: number, rdata: Buffer) =>
-  Buffer.concat([owner, u16(type), u16(0x8001), Buffer.from([0, 0, 0, 120]), u16(rdata.length), rdata])
+const rr = (owner: Buffer, type: number, rdata: Buffer, ttl = 120) =>
+  Buffer.concat([owner, u16(type), u16(0x8001), Buffer.from([0, 0, 0, ttl]), u16(rdata.length), rdata])
 
 /** A printer's response: PTR -> instance, SRV -> host, A for the host. Names after the first are compression pointers. */
-const printerResponse = (): Buffer => {
+const printerResponse = (ttl = 120): Buffer => {
   const header = Buffer.from([0, 0, 0x84, 0, 0, 0, 0, 1, 0, 0, 0, 2])
   const ptrOwner = name("_ipp._tcp.local")
   const ptrOffset = 12
   const instance = Buffer.concat([Buffer.from([7, ...Buffer.from("Brother")]), Buffer.from([0xc0, ptrOffset])])
-  const ptr = rr(ptrOwner, RecordType.PTR, instance)
+  const ptr = rr(ptrOwner, RecordType.PTR, instance, ttl)
   const instanceOffset = 12 + ptrOwner.length + 10
   const host = Buffer.concat([Buffer.from([5, ...Buffer.from("brwf8")]), Buffer.from([0xc0, ptrOffset + 10])])
-  const srv = rr(Buffer.from([0xc0, instanceOffset]), RecordType.SRV, Buffer.concat([u16(0), u16(0), u16(631), host]))
+  const srv = rr(Buffer.from([0xc0, instanceOffset]), RecordType.SRV, Buffer.concat([u16(0), u16(0), u16(631), host]), ttl)
   const hostOffset = 12 + ptr.length + 2 + 10 + 6
-  const a = rr(Buffer.from([0xc0, hostOffset]), RecordType.A, Buffer.from([192, 168, 0, 40]))
+  const a = rr(Buffer.from([0xc0, hostOffset]), RecordType.A, Buffer.from([192, 168, 0, 40]), ttl)
   return Buffer.concat([header, ptr, srv, a])
 }
 
@@ -41,9 +41,9 @@ describe("dns", () => {
 
   it("decodes compressed PTR, SRV, and A records", () => {
     expect(decodeMessage(printerResponse()).records).toEqual([
-      { type: "PTR", name: "_ipp._tcp.local", target: "Brother._ipp._tcp.local" },
-      { type: "SRV", name: "Brother._ipp._tcp.local", target: "brwf8.local", port: 631 },
-      { type: "A", name: "brwf8.local", address: "192.168.0.40" }
+      { type: "PTR", name: "_ipp._tcp.local", ttl: 120, target: "Brother._ipp._tcp.local" },
+      { type: "SRV", name: "Brother._ipp._tcp.local", ttl: 120, target: "brwf8.local", port: 631 },
+      { type: "A", name: "brwf8.local", ttl: 120, address: "192.168.0.40" }
     ])
   })
 
@@ -60,6 +60,10 @@ describe("mdns", () => {
     ])
   })
 
+  it("does not count a goodbye (TTL 0) as a sighting", () => {
+    expect(observationsFromMessage(decodeMessage(printerResponse(0)), ip("192.168.0.40"))).toEqual([])
+  })
+
   it("lists service types from the DNS-SD meta query for a follow-up round", () => {
     const header = Buffer.from([0, 0, 0x84, 0, 0, 0, 0, 1, 0, 0, 0, 0])
     const msg = decodeMessage(Buffer.concat([header, rr(name("_services._dns-sd._udp.local"), RecordType.PTR, name("_meshcop._udp.local"))]))
@@ -69,6 +73,11 @@ describe("mdns", () => {
 })
 
 describe("ssdp", () => {
+  it("does not count an ssdp:byebye NOTIFY as a sighting", () => {
+    const byebye = "NOTIFY * HTTP/1.1\r\nHOST: 239.255.255.250:1900\r\nNTS: ssdp:byebye\r\nUSN: uuid:abc-123::upnp:rootdevice\r\n\r\n"
+    expect(parseSsdp(byebye, ip("192.168.0.1"))).toBeUndefined()
+  })
+
   it("parses headers case-insensitively", () => {
     const text = "HTTP/1.1 200 OK\r\nCACHE-CONTROL: max-age=1800\r\nLocation: http://192.168.0.1:1900/rootDesc.xml\r\nserver: Linux UPnP/1.0\r\nUSN: uuid:abc-123::upnp:rootdevice\r\n\r\n"
     expect(parseSsdp(text, ip("192.168.0.1"))).toEqual({

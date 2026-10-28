@@ -2,9 +2,8 @@ import type { Network, Source } from "./domain.ts"
 import { allSources } from "./domain.ts"
 import { parseCidr } from "./network.ts"
 
-export interface DiscoveryOptions {
-  /** Total scan budget in milliseconds. Default 2000. */
-  readonly timeoutMs?: number
+/** What to look for and how hard. Shared by `discover` and `watch`. */
+export interface SourceOptions {
   readonly sources?: ReadonlyArray<Source>
   /** Concurrent TCP connects. Default 1024. */
   readonly concurrency?: number
@@ -24,13 +23,32 @@ export interface DiscoveryOptions {
   }
 }
 
+export interface DiscoveryOptions extends SourceOptions {
+  /** Total scan budget in milliseconds. Default 2000. */
+  readonly timeoutMs?: number
+}
+
+export interface WatchOptions extends SourceOptions {
+  /** Stop after this many milliseconds. Default: watch until interrupted. */
+  readonly watchForMs?: number
+  /** Report a device gone after this long without a sighting. Default 180000. */
+  readonly staleAfterMs?: number
+}
+
 export interface Subnet {
   readonly base: Network["address"]
   readonly prefix: number
 }
 
 export interface Config {
-  readonly timeoutMs: number
+  /** Undefined watches until interrupted. */
+  readonly watchForMs: number | undefined
+  readonly staleAfterMs: number
+  /**
+   * Longest gap between ARP, SSDP, and Tailscale rounds: a third of `staleAfterMs`, at most a
+   * minute, so a device that stays is re-sighted at least twice before it could go stale.
+   */
+  readonly roundMaxMs: number
   readonly sources: ReadonlySet<Source>
   readonly concurrency: number
   readonly connectTimeoutMs: number
@@ -55,7 +73,13 @@ const positiveInt = (name: string, value: number | undefined, fallback: number):
   return value
 }
 
-export const resolveConfig = (options: DiscoveryOptions, networks: ReadonlyArray<Network>): Config => {
+/** A scan is a watch with a deadline. */
+export const scanWindow = ({ timeoutMs, ...options }: DiscoveryOptions): WatchOptions => ({
+  ...options,
+  watchForMs: positiveInt("timeoutMs", timeoutMs, 2000)
+})
+
+export const resolveConfig = (options: WatchOptions, networks: ReadonlyArray<Network>): Config => {
   const sources = options.sources ?? allSources
   for (const s of sources) if (!allSources.includes(s)) throw new ConfigError(`unknown source "${s}"`)
   const subnets = (options.subnets ?? []).map((raw) => {
@@ -66,8 +90,11 @@ export const resolveConfig = (options: DiscoveryOptions, networks: ReadonlyArray
   const ports = options.ports ?? defaultPorts
   for (const p of ports) if (!Number.isInteger(p) || p < 1 || p > 65535) throw new ConfigError(`invalid port ${p}`)
   const wanted = options.interfaces
+  const staleAfterMs = positiveInt("staleAfterMs", options.staleAfterMs, 180_000)
   return {
-    timeoutMs: positiveInt("timeoutMs", options.timeoutMs, 2000),
+    watchForMs: options.watchForMs === undefined ? undefined : positiveInt("watchForMs", options.watchForMs, 0),
+    staleAfterMs,
+    roundMaxMs: Math.min(60_000, Math.floor(staleAfterMs / 3)),
     sources: new Set(sources),
     concurrency: positiveInt("concurrency", options.concurrency, 1024),
     connectTimeoutMs: positiveInt("connectTimeoutMs", options.connectTimeoutMs, 500),

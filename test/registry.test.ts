@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import type { Ipv4, Mac, Network, Observation } from "../src/domain.ts"
+import type { Device, Ipv4, Mac, Network, Observation } from "../src/domain.ts"
 import { Registry } from "../src/registry.ts"
 
 const ip = (s: string) => s as Ipv4
@@ -102,5 +102,61 @@ describe("Registry identity guards", () => {
       { _tag: "Mdns", ip: ip("192.168.0.21"), hostname: "localhost.local", services: [] }
     ])
     expect(devices).toHaveLength(2)
+  })
+})
+
+describe("Registry events", () => {
+  const arp40: Observation = { _tag: "Arp", ip: ip("192.168.0.40"), mac: mac("02:00:00:00:00:40"), iface: "en0" }
+
+  it("reports a first sighting as added and stays quiet on a re-sighting that changes nothing", () => {
+    const registry = new Registry(networks)
+    expect(registry.add(arp40, 1000)?._tag).toBe("DeviceAdded")
+    expect(registry.add(arp40, 5000)).toBeUndefined()
+    expect(registry.devices()[0]?.lastSeenMs).toBe(5000)
+  })
+
+  it("names the id a device had before an identifier upgraded it", () => {
+    const registry = new Registry(networks)
+    registry.add({ _tag: "Tcp", ip: ip("192.168.0.40"), port: 631 }, 1000)
+    expect(registry.add(arp40, 1001)).toMatchObject({
+      _tag: "DeviceUpdated",
+      device: { id: "mac:02:00:00:00:00:40" },
+      formerIds: ["ip:192.168.0.40"]
+    })
+  })
+
+  it("reports a device gone once it is stale, drops it from devices, and adds it again when it returns", () => {
+    const registry = new Registry(networks)
+    registry.add(arp40, 1000)
+    expect(registry.expire(2000, 5000)).toEqual([])
+    expect(registry.expire(6000, 5000).map((e) => [e._tag, e.device.id])).toEqual([["DeviceGone", "mac:02:00:00:00:00:40"]])
+    expect(registry.expire(7000, 5000)).toEqual([])
+    expect(registry.devices()).toEqual([])
+    expect(registry.add(arp40, 8000)?._tag).toBe("DeviceAdded")
+    expect(registry.devices()).toHaveLength(1)
+  })
+
+  it("lets a caller track the devices present from events alone, through upgrades and merges", () => {
+    const registry = new Registry(networks)
+    const present = new Map<string, Device>()
+    const observations: ReadonlyArray<Observation> = [
+      { _tag: "Tcp", ip: ip("192.168.0.20"), port: 22 },
+      { _tag: "Mdns", ip: ip("192.168.0.20"), hostname: "laptop.local", services: [] },
+      { _tag: "Tcp", ip: ip("192.168.50.20"), port: 22 },
+      { _tag: "Arp", ip: ip("192.168.50.20"), mac: mac("02:00:00:00:50:20"), iface: "en1" },
+      { _tag: "Mdns", ip: ip("192.168.50.20"), hostname: "laptop.local", services: ["_ssh._tcp"] },
+      { _tag: "Arp", ip: ip("192.168.0.20"), mac: mac("02:00:00:00:00:20"), iface: "en0" },
+      arp40
+    ]
+    observations.forEach((o, i) => {
+      const e = registry.add(o, 1000 + i)
+      if (!e) return
+      if (e._tag === "DeviceUpdated") for (const id of e.formerIds) present.delete(id)
+      present.set(e.device.id, e.device)
+    })
+    expect([...present.values()].sort((a, b) => a.id.localeCompare(b.id))).toEqual(
+      [...registry.devices()].sort((a, b) => a.id.localeCompare(b.id))
+    )
+    expect(present.size).toBe(2)
   })
 })

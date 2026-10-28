@@ -1,4 +1,4 @@
-import type { Device, Ipv4, Mac, Network, Observation, Printer, Source, TailscalePeer } from "./domain.ts"
+import type { Device, Ipv4, Mac, Network, Observation, Printer, ScanEvent, Source, SourceFailed, TailscalePeer } from "./domain.ts"
 import { ipv4ToInt } from "./domain.ts"
 import { networkOf } from "./network.ts"
 
@@ -21,7 +21,14 @@ interface Draft {
   printer?: Printer | undefined
   firstSeenMs: number
   lastSeenMs: number
+  /** The id last reported in an event; undefined until the first event. */
+  reportedId?: string | undefined
+  /** Fields last reported, minus timestamps, so a re-sighting that changes nothing stays quiet. */
+  reportedFields?: string | undefined
+  gone: boolean
 }
+
+export type DeviceEvent = Exclude<ScanEvent, SourceFailed>
 
 /** `foo.local.`, `Foo`, and `foo.tail1234.ts.net` all name the same machine `foo`. */
 export const normalizeHost = (name: string): string =>
@@ -125,7 +132,8 @@ const emptyDraft = (now: number): Draft => ({
   networks: new Set(),
   sources: new Set(),
   firstSeenMs: now,
-  lastSeenMs: now
+  lastSeenMs: now,
+  gone: false
 })
 
 const absorb = (into: Draft, from: Draft): void => {
@@ -139,6 +147,8 @@ const absorb = (into: Draft, from: Draft): void => {
   into.firstSeenMs = Math.min(into.firstSeenMs, from.firstSeenMs)
   into.lastSeenMs = Math.max(into.lastSeenMs, from.lastSeenMs)
 }
+
+const fieldsOf = ({ firstSeenMs: _, lastSeenMs: __, ...fields }: Device): string => JSON.stringify(fields)
 
 const byIp = (a: Ipv4, b: Ipv4) => ipv4ToInt(a) - ipv4ToInt(b)
 
@@ -166,6 +176,8 @@ const snapshot = (d: Draft): Device => {
  * Union-find over identifiers. Observations sharing any key (an IP, a MAC, an mDNS host,
  * an SSDP UUID, a Tailscale node) collapse into one device, so a machine seen on two bands,
  * two mesh subnets, and the tailnet resolves to a single record. Owned by one fiber per scan.
+ * Records are never deleted: a device that goes quiet is marked gone and comes back on its next
+ * sighting, so union-find links never need undoing.
  */
 export class Registry {
   readonly #parent = new Map<Key, Key>()
@@ -188,16 +200,22 @@ export class Registry {
     return root
   }
 
-  add(o: Observation, now: number): Device {
+  /** Records an observation. Returns the event it causes, or undefined when nothing but `lastSeenMs` changed. */
+  add(o: Observation, now: number): DeviceEvent | undefined {
     const handler = handlers[o._tag] as Handler<typeof o._tag>
     const keys = handler.keys(o as never)
+    const formerIds: Array<string> = []
+    let absorbedLive = false
     let root: Key | undefined
     for (const key of keys) {
       if (!this.#parent.has(key)) continue
       const r = this.#find(key)
       if (root === undefined) root = r
       else if (r !== root) {
-        absorb(this.#drafts.get(root)!, this.#drafts.get(r)!)
+        const absorbed = this.#drafts.get(r)!
+        if (absorbed.reportedId !== undefined) formerIds.push(absorbed.reportedId)
+        absorbedLive ||= absorbed.reportedId !== undefined && !absorbed.gone
+        absorb(this.#drafts.get(root)!, absorbed)
         this.#drafts.delete(r)
         this.#parent.set(r, root)
       }
@@ -219,11 +237,33 @@ export class Registry {
     }
     if (o._tag === "Arp" && o.iface) draft.networks.add(o.iface)
     draft.lastSeenMs = now
-    return snapshot(draft)
+    const device = snapshot(draft)
+    const fields = fieldsOf(device)
+    const wasLive = (draft.reportedId !== undefined && !draft.gone) || absorbedLive
+    if (draft.reportedId !== undefined && draft.reportedId !== device.id) formerIds.push(draft.reportedId)
+    const changed = fields !== draft.reportedFields || formerIds.length > 0
+    draft.reportedId = device.id
+    draft.reportedFields = fields
+    draft.gone = false
+    if (!wasLive) return { _tag: "DeviceAdded", device }
+    return changed ? { _tag: "DeviceUpdated", device, formerIds } : undefined
   }
 
+  /** Marks every live device unseen since `now - staleAfterMs` as gone. */
+  expire(now: number, staleAfterMs: number): ReadonlyArray<DeviceEvent> {
+    const gone: Array<DeviceEvent> = []
+    for (const draft of this.#drafts.values()) {
+      if (draft.gone || draft.lastSeenMs > now - staleAfterMs) continue
+      draft.gone = true
+      gone.push({ _tag: "DeviceGone", device: snapshot(draft) })
+    }
+    return gone
+  }
+
+  /** Devices present now, in address order. */
   devices(): ReadonlyArray<Device> {
     return [...this.#drafts.values()]
+      .filter((d) => !d.gone)
       .map(snapshot)
       .sort((a, b) => (a.ips[0] && b.ips[0] ? byIp(a.ips[0], b.ips[0]) : a.id.localeCompare(b.id)))
   }

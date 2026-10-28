@@ -1,12 +1,13 @@
 import { readFile } from "node:fs/promises"
 import * as Effect from "effect/Effect"
-import * as Schedule from "effect/Schedule"
+import * as Queue from "effect/Queue"
 import * as Stream from "effect/Stream"
 import type { Config } from "../config.ts"
 import type { Ipv4, Observation, SourceFailed } from "../domain.ts"
 import { parseIpv4, parseMac } from "../domain.ts"
 import { hostsOf } from "../network.ts"
 import { exec } from "./exec.ts"
+import { repeatRounds } from "./rounds.ts"
 import { openUdp, sendVia } from "./udp.ts"
 
 const ARP_LINE = /\((\d+\.\d+\.\d+\.\d+)\) at ([0-9a-fA-F:]+)(?:\s+\[\w+\])?\s+on\s+(\S+)/
@@ -62,24 +63,22 @@ const nudge = (hosts: ReadonlyArray<Ipv4>) =>
     })
   ).pipe(Effect.ignore)
 
-/** Reads the neighbour table, nudges every LAN address, then re-reads until the deadline and emits new entries. */
+/**
+ * Reads the neighbour table, then each round nudges every LAN address and re-reads the table
+ * every 250 ms for 2 s. Every read emits the whole table, so devices that stay are re-sighted.
+ */
 export const arp = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
-  Stream.unwrap(
+  Stream.callback<Observation, SourceFailed>((queue) =>
     Effect.gen(function*() {
-      const seen = new Set<string>()
-      const fresh = (entries: ReadonlyArray<Observation>) =>
-        entries.filter((o) => {
-          const key = o._tag === "Arp" ? `${o.ip}|${o.mac}` : ""
-          if (seen.has(key)) return false
-          seen.add(key)
-          return true
-        })
-      const first = yield* readTable
-      yield* Effect.forkScoped(nudge(lanHosts(cfg)))
-      const polls = Stream.fromEffect(Effect.delay(readTable, "250 millis")).pipe(
-        Stream.repeat(Schedule.spaced("250 millis")),
-        Stream.flatMap((entries) => Stream.fromIterable(fresh(entries)))
-      )
-      return Stream.fromIterable(fresh(first)).pipe(Stream.concat(polls))
+      const read = Effect.map(readTable, (entries) => {
+        for (const o of entries) Queue.offerUnsafe(queue, o)
+      })
+      const round = Effect.gen(function*() {
+        yield* Effect.forkScoped(nudge(lanHosts(cfg)))
+        for (let i = 0; i < 8; i++) yield* Effect.andThen(Effect.sleep("250 millis"), read)
+      })
+      yield* read
+      yield* round
+      return yield* repeatRounds(round, cfg.roundMaxMs)
     })
   )

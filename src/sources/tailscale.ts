@@ -1,4 +1,5 @@
 import * as Effect from "effect/Effect"
+import * as Queue from "effect/Queue"
 import * as Schema from "effect/Schema"
 import * as Stream from "effect/Stream"
 import type { Config } from "../config.ts"
@@ -6,6 +7,7 @@ import type { Ipv4, Observation } from "../domain.ts"
 import { parseIpv4, SourceFailed } from "../domain.ts"
 import { inCidr, parseCidr } from "../network.ts"
 import { execFirst } from "./exec.ts"
+import { repeatRounds } from "./rounds.ts"
 
 const Peer = Schema.Struct({
   ID: Schema.String,
@@ -63,5 +65,14 @@ export const parseTailscaleStatus = (json: string): Effect.Effect<ReadonlyArray<
 export const tailscaleStatus = (cfg: Config) =>
   execFirst("tailscale", cfg.tailscaleBinaries, ["status", "--json"]).pipe(Effect.flatMap(parseTailscaleStatus))
 
-export const tailscale = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
-  Stream.fromIterableEffect(tailscaleStatus(cfg))
+/** Emits `first` (the status the scan already read for route sweeps), then re-polls each round. */
+export const tailscale = (
+  cfg: Config,
+  first: Effect.Effect<ReadonlyArray<Observation>, SourceFailed>
+): Stream.Stream<Observation, SourceFailed> =>
+  Stream.callback<Observation, SourceFailed>((queue) => {
+    const offer = (peers: ReadonlyArray<Observation>) => {
+      for (const o of peers) Queue.offerUnsafe(queue, o)
+    }
+    return Effect.andThen(Effect.map(first, offer), repeatRounds(Effect.map(tailscaleStatus(cfg), offer), cfg.roundMaxMs))
+  })

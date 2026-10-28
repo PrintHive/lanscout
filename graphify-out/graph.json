@@ -7,6 +7,110 @@
   },
   "nodes": [
     {
+      "id": "src_cli_parsed",
+      "label": "Parsed",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "parsed",
+      "source_file": "src/cli.ts",
+      "source_location": "L81"
+    },
+    {
+      "id": "src_cli_view",
+      "label": "View",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "view",
+      "source_file": "src/cli.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "src_config_config",
+      "label": "Config",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "src/config.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "src_config_discoveryoptions",
+      "label": "DiscoveryOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "discoveryoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_config_sourceoptions",
+      "label": "SourceOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "sourceoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_config_subnet",
+      "label": "Subnet",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "subnet",
+      "source_file": "src/config.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "src_config_watchoptions",
+      "label": "WatchOptions",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "watchoptions",
+      "source_file": "src/config.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "src_discover_scanresult",
+      "label": "ScanResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "scanresult",
+      "source_file": "src/discover.ts",
+      "source_location": "L44"
+    },
+    {
       "id": "src_domain_device",
       "label": "Device",
       "_callable": true,
@@ -17,20 +121,7 @@
       "file_type": "code",
       "norm_label": "device",
       "source_file": "src/domain.ts",
-      "source_location": "L104"
-    },
-    {
-      "id": "src_domain_event",
-      "label": "Event",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "event",
-      "source_file": "src/domain.ts",
-      "source_location": "L94"
+      "source_location": "L102"
     },
     {
       "id": "src_domain_ipv4",
@@ -59,6 +150,19 @@
       "source_location": "L4"
     },
     {
+      "id": "src_domain_network",
+      "label": "Network",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "network",
+      "source_file": "src/domain.ts",
+      "source_location": "L34"
+    },
+    {
       "id": "src_domain_networkkind",
       "label": "NetworkKind",
       "_callable": true,
@@ -85,6 +189,45 @@
       "source_location": "L70"
     },
     {
+      "id": "src_domain_printer",
+      "label": "Printer",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "printer",
+      "source_file": "src/domain.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "src_domain_scanevent",
+      "label": "ScanEvent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "scanevent",
+      "source_file": "src/domain.ts",
+      "source_location": "L125"
+    },
+    {
+      "id": "src_domain_source",
+      "label": "Source",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "source",
+      "source_file": "src/domain.ts",
+      "source_location": "L28"
+    },
+    {
       "id": "src_domain_tailscalepeer",
       "label": "TailscalePeer",
       "_callable": true,
@@ -95,7 +238,20 @@
       "file_type": "code",
       "norm_label": "tailscalepeer",
       "source_file": "src/domain.ts",
-      "source_location": "L96"
+      "source_location": "L94"
+    },
+    {
+      "id": "src_registry_deviceevent",
+      "label": "DeviceEvent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "deviceevent",
+      "source_file": "src/registry.ts",
+      "source_location": "L31"
     },
     {
       "id": "src_registry_draft",
@@ -121,7 +277,7 @@
       "file_type": "code",
       "norm_label": "handler",
       "source_file": "src/registry.ts",
-      "source_location": "L40"
+      "source_location": "L47"
     },
     {
       "id": "src_registry_key",
@@ -142,38 +298,12 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
+      "community": 13,
+      "community_name": "Registry",
       "file_type": "code",
       "norm_label": "registry",
       "source_file": "src/registry.ts",
-      "source_location": "L170"
-    },
-    {
-      "id": "src_domain_printer",
-      "label": "Printer",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "find-printers.ts",
-      "file_type": "code",
-      "norm_label": "printer",
-      "source_file": "src/domain.ts",
-      "source_location": "L41"
-    },
-    {
-      "id": "src_printers_bambu_bambu",
-      "label": "Bambu",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambu",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L4"
+      "source_location": "L182"
     },
     {
       "id": "src_printers_bambu_certificatenames",
@@ -187,19 +317,6 @@
       "norm_label": "certificatenames",
       "source_file": "src/printers/bambu.ts",
       "source_location": "L43"
-    },
-    {
-      "id": "src_printers_bambu_models_bambumodel",
-      "label": "BambuModel",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambumodel",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L3"
     },
     {
       "id": "src_printers_klipper_klipper",
@@ -221,11 +338,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "dnsmessage",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "src_sources_dns_dnsquestion",
@@ -234,11 +351,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "dnsquestion",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "src_sources_dns_dnsrecord",
@@ -247,76 +364,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "dnsrecord",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_sources_ssdp_ssdpobservation",
-      "label": "SsdpObservation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "ssdpobservation",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_cli_column",
-      "label": "Column",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "column",
-      "source_file": "src/cli.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_cli_format",
-      "label": "Format",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "format",
-      "source_file": "src/cli.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "src_cli_view",
-      "label": "View",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "view",
-      "source_file": "src/cli.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "src_config_config",
-      "label": "Config",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "src/config.ts",
-      "source_location": "L32"
+      "source_location": "L4"
     },
     {
       "id": "src_config_configerror",
@@ -329,33 +381,7 @@
       "file_type": "code",
       "norm_label": "configerror",
       "source_file": "src/config.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "src_config_discoveryoptions",
-      "label": "DiscoveryOptions",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "discoveryoptions",
-      "source_file": "src/config.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "src_config_subnet",
-      "label": "Subnet",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "subnet",
-      "source_file": "src/config.ts",
-      "source_location": "L27"
+      "source_location": "L66"
     },
     {
       "id": "src_discover_prober",
@@ -371,19 +397,6 @@
       "source_location": "L20"
     },
     {
-      "id": "src_discover_scanevent",
-      "label": "ScanEvent",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "scanevent",
-      "source_file": "src/discover.ts",
-      "source_location": "L44"
-    },
-    {
       "id": "src_discover_tailnetpeers",
       "label": "TailnetPeers",
       "_callable": true,
@@ -397,43 +410,43 @@
       "source_location": "L18"
     },
     {
-      "id": "src_domain_network",
-      "label": "Network",
+      "id": "src_printers_bambu_bambu",
+      "label": "Bambu",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
+      "community": 6,
+      "community_name": "ssdp.ts",
       "file_type": "code",
-      "norm_label": "network",
-      "source_file": "src/domain.ts",
-      "source_location": "L34"
+      "norm_label": "bambu",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L4"
     },
     {
-      "id": "src_domain_source",
-      "label": "Source",
+      "id": "src_printers_bambu_models_bambumodel",
+      "label": "BambuModel",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
+      "community": 6,
+      "community_name": "ssdp.ts",
       "file_type": "code",
-      "norm_label": "source",
-      "source_file": "src/domain.ts",
-      "source_location": "L28"
+      "norm_label": "bambumodel",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L3"
     },
     {
-      "id": "src_discover_scanresult",
-      "label": "ScanResult",
+      "id": "src_sources_ssdp_ssdpobservation",
+      "label": "SsdpObservation",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 8,
-      "community_name": "tailscale.ts",
+      "community": 6,
+      "community_name": "ssdp.ts",
       "file_type": "code",
-      "norm_label": "scanresult",
-      "source_file": "src/discover.ts",
-      "source_location": "L48"
+      "norm_label": "ssdpobservation",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L20"
     },
     {
       "id": "src_domain_sourcefailed",
@@ -442,23 +455,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "sourcefailed",
       "source_file": "src/domain.ts",
       "source_location": "L89"
     },
     {
-      "id": "src_discover_fold",
-      "label": "fold()",
+      "id": "src_cli_column",
+      "label": "Column",
       "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
+      "community": 9,
+      "community_name": "cli.ts",
       "file_type": "code",
-      "norm_label": "fold()",
-      "source_file": "src/discover.ts",
-      "source_location": "L93"
+      "norm_label": "column",
+      "source_file": "src/cli.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "src_cli_format",
+      "label": "Format",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "format",
+      "source_file": "src/cli.ts",
+      "source_location": "L31"
     },
     {
       "id": "src_registry_absorb",
@@ -470,31 +497,7 @@
       "file_type": "code",
       "norm_label": "absorb()",
       "source_file": "src/registry.ts",
-      "source_location": "L131"
-    },
-    {
-      "id": "src_registry_byip",
-      "label": "byIp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "byip()",
-      "source_file": "src/registry.ts",
-      "source_location": "L143"
-    },
-    {
-      "id": "src_registry_emptydraft",
-      "label": "emptyDraft()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "emptydraft()",
-      "source_file": "src/registry.ts",
-      "source_location": "L118"
+      "source_location": "L139"
     },
     {
       "id": "src_registry_hostkey",
@@ -506,7 +509,7 @@
       "file_type": "code",
       "norm_label": "hostkey()",
       "source_file": "src/registry.ts",
-      "source_location": "L33"
+      "source_location": "L40"
     },
     {
       "id": "src_registry_mergeprinter",
@@ -518,7 +521,7 @@
       "file_type": "code",
       "norm_label": "mergeprinter()",
       "source_file": "src/registry.ts",
-      "source_location": "L112"
+      "source_location": "L119"
     },
     {
       "id": "src_registry_normalizehost",
@@ -530,55 +533,19 @@
       "file_type": "code",
       "norm_label": "normalizehost()",
       "source_file": "src/registry.ts",
-      "source_location": "L27"
+      "source_location": "L34"
     },
     {
-      "id": "src_registry_registry_add",
-      "label": ".add()",
+      "id": "src_registry_registry_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "domain.ts",
       "file_type": "code",
-      "norm_label": ".add()",
+      "norm_label": ".constructor()",
       "source_file": "src/registry.ts",
-      "source_location": "L191"
-    },
-    {
-      "id": "src_registry_registry_devices",
-      "label": ".devices()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": ".devices()",
-      "source_file": "src/registry.ts",
-      "source_location": "L225"
-    },
-    {
-      "id": "src_registry_registry_find",
-      "label": ".#find()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": ".#find()",
-      "source_file": "src/registry.ts",
-      "source_location": "L179"
-    },
-    {
-      "id": "src_registry_snapshot",
-      "label": "snapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "snapshot()",
-      "source_file": "src/registry.ts",
-      "source_location": "L145"
+      "source_location": "L187"
     },
     {
       "id": "src_registry_usnuuid",
@@ -590,31 +557,7 @@
       "file_type": "code",
       "norm_label": "usnuuid()",
       "source_file": "src/registry.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "test_printers_test_ip",
-      "label": "ip()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "ip()",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "test_printers_test_notify",
-      "label": "notify()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "notify()",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L10"
+      "source_location": "L45"
     },
     {
       "id": "test_registry_test_ip",
@@ -639,18 +582,6 @@
       "norm_label": "mac()",
       "source_file": "test/registry.test.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "test_registry_test_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "test/registry.test.ts",
-      "source_location": "L14"
     },
     {
       "id": "scripts_sync_bambu_models_api",
@@ -711,6 +642,126 @@
       "norm_label": "row()",
       "source_file": "examples/find-printers.ts",
       "source_location": "L31"
+    },
+    {
+      "id": "src_discover_fold",
+      "label": "fold()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "fold()",
+      "source_file": "src/discover.ts",
+      "source_location": "L94"
+    },
+    {
+      "id": "src_registry_byip",
+      "label": "byIp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "byip()",
+      "source_file": "src/registry.ts",
+      "source_location": "L153"
+    },
+    {
+      "id": "src_registry_emptydraft",
+      "label": "emptyDraft()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "emptydraft()",
+      "source_file": "src/registry.ts",
+      "source_location": "L125"
+    },
+    {
+      "id": "src_registry_fieldsof",
+      "label": "fieldsOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "fieldsof()",
+      "source_file": "src/registry.ts",
+      "source_location": "L151"
+    },
+    {
+      "id": "src_registry_registry_add",
+      "label": ".add()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": ".add()",
+      "source_file": "src/registry.ts",
+      "source_location": "L204"
+    },
+    {
+      "id": "src_registry_registry_devices",
+      "label": ".devices()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": ".devices()",
+      "source_file": "src/registry.ts",
+      "source_location": "L264"
+    },
+    {
+      "id": "src_registry_registry_expire",
+      "label": ".expire()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": ".expire()",
+      "source_file": "src/registry.ts",
+      "source_location": "L253"
+    },
+    {
+      "id": "src_registry_registry_find",
+      "label": ".#find()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": ".#find()",
+      "source_file": "src/registry.ts",
+      "source_location": "L191"
+    },
+    {
+      "id": "src_registry_snapshot",
+      "label": "snapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "snapshot()",
+      "source_file": "src/registry.ts",
+      "source_location": "L155"
+    },
+    {
+      "id": "test_registry_test_run",
+      "label": "run()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Registry",
+      "file_type": "code",
+      "norm_label": "run()",
+      "source_file": "test/registry.test.ts",
+      "source_location": "L14"
     },
     {
       "id": "src_domain_inttoipv4",
@@ -809,52 +860,16 @@
       "source_location": "L34"
     },
     {
-      "id": "src_printers_bambu_bambufromssdpheaders",
-      "label": "bambuFromSsdpHeaders()",
+      "id": "src_sources_arp_lanhosts",
+      "label": "lanHosts()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
+      "community": 2,
+      "community_name": "network.ts",
       "file_type": "code",
-      "norm_label": "bambufromssdpheaders()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_printers_bambu_field",
-      "label": "field()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "field()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "src_printers_bambu_modelof",
-      "label": "modelOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "modelof()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_printers_bambu_printerfromcertificate",
-      "label": "printerFromCertificate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "printerfromcertificate()",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L57"
+      "norm_label": "lanhosts()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L41"
     },
     {
       "id": "src_printers_klipper_klipperfrommoonraker",
@@ -941,100 +956,16 @@
       "source_location": "L72"
     },
     {
-      "id": "src_domain_parseipv4",
-      "label": "parseIpv4()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "parseipv4()",
-      "source_file": "src/domain.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_domain_parsemac",
-      "label": "parseMac()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "parsemac()",
-      "source_file": "src/domain.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_sources_arp_arp",
-      "label": "arp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "arp()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L66"
-    },
-    {
-      "id": "src_sources_arp_lanhosts",
-      "label": "lanHosts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "lanhosts()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L40"
-    },
-    {
-      "id": "src_sources_arp_nudge",
-      "label": "nudge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "nudge()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L54"
-    },
-    {
-      "id": "src_sources_arp_parsearptable",
-      "label": "parseArpTable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "parsearptable()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_sources_arp_parseprocnetarp",
-      "label": "parseProcNetArp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "parseprocnetarp()",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L24"
-    },
-    {
       "id": "src_sources_dns_decodemessage",
       "label": "decodeMessage()",
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "decodemessage()",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L58"
+      "source_location": "L59"
     },
     {
       "id": "src_sources_dns_encodename",
@@ -1042,11 +973,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "encodename()",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "src_sources_dns_encodequery",
@@ -1054,11 +985,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "encodequery()",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "src_sources_dns_readname",
@@ -1066,11 +997,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "readname()",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "src_sources_mdns_advertisedservicetypes",
@@ -1078,11 +1009,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "advertisedservicetypes()",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "src_sources_mdns_mdns",
@@ -1090,11 +1021,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "mdns()",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L76"
+      "source_location": "L78"
     },
     {
       "id": "src_sources_mdns_observationsfrommessage",
@@ -1102,11 +1033,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "observationsfrommessage()",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "src_sources_mdns_query",
@@ -1114,11 +1045,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "query()",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L74"
+      "source_location": "L76"
     },
     {
       "id": "src_sources_mdns_servicetypeof",
@@ -1126,119 +1057,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "servicetypeof()",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "src_sources_ssdp_dedupekey",
-      "label": "dedupeKey()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "dedupekey()",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L50"
-    },
-    {
-      "id": "src_sources_ssdp_parsessdp",
-      "label": "parseSsdp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "parsessdp()",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "src_sources_ssdp_search",
-      "label": "search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "search()",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_sources_ssdp_ssdp",
-      "label": "ssdp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "ssdp()",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L53"
-    },
-    {
-      "id": "src_sources_udp_bind",
-      "label": "bind()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bind()",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_sources_udp_bindudp",
-      "label": "bindUdp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bindudp()",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "src_sources_udp_openudp",
-      "label": "openUdp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "openudp()",
-      "source_file": "src/sources/udp.ts",
       "source_location": "L27"
-    },
-    {
-      "id": "src_sources_udp_release",
-      "label": "release()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "release()",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L20"
-    },
-    {
-      "id": "src_sources_udp_sendvia",
-      "label": "sendVia()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "sendvia()",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L34"
     },
     {
       "id": "test_parsers_test_ip",
@@ -1246,7 +1069,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "ip()",
       "source_file": "test/parsers.test.ts",
@@ -1258,7 +1081,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "name()",
       "source_file": "test/parsers.test.ts",
@@ -1270,7 +1093,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "printerresponse()",
       "source_file": "test/parsers.test.ts",
@@ -1282,7 +1105,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "rr()",
       "source_file": "test/parsers.test.ts",
@@ -1294,71 +1117,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "u16()",
       "source_file": "test/parsers.test.ts",
       "source_location": "L16"
-    },
-    {
-      "id": "src_cli_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "src/cli.ts",
-      "source_location": "L120"
-    },
-    {
-      "id": "src_cli_parseargs",
-      "label": "parseArgs()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "parseargs()",
-      "source_file": "src/cli.ts",
-      "source_location": "L77"
-    },
-    {
-      "id": "src_cli_printermodel",
-      "label": "printerModel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "printermodel()",
-      "source_file": "src/cli.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "src_cli_printerstatus",
-      "label": "printerStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "printerstatus()",
-      "source_file": "src/cli.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "src_cli_table",
-      "label": "table()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "table()",
-      "source_file": "src/cli.ts",
-      "source_location": "L113"
     },
     {
       "id": "src_config_positiveint",
@@ -1370,7 +1133,7 @@
       "file_type": "code",
       "norm_label": "positiveint()",
       "source_file": "src/config.ts",
-      "source_location": "L52"
+      "source_location": "L70"
     },
     {
       "id": "src_config_resolveconfig",
@@ -1382,7 +1145,19 @@
       "file_type": "code",
       "norm_label": "resolveconfig()",
       "source_file": "src/config.ts",
-      "source_location": "L58"
+      "source_location": "L82"
+    },
+    {
+      "id": "src_config_scanwindow",
+      "label": "scanWindow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "code",
+      "norm_label": "scanwindow()",
+      "source_file": "src/config.ts",
+      "source_location": "L77"
     },
     {
       "id": "src_discover_config",
@@ -1394,7 +1169,7 @@
       "file_type": "code",
       "norm_label": "config()",
       "source_file": "src/discover.ts",
-      "source_location": "L54"
+      "source_location": "L50"
     },
     {
       "id": "src_discover_discover",
@@ -1406,7 +1181,7 @@
       "file_type": "code",
       "norm_label": "discover()",
       "source_file": "src/discover.ts",
-      "source_location": "L122"
+      "source_location": "L130"
     },
     {
       "id": "src_discover_discoverdevices",
@@ -1418,7 +1193,7 @@
       "file_type": "code",
       "norm_label": "discoverdevices()",
       "source_file": "src/discover.ts",
-      "source_location": "L128"
+      "source_location": "L136"
     },
     {
       "id": "src_discover_isprober",
@@ -1454,55 +1229,55 @@
       "file_type": "code",
       "norm_label": "observe()",
       "source_file": "src/discover.ts",
-      "source_location": "L60"
+      "source_location": "L59"
     },
     {
-      "id": "src_discover_scan",
-      "label": "scan()",
+      "id": "src_sources_arp_arp",
+      "label": "arp()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "scan()",
-      "source_file": "src/discover.ts",
-      "source_location": "L112"
+      "norm_label": "arp()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L70"
     },
     {
-      "id": "src_network_localnetworks",
-      "label": "localNetworks()",
+      "id": "src_sources_rounds_repeatrounds",
+      "label": "repeatRounds()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "localnetworks()",
-      "source_file": "src/network.ts",
-      "source_location": "L22"
+      "norm_label": "repeatrounds()",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L11"
     },
     {
-      "id": "src_network_parsecidr",
-      "label": "parseCidr()",
+      "id": "src_sources_tailscale_tailscale",
+      "label": "tailscale()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "parsecidr()",
-      "source_file": "src/network.ts",
-      "source_location": "L15"
+      "norm_label": "tailscale()",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L69"
     },
     {
-      "id": "src_registry_registry_constructor",
-      "label": ".constructor()",
+      "id": "src_sources_tailscale_tailscalestatus",
+      "label": "tailscaleStatus()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "src/registry.ts",
-      "source_location": "L175"
+      "norm_label": "tailscalestatus()",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L65"
     },
     {
       "id": "src_sources_tcp_probe",
@@ -1541,12 +1316,264 @@
       "source_location": "L45"
     },
     {
+      "id": "src_printers_bambu_bambufromssdpheaders",
+      "label": "bambuFromSsdpHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambufromssdpheaders()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_printers_bambu_field",
+      "label": "field()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "field()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_printers_bambu_modelof",
+      "label": "modelOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "modelof()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_printers_bambu_printerfromcertificate",
+      "label": "printerFromCertificate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "printerfromcertificate()",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_sources_arp_nudge",
+      "label": "nudge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "nudge()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "src_sources_ssdp_parsessdp",
+      "label": "parseSsdp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "parsessdp()",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "src_sources_ssdp_search",
+      "label": "search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "search()",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_sources_ssdp_ssdp",
+      "label": "ssdp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "ssdp()",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "src_sources_udp_bind",
+      "label": "bind()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bind()",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_sources_udp_bindudp",
+      "label": "bindUdp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bindudp()",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "src_sources_udp_openudp",
+      "label": "openUdp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "openudp()",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_sources_udp_release",
+      "label": "release()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "release()",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_sources_udp_sendvia",
+      "label": "sendVia()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "sendvia()",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "test_printers_test_ip",
+      "label": "ip()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "ip()",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "test_printers_test_notify",
+      "label": "notify()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "notify()",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_domain_parseipv4",
+      "label": "parseIpv4()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "parseipv4()",
+      "source_file": "src/domain.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_domain_parsemac",
+      "label": "parseMac()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "parsemac()",
+      "source_file": "src/domain.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_network_localnetworks",
+      "label": "localNetworks()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "localnetworks()",
+      "source_file": "src/network.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_network_parsecidr",
+      "label": "parseCidr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "parsecidr()",
+      "source_file": "src/network.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_sources_arp_parsearptable",
+      "label": "parseArpTable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "parsearptable()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_sources_arp_parseprocnetarp",
+      "label": "parseProcNetArp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "parseprocnetarp()",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L25"
+    },
+    {
       "id": "src_sources_exec_exec",
       "label": "exec()",
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "exec()",
       "source_file": "src/sources/exec.ts",
@@ -1558,7 +1585,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "execfirst()",
       "source_file": "src/sources/exec.ts",
@@ -1570,11 +1597,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "isprivate()",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "src_sources_tailscale_lanendpoint",
@@ -1582,11 +1609,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "lanendpoint()",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L33"
+      "source_location": "L35"
     },
     {
       "id": "src_sources_tailscale_parsetailscalestatus",
@@ -1594,35 +1621,153 @@
       "_callable": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "parsetailscalestatus()",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L38"
+      "source_location": "L40"
     },
     {
-      "id": "src_sources_tailscale_tailscale",
-      "label": "tailscale()",
+      "id": "src_cli_byip",
+      "label": "byIp()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
-      "community_name": "tailscale.ts",
+      "community": 9,
+      "community_name": "cli.ts",
       "file_type": "code",
-      "norm_label": "tailscale()",
-      "source_file": "src/sources/tailscale.ts",
-      "source_location": "L66"
+      "norm_label": "byip()",
+      "source_file": "src/cli.ts",
+      "source_location": "L137"
     },
     {
-      "id": "src_sources_tailscale_tailscalestatus",
-      "label": "tailscaleStatus()",
+      "id": "src_cli_main",
+      "label": "main()",
       "_callable": true,
       "_origin": "ast",
-      "community": 8,
-      "community_name": "tailscale.ts",
+      "community": 9,
+      "community_name": "cli.ts",
       "file_type": "code",
-      "norm_label": "tailscalestatus()",
-      "source_file": "src/sources/tailscale.ts",
-      "source_location": "L63"
+      "norm_label": "main()",
+      "source_file": "src/cli.ts",
+      "source_location": "L194"
+    },
+    {
+      "id": "src_cli_parseargs",
+      "label": "parseArgs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "parseargs()",
+      "source_file": "src/cli.ts",
+      "source_location": "L89"
+    },
+    {
+      "id": "src_cli_printermodel",
+      "label": "printerModel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "printermodel()",
+      "source_file": "src/cli.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_cli_printerstatus",
+      "label": "printerStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "printerstatus()",
+      "source_file": "src/cli.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "src_cli_report",
+      "label": "report()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "report()",
+      "source_file": "src/cli.ts",
+      "source_location": "L139"
+    },
+    {
+      "id": "src_cli_runscan",
+      "label": "runScan()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "runscan()",
+      "source_file": "src/cli.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "src_cli_runwatch",
+      "label": "runWatch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "runwatch()",
+      "source_file": "src/cli.ts",
+      "source_location": "L168"
+    },
+    {
+      "id": "src_cli_table",
+      "label": "table()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "table()",
+      "source_file": "src/cli.ts",
+      "source_location": "L130"
+    },
+    {
+      "id": "src_discover_watch",
+      "label": "watch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "watch()",
+      "source_file": "src/discover.ts",
+      "source_location": "L120"
+    },
+    {
+      "id": "src_config",
+      "label": "config.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "config.ts",
+      "source_file": "src/config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_config_defaultports",
+      "label": "defaultPorts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "defaultports",
+      "source_file": "src/config.ts",
+      "source_location": "L64"
     },
     {
       "id": "src_domain",
@@ -1647,6 +1792,17 @@
       "source_location": "L29"
     },
     {
+      "id": "src_index",
+      "label": "index.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "code",
+      "norm_label": "index.ts",
+      "source_file": "src/index.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_registry",
       "label": "registry.ts",
       "_origin": "ast",
@@ -1666,7 +1822,7 @@
       "file_type": "code",
       "norm_label": "generichosts",
       "source_file": "src/registry.ts",
-      "source_location": "L31"
+      "source_location": "L38"
     },
     {
       "id": "src_registry_handlers",
@@ -1677,7 +1833,7 @@
       "file_type": "code",
       "norm_label": "handlers",
       "source_file": "src/registry.ts",
-      "source_location": "L46"
+      "source_location": "L53"
     },
     {
       "id": "src_registry_keyrank",
@@ -1689,28 +1845,6 @@
       "norm_label": "keyrank",
       "source_file": "src/registry.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "test_printers_test",
-      "label": "printers.test.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "printers.test.ts",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_printers_test_p1s",
-      "label": "p1s",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "domain.ts",
-      "file_type": "code",
-      "norm_label": "p1s",
-      "source_file": "test/printers.test.ts",
-      "source_location": "L13"
     },
     {
       "id": "test_registry_test",
@@ -1744,6 +1878,18 @@
       "norm_label": "vitest",
       "source_file": "package.json",
       "source_location": "L70"
+    },
+    {
+      "id": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
+      "label": "One record per device, across bands, subnets, and the tailnet",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "domain.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "one record per device, across bands, subnets, and the tailnet",
+      "source_file": "README.md",
+      "source_location": "L180"
     },
     {
       "id": "package",
@@ -2417,61 +2563,6 @@
       "source_location": "L5"
     },
     {
-      "id": "src_printers_bambu",
-      "label": "bambu.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambu.ts",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_printers_bambu_bambu_nt",
-      "label": "BAMBU_NT",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambu_nt",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_printers_bambu_modelbyserialprefix",
-      "label": "modelBySerialPrefix",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "modelbyserialprefix",
-      "source_file": "src/printers/bambu.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_printers_bambu_models",
-      "label": "bambu-models.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambu-models.ts",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_printers_bambu_models_bambumodels",
-      "label": "bambuModels",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "printer.ts",
-      "file_type": "code",
-      "norm_label": "bambumodels",
-      "source_file": "src/printers/bambu-models.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "src_printers_klipper",
       "label": "klipper.ts",
       "_origin": "ast",
@@ -2560,33 +2651,11 @@
       "source_location": "L16"
     },
     {
-      "id": "src_sources_arp",
-      "label": "arp.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "arp.ts",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_sources_arp_readtable",
-      "label": "readTable",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "readtable",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L32"
-    },
-    {
       "id": "src_sources_dns",
       "label": "dns.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "dns.ts",
       "source_file": "src/sources/dns.ts",
@@ -2597,7 +2666,7 @@
       "label": "RecordType",
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "recordtype",
       "source_file": "src/sources/dns.ts",
@@ -2608,7 +2677,7 @@
       "label": "mdns.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "mdns.ts",
       "source_file": "src/sources/mdns.ts",
@@ -2619,121 +2688,22 @@
       "label": "seedServiceTypes",
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "seedservicetypes",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "src_sources_ssdp",
-      "label": "ssdp.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "ssdp.ts",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_sources_ssdp_bambu_ports",
-      "label": "BAMBU_PORTS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "bambu_ports",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_sources_ssdp_search_all",
-      "label": "SEARCH_ALL",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "search_all",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_sources_udp",
-      "label": "udp.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "code",
-      "norm_label": "udp.ts",
-      "source_file": "src/sources/udp.ts",
-      "source_location": "L1"
+      "source_location": "L20"
     },
     {
       "id": "test_parsers_test",
       "label": "parsers.test.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "ssdp.ts",
+      "community_name": "parsers.test.ts",
       "file_type": "code",
       "norm_label": "parsers.test.ts",
       "source_file": "test/parsers.test.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_effect",
-      "label": "effect",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "file_type": "concept",
-      "norm_label": "effect",
-      "source_file": "package.json",
-      "source_location": "L64"
-    },
-    {
-      "id": "src_cli",
-      "label": "cli.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "cli.ts",
-      "source_file": "src/cli.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_cli_views",
-      "label": "views",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "views",
-      "source_file": "src/cli.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "src_config",
-      "label": "config.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "config.ts",
-      "source_file": "src/config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_config_defaultports",
-      "label": "defaultPorts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "discover.ts",
-      "file_type": "code",
-      "norm_label": "defaultports",
-      "source_file": "src/config.ts",
-      "source_location": "L46"
     },
     {
       "id": "src_discover",
@@ -2769,15 +2739,15 @@
       "source_location": "L33"
     },
     {
-      "id": "src_index",
-      "label": "index.ts",
+      "id": "src_discover_tick",
+      "label": "tick",
       "_origin": "ast",
       "community": 5,
       "community_name": "discover.ts",
       "file_type": "code",
-      "norm_label": "index.ts",
-      "source_file": "src/index.ts",
-      "source_location": "L1"
+      "norm_label": "tick",
+      "source_file": "src/discover.ts",
+      "source_location": "L57"
     },
     {
       "id": "src_sources_tcp",
@@ -2789,6 +2759,282 @@
       "norm_label": "tcp.ts",
       "source_file": "src/sources/tcp.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "readme",
+      "label": "README.md",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "readme.md",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "readme_develop_lanscout",
+      "label": "Develop lanscout",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "develop lanscout",
+      "source_file": "README.md",
+      "source_location": "L198"
+    },
+    {
+      "id": "readme_find_the_3d_printers_on_your_network",
+      "label": "Find the 3D printers on your network",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "find the 3d printers on your network",
+      "source_file": "README.md",
+      "source_location": "L149"
+    },
+    {
+      "id": "readme_install",
+      "label": "Install",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "install",
+      "source_file": "README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "readme_lanscout",
+      "label": "lanscout",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "lanscout",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "readme_license",
+      "label": "License",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "license",
+      "source_file": "README.md",
+      "source_location": "L208"
+    },
+    {
+      "id": "readme_run_the_cli",
+      "label": "Run the CLI",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "run the cli",
+      "source_file": "README.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "readme_the_device_record",
+      "label": "The `Device` record",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the `device` record",
+      "source_file": "README.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "readme_use_the_library",
+      "label": "Use the library",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "use the library",
+      "source_file": "README.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "readme_where_the_scan_time_goes",
+      "label": "Where the scan time goes",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "where the scan time goes",
+      "source_file": "README.md",
+      "source_location": "L188"
+    },
+    {
+      "id": "readme_with_effect",
+      "label": "With Effect",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "with effect",
+      "source_file": "README.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "readme_with_promises",
+      "label": "With promises",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "discover.ts",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "with promises",
+      "source_file": "README.md",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_printers_bambu",
+      "label": "bambu.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambu.ts",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_printers_bambu_bambu_nt",
+      "label": "BAMBU_NT",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambu_nt",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_printers_bambu_modelbyserialprefix",
+      "label": "modelBySerialPrefix",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "modelbyserialprefix",
+      "source_file": "src/printers/bambu.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_printers_bambu_models",
+      "label": "bambu-models.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambu-models.ts",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_printers_bambu_models_bambumodels",
+      "label": "bambuModels",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambumodels",
+      "source_file": "src/printers/bambu-models.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_sources_ssdp",
+      "label": "ssdp.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "ssdp.ts",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_ssdp_bambu_ports",
+      "label": "BAMBU_PORTS",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "bambu_ports",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_sources_ssdp_notify_ports",
+      "label": "NOTIFY_PORTS",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "notify_ports",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_sources_ssdp_search_all",
+      "label": "SEARCH_ALL",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "search_all",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "src_sources_udp",
+      "label": "udp.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "udp.ts",
+      "source_file": "src/sources/udp.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_printers_test",
+      "label": "printers.test.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "printers.test.ts",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_printers_test_p1s",
+      "label": "p1s",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ssdp.ts",
+      "file_type": "code",
+      "norm_label": "p1s",
+      "source_file": "test/printers.test.ts",
+      "source_location": "L13"
     },
     {
       "id": "tsconfig",
@@ -2989,22 +3235,66 @@
       "source_location": "L19"
     },
     {
+      "id": "src_sources_arp",
+      "label": "arp.ts",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "arp.ts",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_arp_readtable",
+      "label": "readTable",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "readtable",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L33"
+    },
+    {
       "id": "src_sources_exec",
       "label": "exec.ts",
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "exec.ts",
       "source_file": "src/sources/exec.ts",
       "source_location": "L1"
     },
     {
+      "id": "src_sources_rounds",
+      "label": "rounds.ts",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "rounds.ts",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_sources_rounds_mdns_max_interval_ms",
+      "label": "MDNS_MAX_INTERVAL_MS",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "code",
+      "norm_label": "mdns_max_interval_ms",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "src_sources_tailscale",
       "label": "tailscale.ts",
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "tailscale.ts",
       "source_file": "src/sources/tailscale.ts",
@@ -3015,189 +3305,89 @@
       "label": "Peer",
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "peer",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L10"
+      "source_location": "L12"
     },
     {
       "id": "src_sources_tailscale_private",
       "label": "PRIVATE",
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "private",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L28"
+      "source_location": "L30"
     },
     {
       "id": "src_sources_tailscale_status",
       "label": "Status",
       "_origin": "ast",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "file_type": "code",
       "norm_label": "status",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L21"
+      "source_location": "L23"
     },
     {
-      "id": "readme",
-      "label": "README.md",
+      "id": "docref_rfc_6762",
+      "label": "RFC-6762",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "concept",
+      "norm_label": "rfc-6762",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_effect",
+      "label": "effect",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "arp.ts",
+      "file_type": "concept",
+      "norm_label": "effect",
+      "source_file": "package.json",
+      "source_location": "L64"
+    },
+    {
+      "id": "src_cli",
+      "label": "cli.ts",
       "_origin": "ast",
       "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "readme.md",
-      "source_file": "README.md",
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "cli.ts",
+      "source_file": "src/cli.ts",
       "source_location": "L1"
     },
     {
-      "id": "readme_develop_lanscout",
-      "label": "Develop lanscout",
+      "id": "src_cli_views",
+      "label": "views",
       "_origin": "ast",
       "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "develop lanscout",
-      "source_file": "README.md",
-      "source_location": "L147"
+      "community_name": "cli.ts",
+      "file_type": "code",
+      "norm_label": "views",
+      "source_file": "src/cli.ts",
+      "source_location": "L51"
     },
     {
-      "id": "readme_find_the_3d_printers_on_your_network",
-      "label": "Find the 3D printers on your network",
+      "id": "readme_watch_the_network",
+      "label": "Watch the network",
       "_origin": "ast",
       "community": 9,
-      "community_name": "lanscout",
+      "community_name": "cli.ts",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "find the 3d printers on your network",
+      "norm_label": "watch the network",
       "source_file": "README.md",
-      "source_location": "L98"
-    },
-    {
-      "id": "readme_install",
-      "label": "Install",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "install",
-      "source_file": "README.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "readme_lanscout",
-      "label": "lanscout",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "lanscout",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme_license",
-      "label": "License",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "license",
-      "source_file": "README.md",
-      "source_location": "L157"
-    },
-    {
-      "id": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
-      "label": "One record per device, across bands, subnets, and the tailnet",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "one record per device, across bands, subnets, and the tailnet",
-      "source_file": "README.md",
-      "source_location": "L129"
-    },
-    {
-      "id": "readme_run_the_cli",
-      "label": "Run the CLI",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "run the cli",
-      "source_file": "README.md",
-      "source_location": "L32"
-    },
-    {
-      "id": "readme_the_device_record",
-      "label": "The `Device` record",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "the `device` record",
-      "source_file": "README.md",
-      "source_location": "L77"
-    },
-    {
-      "id": "readme_use_the_library",
-      "label": "Use the library",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "use the library",
-      "source_file": "README.md",
-      "source_location": "L47"
-    },
-    {
-      "id": "readme_where_the_scan_time_goes",
-      "label": "Where the scan time goes",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "where the scan time goes",
-      "source_file": "README.md",
-      "source_location": "L137"
-    },
-    {
-      "id": "readme_with_effect",
-      "label": "With Effect",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "with effect",
-      "source_file": "README.md",
-      "source_location": "L58"
-    },
-    {
-      "id": "readme_with_promises",
-      "label": "With promises",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "lanscout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "with promises",
-      "source_file": "README.md",
-      "source_location": "L49"
+      "source_location": "L100"
     },
     {
       "id": "ref_node_fs",
@@ -3207,6 +3397,17 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_fs",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_node_os",
+      "label": "ref_node_os",
+      "community": 2,
+      "community_name": "network.ts",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_node_os",
       "source_file": "",
       "type": "external"
     },
@@ -3233,17 +3434,6 @@
       "type": "external"
     },
     {
-      "id": "ref_node_dgram",
-      "label": "ref_node_dgram",
-      "community": 4,
-      "community_name": "ssdp.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_node_dgram",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_node_net",
       "label": "ref_node_net",
       "community": 5,
@@ -3255,13 +3445,13 @@
       "type": "external"
     },
     {
-      "id": "ref_node_os",
-      "label": "ref_node_os",
-      "community": 5,
-      "community_name": "discover.ts",
+      "id": "ref_node_dgram",
+      "label": "ref_node_dgram",
+      "community": 6,
+      "community_name": "ssdp.ts",
       "external": true,
       "file_type": "concept",
-      "norm_label": "ref_node_os",
+      "norm_label": "ref_node_dgram",
       "source_file": "",
       "type": "external"
     },
@@ -3269,7 +3459,7 @@
       "id": "ref_node_child_process",
       "label": "ref_node_child_process",
       "community": 8,
-      "community_name": "tailscale.ts",
+      "community_name": "arp.ts",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_node_child_process",
@@ -3303,6 +3493,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_cli_byip",
+      "target": "src_domain_ipv4toint",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
       "source": "src_cli_main",
       "target": "src_cli_parseargs",
       "relation": "calls",
@@ -3311,11 +3513,35 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/cli.ts",
-      "source_location": "L123",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
       "source": "src_cli_main",
+      "target": "src_cli_runwatch",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_main",
+      "target": "src_cli_runscan",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_runscan",
       "target": "src_discover_discover",
       "relation": "calls",
       "_origin": "ast",
@@ -3323,11 +3549,23 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/cli.ts",
-      "source_location": "L139",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
-      "source": "src_cli_main",
+      "source": "src_cli_runscan",
+      "target": "src_cli_report",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_runscan",
       "target": "src_cli_table",
       "relation": "calls",
       "_origin": "ast",
@@ -3335,7 +3573,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/cli.ts",
-      "source_location": "L152",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_runwatch",
+      "target": "src_discover_watch",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_runwatch",
+      "target": "src_cli_report",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/cli.ts",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -3347,7 +3609,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/config.ts",
-      "source_location": "L54",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -3359,7 +3621,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/config.ts",
-      "source_location": "L60",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -3371,7 +3633,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/config.ts",
-      "source_location": "L62",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -3383,7 +3645,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/config.ts",
-      "source_location": "L70",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config_scanwindow",
+      "target": "src_config_positiveint",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/config.ts",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -3395,7 +3669,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L56",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -3407,7 +3681,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L56",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -3419,7 +3693,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L57",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover_discover",
+      "target": "src_config_scanwindow",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/discover.ts",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -3431,7 +3717,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L125",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -3443,7 +3729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L125",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -3455,7 +3741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L129",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -3467,7 +3753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -3479,7 +3765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L98",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -3491,7 +3777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L63",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -3503,7 +3789,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L75",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -3515,7 +3801,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L79",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -3527,11 +3813,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L83",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
-      "source": "src_discover_scan",
+      "source": "src_discover_watch",
       "target": "src_discover_config",
       "relation": "calls",
       "_origin": "ast",
@@ -3539,11 +3825,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L114",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
-      "source": "src_discover_scan",
+      "source": "src_discover_watch",
       "target": "src_discover_fold",
       "relation": "calls",
       "_origin": "ast",
@@ -3551,7 +3837,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L116",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -3827,7 +4113,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L133",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -3839,7 +4125,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L138",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -3851,7 +4137,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L143",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -3863,7 +4149,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L34",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -3875,7 +4161,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L197",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -3887,7 +4173,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L207",
+      "source_location": "L225",
       "weight": 1.0
     },
     {
@@ -3899,7 +4185,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L212",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -3911,7 +4197,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L217",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -3923,7 +4209,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L222",
+      "source_location": "L240",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry_registry_add",
+      "target": "src_registry_fieldsof",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/registry.ts",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -3935,7 +4233,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/registry.ts",
-      "source_location": "L228",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry_registry_expire",
+      "target": "src_registry_snapshot",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/registry.ts",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -3947,7 +4257,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L78",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -3959,7 +4269,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L78",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_arp_arp",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -3971,7 +4293,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -3983,7 +4305,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -3995,24 +4317,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
       "source": "src_sources_arp_parsearptable",
       "target": "src_domain_parseipv4",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/sources/arp.ts",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "src_sources_arp_parsearptable",
-      "target": "src_domain_parsemac",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4023,6 +4333,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_arp_parsearptable",
+      "target": "src_domain_parsemac",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_arp_parseprocnetarp",
       "target": "src_domain_parseipv4",
       "relation": "calls",
@@ -4031,7 +4353,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -4043,7 +4365,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -4055,7 +4377,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -4067,7 +4389,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -4079,7 +4401,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/dns.ts",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -4108,6 +4430,18 @@
     },
     {
       "source": "src_sources_mdns_mdns",
+      "target": "src_sources_mdns_observationsfrommessage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/mdns.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_mdns_mdns",
       "target": "src_sources_mdns_advertisedservicetypes",
       "relation": "calls",
       "_origin": "ast",
@@ -4115,7 +4449,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L100",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -4127,7 +4461,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L108",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -4139,7 +4473,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L109",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_mdns_mdns",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/mdns.ts",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -4151,7 +4497,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L80",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -4163,7 +4509,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L91",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -4175,19 +4521,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L95",
-      "weight": 1.0
-    },
-    {
-      "source": "src_sources_mdns_mdns",
-      "target": "src_sources_mdns_observationsfrommessage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/sources/mdns.ts",
-      "source_location": "L99",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -4199,7 +4533,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -4211,7 +4545,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L54",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -4223,7 +4557,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L74",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -4295,7 +4629,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L36",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -4324,18 +4658,6 @@
     },
     {
       "source": "src_sources_ssdp_ssdp",
-      "target": "src_sources_ssdp_dedupekey",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L63",
-      "weight": 1.0
-    },
-    {
-      "source": "src_sources_ssdp_ssdp",
       "target": "src_sources_udp_openudp",
       "relation": "calls",
       "_origin": "ast",
@@ -4343,7 +4665,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L68",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -4355,7 +4677,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L72",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -4367,7 +4689,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L85",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -4379,7 +4701,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L86",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -4391,7 +4713,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L86",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_ssdp_ssdp",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -4403,7 +4737,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -4415,7 +4749,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4427,7 +4761,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -4439,7 +4773,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -4451,7 +4785,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -4463,7 +4797,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L53",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -4475,7 +4809,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L28",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tailscale_tailscale",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -4487,7 +4833,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L67",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -4499,7 +4845,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L64",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -4803,6 +5149,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_cli_parsed",
+      "target": "src_config_discoveryoptions",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "src/cli.ts",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
       "source": "src_cli_view",
       "target": "src_domain_device",
       "relation": "references",
@@ -4811,7 +5169,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/cli.ts",
-      "source_location": "L32",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4823,7 +5181,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/cli.ts",
-      "source_location": "L34",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -4835,7 +5193,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/config.ts",
-      "source_location": "L28",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -4871,7 +5229,19 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "src/registry.ts",
-      "source_location": "L41",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli_parsed",
+      "target": "src_config_watchoptions",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "src/cli.ts",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -4883,7 +5253,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/config.ts",
-      "source_location": "L34",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -4895,11 +5265,11 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/config.ts",
-      "source_location": "L40",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
-      "source": "src_config_discoveryoptions",
+      "source": "src_config_sourceoptions",
       "target": "src_domain_source",
       "relation": "references",
       "_origin": "ast",
@@ -4907,7 +5277,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/config.ts",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -4919,7 +5289,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/discover.ts",
-      "source_location": "L49",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -4931,7 +5301,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/discover.ts",
-      "source_location": "L50",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -4979,7 +5349,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -4991,7 +5361,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L173",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -5003,7 +5373,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L175",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -5015,7 +5385,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "src/registry.ts",
-      "source_location": "L225",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -5128,7 +5498,7 @@
     },
     {
       "source": "src_cli",
-      "target": "src_discover_scanevent",
+      "target": "src_domain_ipv4toint",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5140,19 +5510,31 @@
     },
     {
       "source": "src_cli",
-      "target": "src_config_discoveryoptions",
+      "target": "src_discover_discover",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/cli.ts",
-      "source_location": "L6",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
       "source": "src_cli",
-      "target": "src_config_configerror",
+      "target": "src_discover_watch",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/cli.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_config_discoveryoptions",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5164,7 +5546,19 @@
     },
     {
       "source": "src_cli",
-      "target": "src_domain_device",
+      "target": "src_config_watchoptions",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/cli.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_config_configerror",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5172,6 +5566,18 @@
       "context": "import",
       "source_file": "src/cli.ts",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_domain_device",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/cli.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -5183,24 +5589,24 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/cli.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
       "source": "src_cli",
-      "target": "src_domain_source",
+      "target": "src_domain_scanevent",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/cli.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
       "source": "src_cli",
-      "target": "src_discover_discover",
+      "target": "src_domain_source",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5356,6 +5762,18 @@
     },
     {
       "source": "src_discover",
+      "target": "src_config_watchoptions",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/discover.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
       "target": "src_config_configerror",
       "relation": "imports",
       "_origin": "ast",
@@ -5369,6 +5787,18 @@
     {
       "source": "src_discover",
       "target": "src_config_resolveconfig",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/discover.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_config_scanwindow",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5405,6 +5835,18 @@
     {
       "source": "src_discover",
       "target": "src_domain_observation",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/discover.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_domain_scanevent",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5620,7 +6062,31 @@
     },
     {
       "source": "src_registry",
+      "target": "src_domain_scanevent",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/registry.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
       "target": "src_domain_source",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/registry.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_domain_sourcefailed",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5668,7 +6134,7 @@
     },
     {
       "source": "src_sources_arp",
-      "target": "src_sources_udp_openudp",
+      "target": "src_sources_rounds_repeatrounds",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5680,6 +6146,18 @@
     },
     {
       "source": "src_sources_arp",
+      "target": "src_sources_udp_openudp",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_arp",
       "target": "src_sources_udp_sendvia",
       "relation": "imports",
       "_origin": "ast",
@@ -5687,7 +6165,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -5800,6 +6278,30 @@
     },
     {
       "source": "src_sources_mdns",
+      "target": "src_sources_udp_openudp",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/mdns.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_mdns",
+      "target": "src_sources_udp_sendvia",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/mdns.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_mdns",
       "target": "src_config_config",
       "relation": "imports",
       "_origin": "ast",
@@ -5908,7 +6410,7 @@
     },
     {
       "source": "src_sources_mdns",
-      "target": "src_sources_udp_openudp",
+      "target": "src_sources_rounds_mdns_max_interval_ms",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5920,7 +6422,7 @@
     },
     {
       "source": "src_sources_mdns",
-      "target": "src_sources_udp_sendvia",
+      "target": "src_sources_rounds_repeatrounds",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6016,7 +6518,7 @@
     },
     {
       "source": "src_sources_ssdp",
-      "target": "src_sources_udp_bindudp",
+      "target": "src_sources_rounds_repeatrounds",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6024,6 +6526,18 @@
       "context": "import",
       "source_file": "src/sources/ssdp.ts",
       "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_ssdp",
+      "target": "src_sources_udp_bindudp",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -6035,7 +6549,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -6047,7 +6561,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -6148,6 +6662,18 @@
     },
     {
       "source": "src_sources_tailscale",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tailscale",
       "target": "src_config_config",
       "relation": "imports",
       "_origin": "ast",
@@ -6155,7 +6681,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -6167,7 +6693,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -6179,7 +6705,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -6191,7 +6717,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -6203,7 +6729,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -6215,7 +6741,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6227,7 +6753,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6239,7 +6765,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -6568,6 +7094,18 @@
     },
     {
       "source": "test_registry_test",
+      "target": "src_domain_device",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/registry.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "test_registry_test",
       "target": "src_domain_ipv4",
       "relation": "imports",
       "_origin": "ast",
@@ -6652,7 +7190,7 @@
     },
     {
       "source": "src_cli",
-      "target": "src_discover",
+      "target": "src_domain",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6664,6 +7202,18 @@
     },
     {
       "source": "src_cli",
+      "target": "src_discover",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/cli.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
       "target": "ref_effect",
       "relation": "imports_from",
       "_origin": "ast",
@@ -6671,7 +7221,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/cli.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -6683,20 +7233,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/cli.ts",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "src_cli",
-      "target": "src_domain",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/cli.ts",
       "source_location": "L8",
-      "type_only": true,
       "weight": 1.0
     },
     {
@@ -6992,7 +7529,7 @@
     },
     {
       "source": "src_sources_arp",
-      "target": "src_sources_udp",
+      "target": "src_sources_rounds",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7000,6 +7537,18 @@
       "context": "import",
       "source_file": "src/sources/arp.ts",
       "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_arp",
+      "target": "src_sources_udp",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/arp.ts",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -7101,6 +7650,18 @@
     },
     {
       "source": "src_sources_mdns",
+      "target": "src_sources_udp",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/mdns.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_mdns",
       "target": "ref_effect",
       "relation": "imports_from",
       "_origin": "ast",
@@ -7150,7 +7711,7 @@
     },
     {
       "source": "src_sources_mdns",
-      "target": "src_sources_udp",
+      "target": "src_sources_rounds",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7247,6 +7808,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_rounds",
+      "target": "ref_effect",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_ssdp",
       "target": "ref_node_dgram",
       "relation": "imports_from",
@@ -7261,7 +7834,7 @@
     },
     {
       "source": "src_sources_ssdp",
-      "target": "src_sources_udp",
+      "target": "src_sources_rounds",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7269,6 +7842,18 @@
       "context": "import",
       "source_file": "src/sources/ssdp.ts",
       "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_ssdp",
+      "target": "src_sources_udp",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -7334,6 +7919,18 @@
     },
     {
       "source": "src_sources_tailscale",
+      "target": "src_sources_rounds",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/sources/tailscale.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_tailscale",
       "target": "ref_effect",
       "relation": "imports_from",
       "_origin": "ast",
@@ -7341,7 +7938,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -7353,7 +7950,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L4",
+      "source_location": "L5",
       "type_only": true,
       "weight": 1.0
     },
@@ -7366,7 +7963,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -7378,7 +7975,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -7390,7 +7987,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -7718,12 +8315,38 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "src/registry.ts",
-      "source_location": "L191",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
       "source": "src_index",
       "target": "src_config_discoveryoptions",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "src/index.ts",
+      "source_location": "L1",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_index",
+      "target": "src_config_sourceoptions",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "src/index.ts",
+      "source_location": "L1",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_index",
+      "target": "src_config_watchoptions",
       "relation": "re_exports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7756,19 +8379,6 @@
       "context": "re-export",
       "source_file": "src/index.ts",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_index",
-      "target": "src_discover_scanevent",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "re-export",
-      "source_file": "src/index.ts",
-      "source_location": "L3",
-      "type_only": true,
       "weight": 1.0
     },
     {
@@ -7810,7 +8420,7 @@
     },
     {
       "source": "src_index",
-      "target": "src_discover_scan",
+      "target": "src_discover_watch",
       "relation": "re_exports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7913,6 +8523,19 @@
     },
     {
       "source": "src_index",
+      "target": "src_domain_scanevent",
+      "relation": "re_exports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "re-export",
+      "source_file": "src/index.ts",
+      "source_location": "L5",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_index",
       "target": "src_domain_source",
       "relation": "re_exports",
       "_origin": "ast",
@@ -7974,15 +8597,27 @@
       "weight": 1.0
     },
     {
-      "source": "src_registry_registry_add",
-      "target": "src_domain_device",
-      "relation": "references",
+      "source": "src_config_discoveryoptions",
+      "target": "src_config_sourceoptions",
+      "relation": "inherits",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "context": "return_type",
-      "source_file": "src/registry.ts",
-      "source_location": "L191",
+      "context": "type",
+      "source_file": "src/config.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config_watchoptions",
+      "target": "src_config_sourceoptions",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "type",
+      "source_file": "src/config.ts",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -7994,6 +8629,17 @@
       "confidence_score": 1.0,
       "source_file": "src/sources/printer.ts",
       "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_rounds",
+      "target": "docref_rfc_6762",
+      "relation": "cites",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -8471,46 +9117,24 @@
     },
     {
       "source": "readme_lanscout",
-      "target": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
+      "target": "readme_watch_the_network",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L129",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
       "source": "readme_lanscout",
-      "target": "readme_where_the_scan_time_goes",
+      "target": "readme_find_the_3d_printers_on_your_network",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L137",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_lanscout",
-      "target": "readme_develop_lanscout",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L147",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_lanscout",
-      "target": "readme_license",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L157",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -8522,6 +9146,50 @@
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_lanscout",
+      "target": "readme_one_record_per_device_across_bands_subnets_and_the_tailnet",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_lanscout",
+      "target": "readme_where_the_scan_time_goes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_lanscout",
+      "target": "readme_develop_lanscout",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_lanscout",
+      "target": "readme_license",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -8543,18 +9211,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_lanscout",
-      "target": "readme_find_the_3d_printers_on_your_network",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L98",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -8565,7 +9222,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -8576,7 +9233,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -8587,7 +9244,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L77",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -8642,7 +9299,51 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L113",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_cli_byip",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/cli.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_cli_report",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/cli.ts",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_cli_runscan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/cli.ts",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_cli_runwatch",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/cli.ts",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -8653,7 +9354,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L120",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -8664,7 +9365,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L27",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -8675,7 +9376,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -8686,7 +9387,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L31",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -8697,7 +9398,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L38",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -8708,7 +9409,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L44",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -8719,7 +9420,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L47",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "src_cli",
+      "target": "src_cli_parsed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/cli.ts",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -8730,51 +9442,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/cli.ts",
-      "source_location": "L77",
-      "weight": 1.0
-    },
-    {
-      "source": "src_config",
-      "target": "src_config_subnet",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/config.ts",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "src_config",
-      "target": "src_config_config",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/config.ts",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "src_config",
-      "target": "src_config_defaultports",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/config.ts",
-      "source_location": "L46",
-      "weight": 1.0
-    },
-    {
-      "source": "src_config",
-      "target": "src_config_configerror",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/config.ts",
-      "source_location": "L48",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -8785,7 +9453,73 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/config.ts",
-      "source_location": "L5",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_watchoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_subnet",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_config",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_sourceoptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_defaultports",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_configerror",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -8796,7 +9530,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/config.ts",
-      "source_location": "L52",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "src_config",
+      "target": "src_config_scanwindow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/config.ts",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -8807,18 +9552,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/config.ts",
-      "source_location": "L58",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
       "source": "src_discover",
-      "target": "src_discover_scan",
+      "target": "src_discover_watch",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L112",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -8829,7 +9574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L122",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -8840,7 +9585,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L128",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -8911,7 +9656,7 @@
     },
     {
       "source": "src_discover",
-      "target": "src_discover_scanevent",
+      "target": "src_discover_scanresult",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8922,24 +9667,24 @@
     },
     {
       "source": "src_discover",
-      "target": "src_discover_scanresult",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/discover.ts",
-      "source_location": "L48",
-      "weight": 1.0
-    },
-    {
-      "source": "src_discover",
       "target": "src_discover_config",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L54",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_discover_tick",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/discover.ts",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -8950,7 +9695,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L60",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -8961,7 +9706,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/discover.ts",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -8983,7 +9728,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L104",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "src_domain",
+      "target": "src_domain_scanevent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/domain.ts",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -9120,24 +9876,13 @@
     },
     {
       "source": "src_domain",
-      "target": "src_domain_event",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/domain.ts",
-      "source_location": "L94",
-      "weight": 1.0
-    },
-    {
-      "source": "src_domain",
       "target": "src_domain_tailscalepeer",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/domain.ts",
-      "source_location": "L96",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -9445,7 +10190,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L112",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -9456,7 +10201,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L118",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -9467,7 +10212,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L131",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_registry_fieldsof",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -9478,7 +10234,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L143",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -9489,7 +10245,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L145",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -9500,23 +10256,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L170",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
       "source": "src_registry",
-      "target": "src_registry_normalizehost",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/registry.ts",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "src_registry",
-      "target": "src_registry_generichosts",
+      "target": "src_registry_deviceevent",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9527,18 +10272,18 @@
     },
     {
       "source": "src_registry",
-      "target": "src_registry_hostkey",
+      "target": "src_registry_normalizehost",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
       "source": "src_registry",
-      "target": "src_registry_usnuuid",
+      "target": "src_registry_generichosts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9549,7 +10294,7 @@
     },
     {
       "source": "src_registry",
-      "target": "src_registry_handler",
+      "target": "src_registry_hostkey",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9560,13 +10305,24 @@
     },
     {
       "source": "src_registry",
-      "target": "src_registry_handlers",
+      "target": "src_registry_usnuuid",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L46",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_registry_handler",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -9578,6 +10334,17 @@
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry",
+      "target": "src_registry_handlers",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -9610,7 +10377,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/arp.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9621,7 +10388,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/arp.ts",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -9632,7 +10399,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/arp.ts",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -9643,7 +10410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/arp.ts",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -9654,7 +10421,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/arp.ts",
-      "source_location": "L66",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -9676,7 +10443,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -9687,18 +10454,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L22",
-      "weight": 1.0
-    },
-    {
-      "source": "src_sources_dns",
-      "target": "src_sources_dns_dnsrecord",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/sources/dns.ts",
-      "source_location": "L3",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -9709,7 +10465,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L32",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_dns",
+      "target": "src_sources_dns_dnsrecord",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/dns.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -9720,7 +10487,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -9731,7 +10498,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -9742,7 +10509,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/dns.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -9775,7 +10542,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -9786,7 +10553,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -9797,7 +10564,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -9808,7 +10575,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -9819,7 +10586,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L74",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -9830,7 +10597,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/mdns.ts",
-      "source_location": "L76",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -9889,6 +10656,28 @@
       "weight": 1.0
     },
     {
+      "source": "src_sources_rounds",
+      "target": "src_sources_rounds_repeatrounds",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_rounds",
+      "target": "src_sources_rounds_mdns_max_interval_ms",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/rounds.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "src_sources_ssdp",
       "target": "src_sources_ssdp_bambu_ports",
       "relation": "contains",
@@ -9896,7 +10685,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L15",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_sources_ssdp",
+      "target": "src_sources_ssdp_notify_ports",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/sources/ssdp.ts",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -9907,7 +10707,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L17",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -9918,7 +10718,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L19",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -9929,7 +10729,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L22",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -9940,18 +10740,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L28",
-      "weight": 1.0
-    },
-    {
-      "source": "src_sources_ssdp",
-      "target": "src_sources_ssdp_dedupekey",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/sources/ssdp.ts",
-      "source_location": "L50",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -9962,7 +10751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/ssdp.ts",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -9973,7 +10762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -9984,7 +10773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -9995,7 +10784,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -10006,7 +10795,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -10017,7 +10806,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -10028,7 +10817,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -10039,7 +10828,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L63",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -10050,7 +10839,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L66",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -10468,7 +11257,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L175",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -10479,7 +11268,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L179",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -10490,7 +11279,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L191",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "src_registry_registry",
+      "target": "src_registry_registry_expire",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/registry.ts",
+      "source_location": "L253",
       "weight": 1.0
     },
     {
@@ -10501,7 +11301,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/registry.ts",
-      "source_location": "L225",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -10517,6 +11317,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_cli_runwatch",
+      "target": "src_cli_byip",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "src/cli.ts",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
       "source": "src_discover_observe",
       "target": "src_discover_isprober",
       "relation": "indirect_call",
@@ -10525,7 +11337,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/discover.ts",
-      "source_location": "L64",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -10537,7 +11349,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/registry.ts",
-      "source_location": "L227",
+      "source_location": "L267",
       "weight": 1.0
     },
     {
@@ -10549,7 +11361,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/registry.ts",
-      "source_location": "L149",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -10561,7 +11373,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -10573,7 +11385,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/sources/arp.ts",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -10597,7 +11409,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/sources/tailscale.ts",
-      "source_location": "L64",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -10626,6 +11438,18 @@
     },
     {
       "source": "src_discover_fold",
+      "target": "src_registry_registry_expire",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "src/discover.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover_fold",
       "target": "src_registry_registry_add",
       "relation": "calls",
       "_origin": "ast",
@@ -10633,7 +11457,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L104",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -10645,7 +11469,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "src/discover.ts",
-      "source_location": "L108",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -10670,6 +11494,18 @@
       "context": "call",
       "source_file": "test/registry.test.ts",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_discover",
+      "target": "src_sources_tailscale_tailscale",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "collection",
+      "source_file": "src/discover.ts",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -10705,7 +11541,7 @@
       "confidence_score": 0.95,
       "context": "Device",
       "source_file": "README.md",
-      "source_location": "L131",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -10717,7 +11553,19 @@
       "confidence_score": 0.95,
       "context": "Device",
       "source_file": "README.md",
-      "source_location": "L77",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_watch_the_network",
+      "target": "src_domain_sourcefailed",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "SourceFailed",
+      "source_file": "README.md",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -10730,6 +11578,18 @@
       "context": "arp",
       "source_file": "README.md",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_watch_the_network",
+      "target": "src_discover_discover",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "discover()",
+      "source_file": "README.md",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -10789,7 +11649,7 @@
       "confidence_score": 0.95,
       "context": "tailscale",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -10803,8 +11663,20 @@
       "source_file": "README.md",
       "source_location": "L12",
       "weight": 1.0
+    },
+    {
+      "source": "readme_watch_the_network",
+      "target": "src_discover_watch",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "watch()",
+      "source_file": "README.md",
+      "source_location": "L102",
+      "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8e49f0fb7cbe2c93b04a9833859747ff8d14d0ef"
+  "built_at_commit": "8d270457549e4fad378c1462c0c31c69dc60e3b2"
 }

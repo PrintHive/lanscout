@@ -3,16 +3,20 @@ import * as Cause from "effect/Cause"
 import * as Effect from "effect/Effect"
 import * as Exit from "effect/Exit"
 import * as Fiber from "effect/Fiber"
-import type { DiscoveryOptions } from "./config.ts"
+import * as Stream from "effect/Stream"
+import type { DiscoveryOptions, WatchOptions } from "./config.ts"
 import { ConfigError } from "./config.ts"
-import type { Device, Printer, Source } from "./domain.ts"
-import { discover } from "./discover.ts"
-import type { ScanEvent } from "./discover.ts"
+import type { Device, Printer, ScanEvent, Source } from "./domain.ts"
+import { ipv4ToInt } from "./domain.ts"
+import { discover, watch } from "./discover.ts"
 
 const USAGE = `usage: lanscout [options]
 
   --printers              list only Bambu Lab and Klipper printers (4000 ms budget)
   --timeout <ms>          scan budget (default 2000)
+  --watch                 keep watching until Ctrl-C; print devices as they join (+) and leave (-)
+  --watch-for <ms>        watch for this long, then stop
+  --stale-after <ms>      in a watch, report a device gone after this long unseen (default 180000)
   --only <list>           sources: mdns,ssdp,arp,tcp,tailscale,printer (default all)
   --ports <list>          TCP ports to probe
   --subnet <cidr>         extra subnet to sweep, repeatable (mesh nodes, VLANs)
@@ -20,8 +24,8 @@ const USAGE = `usage: lanscout [options]
   --concurrency <n>       concurrent TCP connects (default 1024)
   --connect-timeout <ms>  per-connect timeout (default 500)
   --tailscale-routes      also sweep subnet routes advertised by tailnet peers
-  --json                  print the result as JSON
-  --ndjson                stream every update as one JSON line
+  --json                  print the result as JSON (a watch prints the devices present when it stops)
+  --ndjson                stream every event as one JSON line
   -h, --help`
 
 type Format = "table" | "json" | "ndjson"
@@ -74,8 +78,17 @@ const views: { readonly [K in "devices" | "printers"]: View } = {
   }
 }
 
-const parseArgs = (argv: ReadonlyArray<string>): { options: DiscoveryOptions; format: Format; view: View } | string => {
+interface Parsed {
+  readonly options: DiscoveryOptions
+  /** Present when `--watch` or `--watch-for` asked for a watch instead of a scan. */
+  readonly watching: Pick<WatchOptions, "watchForMs" | "staleAfterMs"> | undefined
+  readonly format: Format
+  readonly view: View
+}
+
+const parseArgs = (argv: ReadonlyArray<string>): Parsed | string => {
   const options: { -readonly [K in keyof DiscoveryOptions]: DiscoveryOptions[K] } = {}
+  let watching: { watchForMs?: number; staleAfterMs?: number } | undefined
   const subnets: Array<string> = []
   const interfaces: Array<string> = []
   let format: Format = "table"
@@ -100,6 +113,9 @@ const parseArgs = (argv: ReadonlyArray<string>): { options: DiscoveryOptions; fo
       case "--json": format = "json"; break
       case "--ndjson": format = "ndjson"; break
       case "--printers": view = views.printers; break
+      case "--watch": watching ??= {}; break
+      case "--watch-for": watching = { ...watching, watchForMs: Number(value()) }; break
+      case "--stale-after": watching = { ...watching, staleAfterMs: Number(value()) }; break
       case "-h":
       case "--help": return USAGE
       default: throw new Error(`unknown option ${flag}\n\n${USAGE}`)
@@ -107,7 +123,8 @@ const parseArgs = (argv: ReadonlyArray<string>): { options: DiscoveryOptions; fo
   }
   if (subnets.length) options.subnets = subnets
   if (interfaces.length) options.interfaces = interfaces
-  return { options: { ...view.defaults, ...options }, format, view }
+  if (watching && options.timeoutMs !== undefined) throw new Error("--timeout sets a scan budget; a watch takes --watch-for")
+  return { options: { ...view.defaults, ...options }, watching, format, view }
 }
 
 const table = (devices: ReadonlyArray<Device>, columns: ReadonlyArray<Column>): string => {
@@ -115,6 +132,63 @@ const table = (devices: ReadonlyArray<Device>, columns: ReadonlyArray<Column>): 
   const widths = columns.map(([h], i) => Math.min(48, Math.max(h.length, ...rows.map((r) => r[i]!.length))))
   const fmt = (r: ReadonlyArray<string>) => r.map((c, i) => (i === r.length - 1 ? c : c.padEnd(widths[i]!))).join("  ")
   return [fmt(columns.map(([h]) => h)), ...rows.map(fmt)].join("\n")
+}
+
+const byIp = (a: Device, b: Device) => (a.ips[0] && b.ips[0] ? ipv4ToInt(a.ips[0]) - ipv4ToInt(b.ips[0]) : a.id.localeCompare(b.id))
+
+const report = (cause: Cause.Cause<unknown>) => {
+  const error = Cause.squash(cause)
+  process.stderr.write(error instanceof ConfigError ? `${error.message}\n` : `${Cause.pretty(cause)}\n`)
+  process.exitCode = error instanceof ConfigError ? 2 : 1
+}
+
+const runScan = ({ format, options, view }: Parsed) => {
+  const onEvent = format === "ndjson"
+    ? (e: ScanEvent) => {
+      if (e._tag === "SourceFailed" || view.keep(e.device)) process.stdout.write(`${JSON.stringify(e)}\n`)
+    }
+    : undefined
+  const fiber = Effect.runFork(discover(options, onEvent))
+  process.once("SIGINT", () => Effect.runFork(Fiber.interrupt(fiber)))
+  fiber.addObserver((exit) => {
+    if (Exit.isFailure(exit)) {
+      if (!Cause.hasInterruptsOnly(exit.cause)) report(exit.cause)
+      return
+    }
+    const devices = exit.value.devices.filter(view.keep)
+    const { elapsedMs, failures } = exit.value
+    if (format === "json") process.stdout.write(`${JSON.stringify(devices, null, 2)}\n`)
+    else if (format === "table") process.stdout.write(`${table(devices, view.columns)}\n`)
+    for (const f of failures) process.stderr.write(`warning: ${f.source}: ${f.message}\n`)
+    process.stderr.write(`${devices.length} ${view.noun} in ${elapsedMs}ms\n`)
+  })
+}
+
+/** Tracks the devices present from events alone, the way a library caller would. */
+const runWatch = ({ format, options: { timeoutMs: _, ...options }, view, watching }: Parsed) => {
+  const start = Date.now()
+  const present = new Map<string, Device>()
+  const line = (sign: string, d: Device) =>
+    process.stdout.write(`${sign} ${view.columns.slice(0, 3).map(([, cell]) => cell(d)).filter(Boolean).join("  ")}\n`)
+  const onEvent = (e: ScanEvent) => {
+    if (e._tag === "SourceFailed") return void process.stderr.write(`warning: ${e.source}: ${e.message}\n`)
+    if (e._tag === "DeviceGone") present.delete(e.device.id)
+    else {
+      if (e._tag === "DeviceUpdated") for (const id of e.formerIds) present.delete(id)
+      present.set(e.device.id, e.device)
+    }
+    if (!view.keep(e.device)) return
+    if (format === "ndjson") process.stdout.write(`${JSON.stringify(e)}\n`)
+    else if (format === "table" && e._tag !== "DeviceUpdated") line(e._tag === "DeviceAdded" ? "+" : "-", e.device)
+  }
+  const fiber = Effect.runFork(Stream.runForEach(watch({ ...options, ...watching }), (e) => Effect.sync(() => onEvent(e))))
+  process.once("SIGINT", () => Effect.runFork(Fiber.interrupt(fiber)))
+  fiber.addObserver((exit) => {
+    if (Exit.isFailure(exit) && !Cause.hasInterruptsOnly(exit.cause)) return report(exit.cause)
+    const devices = [...present.values()].filter(view.keep).sort(byIp)
+    if (format === "json") process.stdout.write(`${JSON.stringify(devices, null, 2)}\n`)
+    process.stderr.write(`${devices.length} ${view.noun} present after ${Date.now() - start}ms\n`)
+  })
 }
 
 const main = (argv: ReadonlyArray<string>) => {
@@ -126,33 +200,9 @@ const main = (argv: ReadonlyArray<string>) => {
     process.exitCode = 2
     return
   }
-  if (typeof parsed === "string") {
-    process.stdout.write(`${parsed}\n`)
-    return
-  }
-  const { format, options, view } = parsed
-  const onEvent = format === "ndjson"
-    ? (e: ScanEvent) => {
-      if (e._tag !== "DeviceUpdated" || view.keep(e.device)) process.stdout.write(`${JSON.stringify(e)}\n`)
-    }
-    : undefined
-  const fiber = Effect.runFork(discover(options, onEvent))
-  process.once("SIGINT", () => Effect.runFork(Fiber.interrupt(fiber)))
-  fiber.addObserver((exit) => {
-    if (Exit.isFailure(exit)) {
-      if (Cause.hasInterruptsOnly(exit.cause)) return
-      const error = Cause.squash(exit.cause)
-      process.stderr.write(error instanceof ConfigError ? `${error.message}\n` : `${Cause.pretty(exit.cause)}\n`)
-      process.exitCode = error instanceof ConfigError ? 2 : 1
-      return
-    }
-    const devices = exit.value.devices.filter(view.keep)
-    const { elapsedMs, failures } = exit.value
-    if (format === "json") process.stdout.write(`${JSON.stringify(devices, null, 2)}\n`)
-    else if (format === "table") process.stdout.write(`${table(devices, view.columns)}\n`)
-    for (const f of failures) process.stderr.write(`warning: ${f.source}: ${f.message}\n`)
-    process.stderr.write(`${devices.length} ${view.noun} in ${elapsedMs}ms\n`)
-  })
+  if (typeof parsed === "string") process.stdout.write(`${parsed}\n`)
+  else if (parsed.watching) runWatch(parsed)
+  else runScan(parsed)
 }
 
 main(process.argv.slice(2))

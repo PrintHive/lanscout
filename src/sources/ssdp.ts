@@ -7,12 +7,15 @@ import type { Ipv4, Observation, SourceFailed } from "../domain.ts"
 import { parseIpv4 } from "../domain.ts"
 import { broadcastOf } from "../network.ts"
 import { BAMBU_NT, bambuFromSsdpHeaders } from "../printers/bambu.ts"
+import { repeatRounds } from "./rounds.ts"
 import { bindUdp, openUdp, sendVia } from "./udp.ts"
 
 const GROUP = "239.255.255.250"
 const PORT = 1900
 /** Bambu printers announce on these instead of 1900. */
 const BAMBU_PORTS = [1990, 2021] as const
+/** Where unsolicited NOTIFYs arrive, so a watch hears devices that join after the searches. */
+const NOTIFY_PORTS = [PORT, ...BAMBU_PORTS] as const
 
 type SsdpObservation = Extract<Observation, { _tag: "Ssdp" | "Printer" }>
 
@@ -33,6 +36,7 @@ export const parseSsdp = (text: string, from: Ipv4): SsdpObservation | undefined
     const i = line.indexOf(":")
     if (i > 0) headers.set(line.slice(0, i).trim().toLowerCase(), line.slice(i + 1).trim())
   }
+  if (headers.get("nts")?.toLowerCase() === "ssdp:byebye") return undefined
   const printer = bambuFromSsdpHeaders(headers)
   if (printer) return { _tag: "Printer", ip: from, via: "ssdp", printer }
   const usn = headers.get("usn")
@@ -47,28 +51,20 @@ export const parseSsdp = (text: string, from: Ipv4): SsdpObservation | undefined
   }
 }
 
-const dedupeKey = (o: SsdpObservation): string =>
-  o._tag === "Ssdp" ? `${o.ip}|${o.usn ?? ""}|${o.location ?? ""}` : `${o.ip}|printer`
-
 export const ssdp = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
   Stream.callback<Observation, SourceFailed>((queue) =>
     Effect.gen(function*() {
       const lans = cfg.networks.filter((n) => n.kind === "lan")
-      const seen = new Set<string>()
       const onMessage = (buf: Buffer, rinfo: dgram.RemoteInfo) => {
         const from = parseIpv4(rinfo.address)
         if (!from || lans.some((n) => n.address === from)) return
         const o = parseSsdp(buf.toString("utf8"), from)
-        if (!o) return
-        const key = dedupeKey(o)
-        if (seen.has(key)) return
-        seen.add(key)
-        Queue.offerUnsafe(queue, o)
+        if (o) Queue.offerUnsafe(queue, o)
       }
       const socket = yield* openUdp("ssdp", 0)
       socket.setBroadcast(true)
       socket.on("message", onMessage)
-      for (const port of BAMBU_PORTS) {
+      for (const port of NOTIFY_PORTS) {
         const listener = yield* Effect.option(bindUdp("ssdp", port))
         if (listener._tag === "None") continue
         for (const n of lans) {
@@ -88,6 +84,6 @@ export const ssdp = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
       yield* round
       yield* Effect.sleep("300 millis")
       yield* round
-      yield* Effect.never
+      return yield* repeatRounds(round, cfg.roundMaxMs)
     })
   )

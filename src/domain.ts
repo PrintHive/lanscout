@@ -91,8 +91,6 @@ export class SourceFailed extends Schema.TaggedError<SourceFailed>()("SourceFail
   message: Schema.String
 }) {}
 
-export type Event = Observation | SourceFailed
-
 export interface TailscalePeer {
   readonly nodeId: string
   readonly dnsName: string
@@ -118,3 +116,14 @@ export interface Device {
   readonly firstSeenMs: number
   readonly lastSeenMs: number
 }
+
+/**
+ * What a scan or watch reports. `DeviceUpdated` fires only when a field changes, not on every
+ * sighting. `formerIds` lists ids that now refer to this device: its own id before an upgrade
+ * (`ip:` to `mac:`), and the ids of records it absorbed when a shared identifier linked them.
+ */
+export type ScanEvent =
+  | { readonly _tag: "DeviceAdded"; readonly device: Device }
+  | { readonly _tag: "DeviceUpdated"; readonly device: Device; readonly formerIds: ReadonlyArray<string> }
+  | { readonly _tag: "DeviceGone"; readonly device: Device }
+  | SourceFailed

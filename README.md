@@ -13,7 +13,7 @@ lanscout queries six sources at the same time and merges what they report into o
 | `tailscale` | Tailnet peers from `tailscale status`, with online state, OS, and subnet routes |
 | `printer` | Bambu Lab printers from their MQTT certificate on port 8883, and Klipper printers from Moonraker on port 7125 |
 
-A default scan has a 2-second budget. The process exits when the scan finishes.
+A default scan has a 2-second budget. The process exits when the scan finishes. To keep listening and report devices as they join and leave, run a watch instead.
 
 ## Install
 
@@ -40,6 +40,8 @@ lanscout --subnet 192.168.50.0/24       # sweep a mesh or VLAN subnet this machi
 lanscout --interface en0                # restrict to one interface
 lanscout --tailscale-routes             # also sweep LAN subnets advertised by tailnet peers
 lanscout --printers                     # only Bambu Lab and Klipper printers, 4 s budget
+lanscout --watch                        # report devices as they join (+) and leave (-) until Ctrl-C
+lanscout --watch-for 30000 --json       # watch for 30 s, then print every device present
 ```
 
 Run `lanscout --help` for every option.
@@ -59,15 +61,15 @@ for (const d of devices) console.log(d.ips, d.macs, d.hostnames, d.services)
 
 ```ts
 import { Effect, Stream } from "effect"
-import { discover, scan } from "lanscout"
+import { discover, watch } from "lanscout"
 
 // One result at the deadline
 const result = Effect.runPromise(discover({ sources: ["mdns", "arp"] }))
 
-// Live updates as devices are found
-const live = scan().pipe(
+// Events as devices join, change, and leave, until interrupted
+const live = watch().pipe(
   Stream.runForEach((event) =>
-    event._tag === "DeviceUpdated" ? Effect.log(event.device.id) : Effect.logWarning(event.message)
+    event._tag === "SourceFailed" ? Effect.logWarning(event.message) : Effect.log(event._tag, event.device.id)
   )
 )
 ```
@@ -94,6 +96,55 @@ interface Device {
   lastSeenMs: number
 }
 ```
+
+## Watch the network
+
+`watch()` keeps a scan running and returns a stream of events:
+
+| Event | When |
+| --- | --- |
+| `DeviceAdded` | A device is seen for the first time, or again after it went gone |
+| `DeviceUpdated` | A field of a device changes, such as a new service, port, or name. A sighting that changes nothing sends no event |
+| `DeviceGone` | No source has seen the device for `staleAfterMs`, 180 seconds by default |
+| `SourceFailed` | A source cannot run. The other sources keep running |
+
+`watchForMs` ends the watch after that many milliseconds. Without it, the watch runs until you interrupt it. A watch with `watchForMs: 30000` finds all it can in 30 seconds.
+
+A device's `id` can change during a watch. The id upgrades as stronger identifiers arrive, for example from `ip:` to `mac:`. Two records also merge when an identifier links them. Each `DeviceUpdated` lists in `formerIds` every id that now refers to its device. To track the devices that are present, delete the former ids before you store the device:
+
+```ts
+import { Effect, Stream } from "effect"
+import type { Device } from "lanscout"
+import { watch } from "lanscout"
+
+const present = new Map<string, Device>()
+
+const program = watch({ watchForMs: 30_000 }).pipe(
+  Stream.runForEach((e) =>
+    Effect.sync(() => {
+      if (e._tag === "SourceFailed") return
+      if (e._tag === "DeviceGone") return present.delete(e.device.id)
+      if (e._tag === "DeviceUpdated") for (const id of e.formerIds) present.delete(id)
+      present.set(e.device.id, e.device)
+    })
+  )
+)
+```
+
+`lanscout --watch` uses the same procedure.
+
+A watch repeats its queries in rounds. The first repeat comes 2 seconds after the start, and the interval doubles after each round:
+
+- ARP nudges every LAN address, then reads the neighbor table every 250 ms for 2 seconds. Each read re-sights every device in the table.
+- SSDP sends its searches again. It also listens on UDP port 1900 for the `NOTIFY` messages that UPnP devices send when they join.
+- Tailscale reads `tailscale status` again.
+- mDNS sends its queries again. RFC 6762 lets the interval double up to one hour, so after the first minutes mDNS mostly hears the announcements that devices send when they join.
+
+The ARP, SSDP, and Tailscale intervals stop growing at a third of `staleAfterMs`, and at 60 seconds at most. A device that stays is therefore re-sighted at least twice before it can go stale. The TCP and printer probes run once for each new address, so a watch never repeats the full TCP sweep.
+
+An mDNS goodbye (TTL 0) and an SSDP `ssdp:byebye` do not count as sightings. A device that leaves without one is still listed by the kernel's ARP table until the entry expires. On macOS that takes up to 20 minutes (`net.link.ether.inet.max_age` is 1200 seconds). `DeviceGone` for such a device comes `staleAfterMs` after the entry expires. A Tailscale peer that goes offline does not become gone. Its `tailscale.online` changes to `false`, and you get a `DeviceUpdated`.
+
+`discover()` runs the same rounds, so a scan with a long `timeoutMs` also gets repeat queries.
 
 ## Find the 3D printers on your network
 
@@ -138,7 +189,7 @@ A tailnet peer is linked to its LAN record when Tailscale reports a direct path 
 
 A default scan of a /24 home network takes about 2.25 seconds of wall time, including Node.js startup. It found 49 devices on the network it was developed against.
 
-- ARP decides which hosts are alive. lanscout reads the neighbor table, then sends a paced, empty UDP datagram to every LAN address so the kernel resolves it, and reads the table again every 250 ms. A blind TCP sweep of 254 addresses makes the kernel issue hundreds of ARP requests at once. On Wi-Fi those go out at the lowest basic rate, and in testing that delayed other traffic on the link by up to a second.
+- ARP decides which hosts are alive. lanscout reads the neighbor table, then sends a paced, empty UDP datagram to every LAN address so the kernel resolves it, and reads the table again every 250 ms for 2 seconds. A blind TCP sweep of 254 addresses makes the kernel issue hundreds of ARP requests at once. On Wi-Fi those go out at the lowest basic rate, and in testing that delayed other traffic on the link by up to a second.
 - TCP probes only hosts that another source has already seen, as soon as they appear. Probes run 1024 at a time with a 500 ms timeout. On the test network, 51 live hosts and 16 default ports make 816 probes, so all of them start in the first wave. Subnets passed with `--subnet` are off-link, so they are swept directly.
 - lanscout imports Effect modules by subpath. The `effect` barrel takes about 630 ms to load, and the modules lanscout uses take about 120 ms.
 - Subnets wider than 1024 hosts shrink to the aligned block around this machine.

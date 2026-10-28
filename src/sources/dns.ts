@@ -1,9 +1,10 @@
 export const RecordType = { A: 1, PTR: 12, TXT: 16, AAAA: 28, SRV: 33, ANY: 255 } as const
 
+/** `ttl` 0 is an mDNS goodbye: the record is being withdrawn. */
 export type DnsRecord =
-  | { readonly type: "A"; readonly name: string; readonly address: string }
-  | { readonly type: "PTR"; readonly name: string; readonly target: string }
-  | { readonly type: "SRV"; readonly name: string; readonly target: string; readonly port: number }
+  | { readonly type: "A"; readonly name: string; readonly ttl: number; readonly address: string }
+  | { readonly type: "PTR"; readonly name: string; readonly ttl: number; readonly target: string }
+  | { readonly type: "SRV"; readonly name: string; readonly ttl: number; readonly target: string; readonly port: number }
 
 export interface DnsQuestion {
   readonly name: string
@@ -71,18 +72,19 @@ export const decodeMessage = (buf: Buffer): DnsMessage => {
   for (let i = 0; i < rr; i++) {
     const [name, next] = readName(buf, offset)
     const type = buf.readUInt16BE(next)
+    const ttl = buf.readUInt32BE(next + 4)
     const rdlength = buf.readUInt16BE(next + 8)
     const rdata = next + 10
     if (rdata + rdlength > buf.length) throw new RangeError("rdata runs past packet")
     switch (type) {
       case RecordType.A:
-        if (rdlength === 4) records.push({ type: "A", name, address: `${buf[rdata]}.${buf[rdata + 1]}.${buf[rdata + 2]}.${buf[rdata + 3]}` })
+        if (rdlength === 4) records.push({ type: "A", name, ttl, address: `${buf[rdata]}.${buf[rdata + 1]}.${buf[rdata + 2]}.${buf[rdata + 3]}` })
         break
       case RecordType.PTR:
-        records.push({ type: "PTR", name, target: readName(buf, rdata)[0] })
+        records.push({ type: "PTR", name, ttl, target: readName(buf, rdata)[0] })
         break
       case RecordType.SRV:
-        records.push({ type: "SRV", name, port: buf.readUInt16BE(rdata + 4), target: readName(buf, rdata + 6)[0] })
+        records.push({ type: "SRV", name, ttl, port: buf.readUInt16BE(rdata + 4), target: readName(buf, rdata + 6)[0] })
         break
     }
     offset = rdata + rdlength

@@ -6,6 +6,7 @@ import type { Ipv4, Observation, SourceFailed } from "../domain.ts"
 import { parseIpv4 } from "../domain.ts"
 import type { DnsMessage } from "./dns.ts"
 import { decodeMessage, encodeQuery, RecordType } from "./dns.ts"
+import { MDNS_MAX_INTERVAL_MS, repeatRounds } from "./rounds.ts"
 import { openUdp, sendVia } from "./udp.ts"
 
 const GROUP = "224.0.0.251"
@@ -36,8 +37,9 @@ export const advertisedServiceTypes = (msg: DnsMessage): ReadonlyArray<string> =
 /** Groups one response's records into an observation per IPv4 host it describes. */
 export const observationsFromMessage = (msg: DnsMessage, from: Ipv4): ReadonlyArray<Observation> => {
   if (!msg.isResponse) return []
+  const records = msg.records.filter((r) => r.ttl > 0)
   const hostIp = new Map<string, Ipv4>()
-  for (const r of msg.records) {
+  for (const r of records) {
     const ip = r.type === "A" ? parseIpv4(r.address) : undefined
     if (ip) hostIp.set(r.name.toLowerCase(), ip)
   }
@@ -49,7 +51,7 @@ export const observationsFromMessage = (msg: DnsMessage, from: Ipv4): ReadonlyAr
   }
   for (const [host, ip] of hostIp) entry(ip).hostname ??= host
   const srvHost = new Map<string, string>()
-  for (const r of msg.records) if (r.type === "SRV") srvHost.set(r.name.toLowerCase(), r.target.toLowerCase())
+  for (const r of records) if (r.type === "SRV") srvHost.set(r.name.toLowerCase(), r.target.toLowerCase())
   const addService = (instance: string) => {
     const type = serviceTypeOf(instance)
     if (!type) return
@@ -59,7 +61,7 @@ export const observationsFromMessage = (msg: DnsMessage, from: Ipv4): ReadonlyAr
     e.services.add(type)
     if (host && !hostIp.has(host)) e.hostname ??= host
   }
-  for (const r of msg.records) {
+  for (const r of records) {
     if (r.type === "PTR" && r.name.toLowerCase() !== META && r.name.startsWith("_")) addService(r.target)
     else if (r.type === "SRV") addService(r.name)
   }
@@ -113,6 +115,6 @@ export const mdns = (cfg: Config): Stream.Stream<Observation, SourceFailed> =>
         yield* Effect.sleep("200 millis")
         if (pending.length > 0) yield* broadcast(query(pending.splice(0)))
       }
-      yield* Effect.never
+      return yield* repeatRounds(Effect.suspend(() => broadcast(query([...asked]))), MDNS_MAX_INTERVAL_MS)
     })
   )

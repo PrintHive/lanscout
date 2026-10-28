@@ -2,9 +2,9 @@ import * as os from "node:os"
 import * as Effect from "effect/Effect"
 import * as Queue from "effect/Queue"
 import * as Stream from "effect/Stream"
-import type { Config, DiscoveryOptions } from "./config.ts"
-import { ConfigError, resolveConfig } from "./config.ts"
-import type { Device, Ipv4, Observation, Source } from "./domain.ts"
+import type { Config, DiscoveryOptions, WatchOptions } from "./config.ts"
+import { ConfigError, resolveConfig, scanWindow } from "./config.ts"
+import type { Device, Ipv4, Observation, ScanEvent, Source } from "./domain.ts"
 import { SourceFailed } from "./domain.ts"
 import { localNetworks } from "./network.ts"
 import { Registry } from "./registry.ts"
@@ -12,7 +12,7 @@ import { arp } from "./sources/arp.ts"
 import { mdns } from "./sources/mdns.ts"
 import { printer } from "./sources/printer.ts"
 import { ssdp } from "./sources/ssdp.ts"
-import { tailscaleStatus } from "./sources/tailscale.ts"
+import { tailscale, tailscaleStatus } from "./sources/tailscale.ts"
 import { routedTargets, tcp } from "./sources/tcp.ts"
 
 type TailnetPeers = Effect.Effect<ReadonlyArray<Observation>, SourceFailed>
@@ -26,7 +26,7 @@ const discoverers: {
   mdns: (cfg) => mdns(cfg),
   ssdp: (cfg) => ssdp(cfg),
   arp: (cfg) => arp(cfg),
-  tailscale: (_cfg, tailnet) => Stream.fromIterableEffect(tailnet)
+  tailscale
 }
 
 /** Sources that examine each live host the discoverers report, plus routed targets. */
@@ -41,23 +41,22 @@ const isProber = (s: Source): s is Prober => s in probers
 const liveIps = (o: Observation): ReadonlyArray<Ipv4> =>
   o._tag === "Tailscale" ? (o.online ? o.tailnetIps : []) : o._tag === "Tcp" ? [] : [o.ip]
 
-export type ScanEvent =
-  | { readonly _tag: "DeviceUpdated"; readonly device: Device }
-  | SourceFailed
-
 export interface ScanResult {
   readonly devices: ReadonlyArray<Device>
   readonly failures: ReadonlyArray<SourceFailed>
   readonly elapsedMs: number
 }
 
-export const config = (options: DiscoveryOptions = {}): Effect.Effect<Config, ConfigError> =>
+const config = (options: () => WatchOptions): Effect.Effect<Config, ConfigError> =>
   Effect.try({
-    try: () => resolveConfig(options, localNetworks(os.networkInterfaces())),
+    try: () => resolveConfig(options(), localNetworks(os.networkInterfaces())),
     catch: (e) => (e instanceof ConfigError ? e : new ConfigError(String(e)))
   })
 
-const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed> =>
+/** Asks the fold to expire devices that have gone quiet. */
+const tick = { _tag: "Tick" } as const
+
+const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed | typeof tick> =>
   Stream.unwrap(
     Effect.gen(function*() {
       const tailnet = yield* Effect.cached(tailscaleStatus(cfg))
@@ -84,9 +83,11 @@ const observe = (cfg: Config): Stream.Stream<Observation | SourceFailed> =>
         )
       ).pipe(Stream.drain)
       const probing = active.map((s, i) => probers[s](cfg, Stream.fromQueue(queues[i]!)))
-      return Stream.mergeAll([...discovered, ...feeder, ...(active.length > 0 ? [routed] : []), ...probing], {
+      const ticks: Stream.Stream<Observation | SourceFailed | typeof tick> = Stream.map(Stream.tick("1 second"), () => tick)
+      const merged = Stream.mergeAll([...discovered, ...feeder, ...(active.length > 0 ? [routed] : []), ...probing, ticks], {
         concurrency: "unbounded"
-      }).pipe(Stream.interruptWhen(Effect.sleep(`${cfg.timeoutMs} millis`)))
+      })
+      return cfg.watchForMs === undefined ? merged : merged.pipe(Stream.interruptWhen(Effect.sleep(`${cfg.watchForMs} millis`)))
     })
   )
 
@@ -95,23 +96,30 @@ const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
     const start = Date.now()
     const registry = new Registry(cfg.networks)
     const failures: Array<SourceFailed> = []
-    yield* Stream.runForEach(observe(cfg), (event) =>
+    yield* Stream.runForEach(observe(cfg), (item) =>
       Effect.sync(() => {
-        if (event instanceof SourceFailed) {
-          failures.push(event)
-          onEvent(event)
+        if (item instanceof SourceFailed) {
+          failures.push(item)
+          onEvent(item)
+        } else if (item._tag === "Tick") {
+          for (const event of registry.expire(Date.now(), cfg.staleAfterMs)) onEvent(event)
         } else {
-          onEvent({ _tag: "DeviceUpdated", device: registry.add(event, Date.now()) })
+          const event = registry.add(item, Date.now())
+          if (event) onEvent(event)
         }
       })
     )
     return { devices: registry.devices(), failures, elapsedMs: Date.now() - start } satisfies ScanResult
   })
 
-/** Live updates: a `DeviceUpdated` each time an observation adds to a device, plus source failures. */
-export const scan = (options: DiscoveryOptions = {}): Stream.Stream<ScanEvent, ConfigError> =>
+/**
+ * Watches the network: `DeviceAdded` when a device first appears or returns, `DeviceUpdated`
+ * when one changes, `DeviceGone` after `staleAfterMs` without a sighting, plus source failures.
+ * Runs until interrupted, or for `watchForMs` and then ends.
+ */
+export const watch = (options: WatchOptions = {}): Stream.Stream<ScanEvent, ConfigError> =>
   Stream.unwrap(
-    Effect.map(config(options), (cfg) =>
+    Effect.map(config(() => options), (cfg) =>
       Stream.callback<ScanEvent>((queue) =>
         fold(cfg, (e) => Queue.offerUnsafe(queue, e)).pipe(Effect.andThen(Effect.sync(() => Queue.endUnsafe(queue))))
       )
@@ -122,7 +130,7 @@ export const scan = (options: DiscoveryOptions = {}): Stream.Stream<ScanEvent, C
 export const discover = (
   options: DiscoveryOptions = {},
   onEvent: (event: ScanEvent) => void = () => {}
-): Effect.Effect<ScanResult, ConfigError> => Effect.flatMap(config(options), (cfg) => fold(cfg, onEvent))
+): Effect.Effect<ScanResult, ConfigError> => Effect.flatMap(config(() => scanWindow(options)), (cfg) => fold(cfg, onEvent))
 
 /** Promise entry point for callers that do not use Effect. */
 export const discoverDevices = (options: DiscoveryOptions = {}, signal?: AbortSignal): Promise<ScanResult> =>
