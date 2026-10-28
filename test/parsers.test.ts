@@ -4,7 +4,7 @@ import * as Exit from "effect/Exit"
 import type { Ipv4 } from "../src/domain.ts"
 import { parseMac } from "../src/domain.ts"
 import { hostsOf, localNetworks, networkOf } from "../src/network.ts"
-import { parseArpTable, parseProcNetArp } from "../src/sources/arp.ts"
+import { parseArpTable, parseProcNetArp, parseWindowsArp } from "../src/sources/arp.ts"
 import { decodeMessage, encodeQuery, RecordType } from "../src/sources/dns.ts"
 import { advertisedServiceTypes, observationsFromMessage } from "../src/sources/mdns.ts"
 import { parseSsdp } from "../src/sources/ssdp.ts"
@@ -118,6 +118,25 @@ describe("arp", () => {
       "10.0.0.2         0x1         0x0         00:00:00:00:00:00     *        eth0"
     ].join("\n")
     expect(parseProcNetArp(text)).toEqual([{ _tag: "Arp", ip: "10.0.0.1", mac: "aa:bb:cc:dd:ee:01", iface: "eth0" }])
+  })
+
+  it("parses Windows arp -a per interface and drops broadcast and multicast entries", () => {
+    const text = [
+      "",
+      "Interface: 192.0.2.10 --- 0x5",
+      "  Internet Address      Physical Address      Type",
+      "  192.0.2.1             02-00-00-00-00-01     dynamic",
+      "  192.0.2.255           ff-ff-ff-ff-ff-ff     static",
+      "  224.0.0.22            01-00-5e-00-00-16     static",
+      "",
+      "Interface: 198.51.100.4 --- 0x9",
+      "  Internet Address      Physical Address      Type",
+      "  198.51.100.7          02-00-00-00-00-02     dynamic"
+    ].join("\r\n")
+    expect(parseWindowsArp(text)).toEqual([
+      { _tag: "Arp", ip: "192.0.2.1", mac: "02:00:00:00:00:01", iface: "192.0.2.10" },
+      { _tag: "Arp", ip: "198.51.100.7", mac: "02:00:00:00:00:02", iface: "198.51.100.4" }
+    ])
   })
 
   it("rejects malformed MACs", () => {

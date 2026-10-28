@@ -30,12 +30,32 @@ export const parseProcNetArp = (text: string): ReadonlyArray<Observation> =>
     return ip && mac && iface ? [{ _tag: "Arp" as const, ip, mac, iface }] : []
   })
 
-const readTable: Effect.Effect<ReadonlyArray<Observation>, SourceFailed> = Effect.tryPromise(() =>
-  readFile("/proc/net/arp", "utf8")
-).pipe(
-  Effect.map(parseProcNetArp),
-  Effect.catch(() => exec("arp", "arp", ["-an"]).pipe(Effect.map(parseArpTable)))
-)
+/**
+ * Parses Windows `arp -a`, which groups entries under an `Interface: <address> --- 0x5` line and writes MACs with
+ * dashes. The interface's address stands in for its name.
+ */
+export const parseWindowsArp = (text: string): ReadonlyArray<Observation> => {
+  let iface: string | undefined
+  return text.split(/\r?\n/).flatMap((line) => {
+    const header = /^Interface:\s+(\d+\.\d+\.\d+\.\d+)/.exec(line)
+    if (header) {
+      iface = header[1]
+      return []
+    }
+    const [rawIp, rawMac] = line.trim().split(/\s+/)
+    const ip = rawIp && parseIpv4(rawIp)
+    const mac = rawMac && parseMac(rawMac)
+    return ip && mac && iface ? [{ _tag: "Arp" as const, ip, mac, iface }] : []
+  })
+}
+
+const readTable: Effect.Effect<ReadonlyArray<Observation>, SourceFailed> =
+  process.platform === "win32"
+    ? exec("arp", "arp", ["-a"]).pipe(Effect.map(parseWindowsArp))
+    : Effect.tryPromise(() => readFile("/proc/net/arp", "utf8")).pipe(
+      Effect.map(parseProcNetArp),
+      Effect.catch(() => exec("arp", "arp", ["-an"]).pipe(Effect.map(parseArpTable)))
+    )
 
 /** Every address on each attached LAN, the hosts whose MACs the kernel can resolve. */
 export const lanHosts = (cfg: Config): ReadonlyArray<Ipv4> => {
