@@ -1,6 +1,6 @@
 {
   "name": "@printhive/lanscout",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Find the devices on a local network in about 2 seconds over mDNS, SSDP, ARP, TCP, and Tailscale, including Bambu Lab and Klipper printers",
   "keywords": [
     "discovery",
