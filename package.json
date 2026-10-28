@@ -45,7 +45,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "lanscout": "./dist/cli.js"
+    "lanscout": "dist/cli.js"
   },
   "files": [
     "dist",
@@ -69,8 +69,8 @@
   "devDependencies": {
     "@effect/vitest": "4.0.6",
     "@types/node": "^26.6.5",
+    "effect": "4.0.6",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.5",
-    "effect": "4.0.6"
+    "vitest": "^5.0.5"
   }
 }
