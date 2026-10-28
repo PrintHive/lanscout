@@ -292,4 +292,19 @@ describe("Registry address moves", () => {
     const back = registry.add(printerAt("192.0.2.45"), 8000)
     expect(back && [back._tag, back.device.id, back.device.ips]).toEqual(["DeviceAdded", "sn:01S00A000000001", ["192.0.2.45"]])
   })
+
+  it("reports a live printer that loses its address to another printer", () => {
+    const registry = new Registry(networks)
+    const other: Observation = { _tag: "Printer", ip: ip("192.0.2.41"), via: "ssdp", printer: { kind: "bambu", serial: "01S00A000000002", modelCode: "C11" } }
+    registry.add(printerAt("192.0.2.41"), 0)
+    registry.add(printerAt("192.0.2.46"), 100)
+    registry.add(other, 200)
+    expect(registry.takeReclaimed().map((e) => [e._tag, e.device.id, e.device.ips])).toEqual([["DeviceUpdated", "sn:01S00A000000001", ["192.0.2.46"]]])
+    const solo = new Registry(networks)
+    solo.add(printerAt("192.0.2.41"), 0)
+    solo.add(other, 200)
+    expect(solo.takeReclaimed().map((e) => [e._tag, e.device.id])).toEqual([["DeviceGone", "sn:01S00A000000001"]])
+    expect(solo.devices().map((d) => d.id)).toEqual(["sn:01S00A000000002"])
+    expect(solo.takeReclaimed()).toEqual([])
+  })
 })
