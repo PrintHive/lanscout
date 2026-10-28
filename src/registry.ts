@@ -249,6 +249,7 @@ export class Registry {
   readonly #parent = new Map<Key, Key>()
   readonly #drafts = new Map<Key, Draft>()
   readonly #networks: ReadonlyArray<Network>
+  readonly #reclaimed: Array<DeviceEvent> = []
 
   constructor(networks: ReadonlyArray<Network>) {
     this.#networks = networks
@@ -368,13 +369,30 @@ export class Registry {
       if (!key.startsWith("ip:") || !this.#parent.has(key)) continue
       const holder = this.#drafts.get(this.#find(key))!
       if (![...holder.keys].some((k) => k.startsWith("sn:") && k !== serial)) continue
+      const wasLive = holder.reportedId !== undefined && !holder.gone
+      // Two live printers claiming one address is an address conflict; the newer claim wins, and a record left
+      // without an address is gone until its next sighting elsewhere.
+      const last = holder.addresses.size === 1 && wasLive ? snapshot(holder) : undefined
       // SAFETY: an `ip:` key's suffix is the address it was made from.
       holder.addresses.delete(key.slice(3) as Ipv4)
       this.#unlink(holder, key)
-      // Two live printers claiming one address is an address conflict; the newer claim wins, and the record
-      // left without an address waits, gone, for its next sighting elsewhere.
-      if (holder.addresses.size === 0) holder.gone = true
+      if (holder.addresses.size === 0) {
+        holder.gone = true
+        if (last) this.#reclaimed.push({ _tag: "DeviceGone", device: last })
+      } else if (wasLive) {
+        const device = snapshot(holder)
+        holder.reportedFields = fieldsOf(device)
+        this.#reclaimed.push({ _tag: "DeviceUpdated", device, formerIds: [] })
+      }
     }
+  }
+
+  /**
+   * Events for other devices caused by the last `add`: a live printer that lost an address to another printer's
+   * sighting. Emit them before the event `add` returned.
+   */
+  takeReclaimed(): ReadonlyArray<DeviceEvent> {
+    return this.#reclaimed.splice(0)
   }
 
   /**

@@ -109,6 +109,7 @@ const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
           for (const check of registry.due(now, cfg.roundMaxMs)) Queue.offerUnsafe(checks, check)
         } else {
           const event = registry.add(item, Date.now())
+          for (const reclaimed of registry.takeReclaimed()) onEvent(reclaimed)
           if (event) onEvent(event)
         }
       })
