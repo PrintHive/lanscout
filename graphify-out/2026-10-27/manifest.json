@@ -1,0 +1,170 @@
+{
+  "examples/find-printers.ts": {
+    "mtime": 1793133806.8309298,
+    "seen": 1793148167.0244632,
+    "ast_hash": "ce0bd574ec0a8290e8af445a519025d0",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1793133807.1025977,
+    "seen": 1793148167.0244648,
+    "ast_hash": "5d08e33473fb87df577388fa10c14a7a",
+    "semantic_hash": ""
+  },
+  "scripts/sync-bambu-models.mjs": {
+    "mtime": 1793134084.2303584,
+    "seen": 1793148167.024466,
+    "ast_hash": "e4b561973fca918e2eb42e479367596d",
+    "semantic_hash": ""
+  },
+  "src/cli.ts": {
+    "mtime": 1793134118.4255478,
+    "seen": 1793148167.024468,
+    "ast_hash": "7562ac825d76d3d31161a6774defac9f",
+    "semantic_hash": ""
+  },
+  "src/config.ts": {
+    "mtime": 1793133806.2447684,
+    "seen": 1793148167.024468,
+    "ast_hash": "ac3b4e49378b5ff2cbeb41ba363e96fe",
+    "semantic_hash": ""
+  },
+  "src/discover.ts": {
+    "mtime": 1793133806.2450778,
+    "seen": 1793148167.024469,
+    "ast_hash": "b057a77beb2f93e30e3f01026f12a413",
+    "semantic_hash": ""
+  },
+  "src/domain.ts": {
+    "mtime": 1793133806.245373,
+    "seen": 1793148167.02447,
+    "ast_hash": "eeaf483fb392296fb47b17bbca0af6fd",
+    "semantic_hash": ""
+  },
+  "src/index.ts": {
+    "mtime": 1793133806.2456367,
+    "seen": 1793148167.024471,
+    "ast_hash": "f80135c973dd8c7e7eeee61dafd1c404",
+    "semantic_hash": ""
+  },
+  "src/network.ts": {
+    "mtime": 1793133806.2460408,
+    "seen": 1793148167.024472,
+    "ast_hash": "3e2a3dd25c47dc55c648a85c237bcf84",
+    "semantic_hash": ""
+  },
+  "src/printers/bambu-models.ts": {
+    "mtime": 1793134085.3908532,
+    "seen": 1793148167.0244732,
+    "ast_hash": "aa5d38de80d9f4e8e60f5fc8fc863dec",
+    "semantic_hash": ""
+  },
+  "src/printers/bambu.ts": {
+    "mtime": 1793134070.5104654,
+    "seen": 1793148167.0244741,
+    "ast_hash": "ed26ee9ec6c0093f7cc72aece27b8224",
+    "semantic_hash": ""
+  },
+  "src/printers/klipper.ts": {
+    "mtime": 1793133806.2469435,
+    "seen": 1793148167.0244749,
+    "ast_hash": "bff2eee73b9b63df3584c1a2948013ba",
+    "semantic_hash": ""
+  },
+  "src/registry.ts": {
+    "mtime": 1793133806.247777,
+    "seen": 1793148167.024477,
+    "ast_hash": "3ad55c45c9f4a91b4f51309181de111a",
+    "semantic_hash": ""
+  },
+  "src/sources/arp.ts": {
+    "mtime": 1793133805.060354,
+    "seen": 1793148167.024478,
+    "ast_hash": "377ac8b109478081362599d27b713f33",
+    "semantic_hash": ""
+  },
+  "src/sources/dns.ts": {
+    "mtime": 1793133805.0611339,
+    "seen": 1793148167.024478,
+    "ast_hash": "51a4e94216a47427e7e5335ef47f3c3d",
+    "semantic_hash": ""
+  },
+  "src/sources/exec.ts": {
+    "mtime": 1793133805.062957,
+    "seen": 1793148167.024479,
+    "ast_hash": "b68c32a24d3a81e997206121e240c9e2",
+    "semantic_hash": ""
+  },
+  "src/sources/mdns.ts": {
+    "mtime": 1793133805.0636165,
+    "seen": 1793148167.02448,
+    "ast_hash": "812dfa3930034245f640f2762e00078c",
+    "semantic_hash": ""
+  },
+  "src/sources/printer.ts": {
+    "mtime": 1793133806.2480903,
+    "seen": 1793148167.024481,
+    "ast_hash": "16e1d7d6c59b28c527448ce289951848",
+    "semantic_hash": ""
+  },
+  "src/sources/ssdp.ts": {
+    "mtime": 1793133806.248546,
+    "seen": 1793148167.024482,
+    "ast_hash": "1b9fb70b7e1a026412ed2873eddc5b72",
+    "semantic_hash": ""
+  },
+  "src/sources/tailscale.ts": {
+    "mtime": 1793133805.0658326,
+    "seen": 1793148167.024483,
+    "ast_hash": "faf78b7e56b7aab6ce8416c4b8517124",
+    "semantic_hash": ""
+  },
+  "src/sources/tcp.ts": {
+    "mtime": 1793133805.0665226,
+    "seen": 1793148167.0244842,
+    "ast_hash": "671af82038ca292a30a3ee3ab750dded",
+    "semantic_hash": ""
+  },
+  "src/sources/udp.ts": {
+    "mtime": 1793133806.2488508,
+    "seen": 1793148167.024485,
+    "ast_hash": "bb0eb782d9a922074fa1fb31878727f9",
+    "semantic_hash": ""
+  },
+  "test/parsers.test.ts": {
+    "mtime": 1793133805.0691385,
+    "seen": 1793148167.0244858,
+    "ast_hash": "97a1977fb88d85f9dcf9c5bf697adcd3",
+    "semantic_hash": ""
+  },
+  "test/printers.test.ts": {
+    "mtime": 1793134131.4217718,
+    "seen": 1793148167.024487,
+    "ast_hash": "5b2f8aae62ef10aaf510d018b2b63c99",
+    "semantic_hash": ""
+  },
+  "test/registry.test.ts": {
+    "mtime": 1793133804.7270362,
+    "seen": 1793148167.024488,
+    "ast_hash": "92d73591d65249e1699bc78e7783b299",
+    "semantic_hash": ""
+  },
+  "tsconfig.build.json": {
+    "mtime": 1793133805.9121923,
+    "seen": 1793148167.024489,
+    "ast_hash": "d871f2221179cf8db8e089d90f568de0",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1793133806.831254,
+    "seen": 1793148167.0244899,
+    "ast_hash": "da98b146052284e009d3ed7db826d2bb",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793134178.4257252,
+    "seen": 1793148167.024493,
+    "ast_hash": "bf1c1cba283ae09adbf06c07c4fcd483",
+    "semantic_hash": ""
+  }
+}
