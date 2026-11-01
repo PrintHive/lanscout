@@ -105,7 +105,7 @@ const observe = (cfg: Config, checks: Queue.Queue<Check>): Stream.Stream<Observa
 const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
   Effect.gen(function*() {
     const start = Date.now()
-    const registry = new Registry(cfg.networks)
+    const registry = new Registry(cfg.networks, { sightingEveryMs: cfg.sightingEveryMs })
     const checks = yield* Queue.unbounded<Check>()
     const failures: Array<SourceFailed> = []
     yield* Stream.runForEach(observe(cfg, checks), (item) =>
@@ -128,6 +128,7 @@ const fold = (cfg: Config, onEvent: (event: ScanEvent) => void) =>
 /**
  * Watches the network: `DeviceAdded` when a device first appears or returns, `DeviceUpdated`
  * when one changes, `DeviceGone` after `staleAfterMs` without a sighting, plus source failures.
+ * With `sightingEveryMs`, also `DeviceSeen` for repeat sightings that change nothing.
  * Runs until interrupted, or for `watchForMs` and then ends.
  */
 export const watch = (options: WatchOptions = {}): Stream.Stream<ScanEvent, ConfigError> =>

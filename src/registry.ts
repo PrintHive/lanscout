@@ -36,6 +36,8 @@ interface Draft {
   reportedId?: string | undefined
   /** Fields last reported, minus timestamps, so a re-sighting that changes nothing stays quiet. */
   reportedFields?: string | undefined
+  /** When `add` last returned an event for this device, to throttle `DeviceSeen`. */
+  reportedSeenMs: number
   gone: boolean
 }
 
@@ -159,6 +161,7 @@ const emptyDraft = (now: number): Draft => ({
   lastSeenMs: now,
   lastHeardMs: now,
   lastCheckMs: now,
+  reportedSeenMs: now,
   gone: false
 })
 
@@ -250,9 +253,12 @@ export class Registry {
   readonly #drafts = new Map<Key, Draft>()
   readonly #networks: ReadonlyArray<Network>
   readonly #reclaimed: Array<DeviceEvent> = []
+  readonly #sightingEveryMs: number | undefined
 
-  constructor(networks: ReadonlyArray<Network>) {
+  /** With `sightingEveryMs`, a sighting that changes nothing returns `DeviceSeen`, at most once per that interval per device. */
+  constructor(networks: ReadonlyArray<Network>, options: { readonly sightingEveryMs?: number | undefined } = {}) {
     this.#networks = networks
+    this.#sightingEveryMs = options.sightingEveryMs
   }
 
   #find(key: Key): Key {
@@ -267,7 +273,10 @@ export class Registry {
     return root
   }
 
-  /** Records an observation. Returns the event it causes, or undefined when nothing but `lastSeenMs` changed. */
+  /**
+   * Records an observation. Returns the event it causes. When nothing but `lastSeenMs` changed, that is `DeviceSeen`
+   * if `sightingEveryMs` has passed since this device's last event, and undefined otherwise.
+   */
   add(o: Observation, now: number): DeviceEvent | undefined {
     const handler = handlers[o._tag] as Handler<typeof o._tag>
     const keys = handler.keys(o as never)
@@ -326,8 +335,13 @@ export class Registry {
     draft.reportedId = device.id
     draft.reportedFields = fields
     draft.gone = false
-    if (!wasLive) return { _tag: "DeviceAdded", device }
-    return changed ? { _tag: "DeviceUpdated", device, formerIds } : undefined
+    if (!wasLive || changed) {
+      draft.reportedSeenMs = now
+      return wasLive ? { _tag: "DeviceUpdated", device, formerIds } : { _tag: "DeviceAdded", device }
+    }
+    if (this.#sightingEveryMs === undefined || now - draft.reportedSeenMs < this.#sightingEveryMs) return undefined
+    draft.reportedSeenMs = now
+    return { _tag: "DeviceSeen", device }
   }
 
   /**

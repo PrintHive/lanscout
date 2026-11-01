@@ -107,7 +107,10 @@ interface Device {
 | `DeviceAdded` | A device is seen for the first time, or again after it went gone |
 | `DeviceUpdated` | A field of a device changes, such as a new service, port, or name. A sighting that changes nothing sends no event |
 | `DeviceGone` | No source has seen the device for `staleAfterMs`, 180 seconds by default |
+| `DeviceSeen` | Only with `sightingEveryMs`: the device was sighted again and nothing but `lastSeenMs` changed. Sent at most once per `sightingEveryMs` per device, counted from its last event |
 | `SourceFailed` | A source cannot run. The other sources keep running |
+
+To show when a device was last seen, set `sightingEveryMs`. A device that keeps announcing itself unchanged, as a printer does over SSDP, then still sends `DeviceSeen` with a fresh `lastSeenMs`. `watch({ sightingEveryMs: 30000 })` keeps every device's `lastSeenMs` at most about 30 seconds behind. ARP counts as a sighting here, as it does for `lastSeenMs`. So a departed device's `lastSeenMs` can stay fresh while the operating system's ARP cache still lists it, until it is reported gone.
 
 `watchForMs` ends the watch after that many milliseconds. Without it, the watch runs until you interrupt it. A watch with `watchForMs: 30000` finds all it can in 30 seconds.
 

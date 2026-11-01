@@ -179,7 +179,7 @@ const runWatch = ({ format, options: { timeoutMs: _, ...options }, view, watchin
     }
     if (!view.keep(e.device)) return
     if (format === "ndjson") process.stdout.write(`${JSON.stringify(e)}\n`)
-    else if (format === "table" && e._tag !== "DeviceUpdated") line(e._tag === "DeviceAdded" ? "+" : "-", e.device)
+    else if (format === "table" && (e._tag === "DeviceAdded" || e._tag === "DeviceGone")) line(e._tag === "DeviceAdded" ? "+" : "-", e.device)
   }
   const fiber = Effect.runFork(Stream.runForEach(watch({ ...options, ...watching }), (e) => Effect.sync(() => onEvent(e))))
   process.once("SIGINT", () => Effect.runFork(Fiber.interrupt(fiber)))

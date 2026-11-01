@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import type { Device, Ipv4, Mac, Network, Observation } from "../src/domain.ts"
+import { ConfigError, resolveConfig } from "../src/config.ts"
 import { record } from "../src/discover.ts"
 import { Registry } from "../src/registry.ts"
 import type { DeviceEvent } from "../src/registry.ts"
@@ -331,5 +332,52 @@ describe("record", () => {
       ["DeviceUpdated", "sn:01S00A000000001", ["192.0.2.46"]],
       ["DeviceAdded", "sn:01S00A000000002", ["192.0.2.41"]]
     ])
+  })
+})
+
+describe("DeviceSeen", () => {
+  const announce: Observation = { _tag: "Ssdp", ip: ip("192.0.2.10"), usn: "uuid:test-1::upnp:rootdevice" }
+  const tags = (registry: Registry, sightings: ReadonlyArray<readonly [Observation, number]>) =>
+    sightings.map(([o, now]) => {
+      const event = registry.add(o, now)
+      return event && [event._tag, event.device.lastSeenMs]
+    })
+
+  it("sends nothing for a sighting that changes nothing, by default", () => {
+    expect(tags(new Registry(networks), [[announce, 0], [announce, 1000], [announce, 60_000]])).toEqual([
+      ["DeviceAdded", 0],
+      undefined,
+      undefined
+    ])
+  })
+
+  it("reports repeat sightings at most once per sightingEveryMs per device", () => {
+    const other: Observation = { _tag: "Ssdp", ip: ip("192.0.2.11"), usn: "uuid:test-2::upnp:rootdevice" }
+    const registry = new Registry(networks, { sightingEveryMs: 30_000 })
+    expect(tags(registry, [[announce, 0], [other, 20_000], [announce, 1000], [announce, 30_000], [other, 30_000], [announce, 31_000], [other, 50_000], [announce, 60_000]])).toEqual([
+      ["DeviceAdded", 0],
+      ["DeviceAdded", 20_000],
+      undefined,
+      ["DeviceSeen", 30_000],
+      undefined,
+      undefined,
+      ["DeviceSeen", 50_000],
+      ["DeviceSeen", 60_000]
+    ])
+  })
+
+  it("restarts the interval after any event that already carried lastSeenMs", () => {
+    const changed: Observation = { _tag: "Mdns", ip: ip("192.0.2.10"), hostname: "printer.local", services: [] }
+    const registry = new Registry(networks, { sightingEveryMs: 30_000 })
+    expect(tags(registry, [[announce, 0], [changed, 20_000], [announce, 30_000], [announce, 50_000]])).toEqual([
+      ["DeviceAdded", 0],
+      ["DeviceUpdated", 20_000],
+      undefined,
+      ["DeviceSeen", 50_000]
+    ])
+  })
+
+  it("rejects a sightingEveryMs that is not a positive integer", () => {
+    expect(() => resolveConfig({ sightingEveryMs: 0 }, networks)).toThrow(ConfigError)
   })
 })
