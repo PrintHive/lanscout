@@ -241,6 +241,24 @@ describe("Registry address moves", () => {
     expect(registry.expire(6500, 5000)).toEqual([])
   })
 
+  it("restarts the DeviceSeen interval when an expired address sends DeviceUpdated", () => {
+    const registry = new Registry(networks, { sightingEveryMs: 5000 })
+    registry.add(portAt("192.0.2.41"), 0)
+    registry.add(printerAt("192.0.2.41"), 0)
+    registry.add(printerAt("192.0.2.42"), 4000)
+    expect(registry.expire(6000, 5000).map((e) => e._tag)).toEqual(["DeviceUpdated"])
+    expect([registry.add(printerAt("192.0.2.42"), 9500)?._tag, registry.add(printerAt("192.0.2.42"), 11_000)?._tag]).toEqual([undefined, "DeviceSeen"])
+  })
+
+  it("restarts the DeviceSeen interval when another printer reclaims an address and sends DeviceUpdated", () => {
+    const registry = new Registry(networks, { sightingEveryMs: 5000 })
+    registry.add(printerAt("192.0.2.41"), 0)
+    registry.add(printerAt("192.0.2.42"), 1000)
+    registry.add({ _tag: "Printer", ip: ip("192.0.2.41"), via: "ssdp", printer: { kind: "bambu", serial: "01S00A000000002", modelCode: "C11" } }, 4000)
+    expect(registry.takeReclaimed().map((e) => e._tag)).toEqual(["DeviceUpdated"])
+    expect([registry.add(printerAt("192.0.2.42"), 6500)?._tag, registry.add(printerAt("192.0.2.42"), 9000)?._tag]).toEqual([undefined, "DeviceSeen"])
+  })
+
   it("sends liveness checks to the current address, not the first one seen", () => {
     const registry = new Registry(networks)
     registry.add(printerAt("192.0.2.41"), 0)

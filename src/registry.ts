@@ -36,7 +36,7 @@ interface Draft {
   reportedId?: string | undefined
   /** Fields last reported, minus timestamps, so a re-sighting that changes nothing stays quiet. */
   reportedFields?: string | undefined
-  /** When `add` last returned an event for this device, to throttle `DeviceSeen`. */
+  /** When this device's last event was sent, to throttle `DeviceSeen`. */
   reportedSeenMs: number
   gone: boolean
 }
@@ -280,7 +280,7 @@ export class Registry {
   add(o: Observation, now: number): DeviceEvent | undefined {
     const handler = handlers[o._tag] as Handler<typeof o._tag>
     const keys = handler.keys(o as never)
-    this.#reclaimAddresses(keys)
+    this.#reclaimAddresses(keys, now)
     const formerIds: Array<string> = []
     let absorbedLive = false
     let root: Key | undefined
@@ -367,6 +367,7 @@ export class Registry {
       }
       const device = snapshot(draft)
       draft.reportedFields = fieldsOf(device)
+      draft.reportedSeenMs = now
       events.push({ _tag: "DeviceUpdated", device, formerIds: [] })
     }
     return events
@@ -376,7 +377,7 @@ export class Registry {
    * A printer sighted at an address held by a record with a different serial has taken that address over, as when
    * DHCP hands a departed printer's lease to another. The old record loses the address, so the two never merge.
    */
-  #reclaimAddresses(keys: ReadonlyArray<Key>): void {
+  #reclaimAddresses(keys: ReadonlyArray<Key>, now: number): void {
     const serial = keys.find((k) => k.startsWith("sn:"))
     if (serial === undefined) return
     for (const key of keys) {
@@ -396,6 +397,7 @@ export class Registry {
       } else if (wasLive) {
         const device = snapshot(holder)
         holder.reportedFields = fieldsOf(device)
+        holder.reportedSeenMs = now
         this.#reclaimed.push({ _tag: "DeviceUpdated", device, formerIds: [] })
       }
     }
