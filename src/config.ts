@@ -33,6 +33,11 @@ export interface WatchOptions extends SourceOptions {
   readonly watchForMs?: number
   /** Report a device gone after this long without a sighting. Default 180000. */
   readonly staleAfterMs?: number
+  /**
+   * Also emit `DeviceSeen` for a sighting that changes nothing but `lastSeenMs`, at most once per this many
+   * milliseconds per device. Default: off, so such sightings send no event.
+   */
+  readonly sightingEveryMs?: number
 }
 
 export interface Subnet {
@@ -44,6 +49,8 @@ export interface Config {
   /** Undefined watches until interrupted. */
   readonly watchForMs: number | undefined
   readonly staleAfterMs: number
+  /** Undefined sends no `DeviceSeen`. */
+  readonly sightingEveryMs: number | undefined
   /**
    * Longest gap between ARP, SSDP, and Tailscale rounds: a third of `staleAfterMs`, at most a
    * minute, so a device that stays is re-sighted at least twice before it could go stale.
@@ -94,6 +101,7 @@ export const resolveConfig = (options: WatchOptions, networks: ReadonlyArray<Net
   return {
     watchForMs: options.watchForMs === undefined ? undefined : positiveInt("watchForMs", options.watchForMs, 0),
     staleAfterMs,
+    sightingEveryMs: options.sightingEveryMs === undefined ? undefined : positiveInt("sightingEveryMs", options.sightingEveryMs, 0),
     roundMaxMs: Math.min(60_000, Math.floor(staleAfterMs / 3)),
     sources: new Set(sources),
     concurrency: positiveInt("concurrency", options.concurrency, 1024),

@@ -128,11 +128,13 @@ export interface Device {
 
 /**
  * What a scan or watch reports. `DeviceUpdated` fires only when a field changes, not on every
- * sighting. `formerIds` lists ids that now refer to this device: its own id before an upgrade
+ * sighting. `DeviceSeen` reports a sighting that changed nothing but `lastSeenMs`, and only when the
+ * watch sets `sightingEveryMs`. `formerIds` lists ids that now refer to this device: its own id before an upgrade
  * (`ip:` to `mac:`), and the ids of records it absorbed when a shared identifier linked them.
  */
 export type ScanEvent =
   | { readonly _tag: "DeviceAdded"; readonly device: Device }
   | { readonly _tag: "DeviceUpdated"; readonly device: Device; readonly formerIds: ReadonlyArray<string> }
   | { readonly _tag: "DeviceGone"; readonly device: Device }
+  | { readonly _tag: "DeviceSeen"; readonly device: Device }
   | SourceFailed
